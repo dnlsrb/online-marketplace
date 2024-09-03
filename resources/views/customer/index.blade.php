@@ -7,8 +7,6 @@
  
  
     
-    @endfor
- 
- 
-</div>
+    @endfor 
+    </div>
 </x-sections.content>
