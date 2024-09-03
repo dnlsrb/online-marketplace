@@ -1,9 +1,11 @@
 
 <div class="navbar bg-base-100">
     <div class="flex-1">
-        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
-            Open drawer
-          </label>
+      {{-- For sidebar --}}
+      
+      <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
+        Filter
+      </label>
       <a class="btn btn-ghost text-xl">Online Marketplace</a>
     </div>
     <div class="flex-none">
