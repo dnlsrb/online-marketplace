@@ -2,8 +2,11 @@
     <div class="navbar bg-base-100 container mx-auto">
         <a class="btn btn-ghost text-xl">Online marketplace</a>
     </div>
-    <section class="container  flex justify-end items-center absolute inset-0 ">
-        
+  
+    <section class="flex   h-[calc(90dvh)]  flex justify-evenly items-center">
+        <div class="md:hidden lg:block">
+
+        </div>
 
 <div class="w-full max-w-sm p-4 bg-white border  border-gray-200 rounded shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700  ">
     <form class="space-y-6" action="#">
@@ -33,5 +36,5 @@
 </div>
 
     </section>
-
+ 
 </x-main.base>
