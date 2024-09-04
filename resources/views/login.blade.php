@@ -1,7 +1,5 @@
 <x-main.base >
-    <div class="navbar bg-base-100 container mx-auto">
-        <a class="btn btn-ghost text-xl">Online marketplace</a>
-    </div>
+ 
   
     <section class="flex   h-[calc(90dvh)]  flex justify-evenly items-center">
         <div class="md:hidden lg:block">

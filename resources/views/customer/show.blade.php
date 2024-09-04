@@ -1,6 +1,6 @@
 <x-sections.content>
 
-<div>
+ 
     <img class="p-1 rounded-t-lg object-cover" src="https://dummyimage.com/400x400/000/fff" alt="product image" />
     <h4>Product Name </h4>
     <h4>Description </h4>
@@ -29,6 +29,6 @@
         <button>close</button>
       </form>
     </dialog>
-</div>
+ 
 
 </x-sections.content>
