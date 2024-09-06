@@ -10,5 +10,4 @@
     </x-sections.wrapper>
     </div>
     </div>
- 
 </x-main.base > 
