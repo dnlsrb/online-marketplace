@@ -15,6 +15,7 @@ class card extends Component
         public string $productname,
         public string $productprice,
         public string $imagesrc,
+        public string $id,
     )
     {
         //

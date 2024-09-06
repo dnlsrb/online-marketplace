@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('customer.index');
 });
-Route::get('/show', function () {
-    return view('customer.show');
+Route::get('/show/{id}', function ($id) {
+    return view('customer.show', compact('id'));
 });
 Route::get('/register', function(){
     return view('register');

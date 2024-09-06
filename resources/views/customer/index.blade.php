@@ -3,10 +3,10 @@
 
 
     
-    @for($i=0; $i < 12; $i++)
+    @for($i=0; $i < 9; $i++)
    
         <x-elements.card 
-        link="show" 
+        link="show/{{$i}}" 
         {{-- ^ add link here  --}}
         imagesrc="https://picsum.photos/id/2{{$i}}/400/400" 
         productname="Product Name here // Product Name Here //"  

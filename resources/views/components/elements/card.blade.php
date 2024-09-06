@@ -8,7 +8,7 @@
  
 
 <div class="w-full max-w-sm bg-white border  ">
-    <a href="{{$link}}">
+    <a href="/{{$link}}">
         <img class="p-1 rounded-t-lg object-cover" src="{{$imagesrc}}" alt="product image" />
    
     <div class="px-5 pb-5">
