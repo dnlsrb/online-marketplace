@@ -1,6 +1,6 @@
-<x-sections.content>
+<x-sections.content-show>
 
- 
+ <div> 
     <img class="p-1 rounded-t-lg object-cover" src="https://dummyimage.com/400x400/000/fff" alt="product image" />
     <h4>Product Name </h4>
     <h4>Description </h4>
@@ -20,11 +20,36 @@
     Close
   </x-elements.button>
 </div>  
- 
+</div>
+
 </x-elements.modal>
 
 
+{{-- Recommendation --}}
+<div class="mt-20">
+  <p class="text-2xl my-10 ">Recommendation</p>
+  <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  "> 
+
+
+    
+    @for($i=0; $i < 10; $i++)
+   
+        <x-elements.card 
+        link="show" 
+        {{-- ^ add link here  --}}
+        imagesrc="https://picsum.photos/id/12{{$i}}/400/400" 
+        productname="Product Name here // Product Name Here //"  
+        productprice="1{{$i}}0"/>
+
+    @endfor 
+ 
+
+
+  </div>
+</div>
+
+
  
  
 
-</x-sections.content>
+</x-sections.content-show>

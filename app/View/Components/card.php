@@ -6,21 +6,25 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class error extends Component
+class card extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $message,
+        public string $productname,
+        public string $productprice,
+        public string $imagesrc,
     )
-    {}
+    {
+        //
+    }
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.elements.error');
+        return view('components.elements.card');
     }
 }
