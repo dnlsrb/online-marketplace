@@ -8,12 +8,19 @@
     </a>
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <a href="" class="mr-5 hover:text-gray-900">Account</a>
-      <a href="/login" class="mr-5 hover:text-gray-900">Logout</a>
+      @if(!Auth::user())
+      <a href="{{route('login')}}" class="mr-5 hover:text-gray-900">Login</a>
+        @else
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button  class="mr-5 hover:text-gray-900">Logout</button>
+        </form>
+      @endif
     </nav>
   </div>
 </section>
- 
- 
+
+
 
 
 <header class="text-gray-600 body-font">
@@ -23,9 +30,9 @@
       </svg>
       <span class="ml-3 text-xl">Online Marketplace</span>
     </a>
-    
-<div class="md:hidden flex items-center text-center "> 
-  <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0"> 
+
+<div class="md:hidden flex items-center text-center ">
+  <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
     <i class="fa-solid fa-filter"></i>
   </button>
 </div>
@@ -36,16 +43,16 @@
       <div class="absolute inset-y-0 start-0   items-center ps-3 pointer-events-none w-full  md:flex hidden  ">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-    
-     
-        <input type="search" id="default-search" class="block w-full   p-4  ps-2 md:ps-10 text-sm text-gray-900 border border-gray-300  rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product Name" required />
-        <input type="submit" name="submit" value="Search" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm  px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
-     
-      
+
+
+        <input type="search" id="default-search" class="block w-full   p-4  ps-2 md:ps-10 text-sm text-gray-900 border border-gray-300  rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Product Name" required />
+        <input type="submit" name="submit" value="Search" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm  px-4 py-2">
+
+
     </form>
 
-      <div class="flex items-center text-center"> 
-      <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0"> 
+      <div class="flex items-center text-center">
+      <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
         <i class="fa-solid fa-cart-shopping"></i>
       </button>
     </div>
@@ -53,4 +60,3 @@
   </div>
 </header>
 
- 
