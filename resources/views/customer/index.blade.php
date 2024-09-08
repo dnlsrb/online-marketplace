@@ -13,12 +13,14 @@
                 imagesrc="{{$product->image}}"
                 productname="{{ $product->name}}" 
                 productprice="{{ $product->price}}" />
-
+                
+                
+               
         @empty
 
             <h1>No Product Available</h1>
         @endforelse
-
+        {{ $products->links() }}
 
     </div>
 </x-sections.content-index>
