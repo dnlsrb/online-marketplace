@@ -7,7 +7,23 @@
       <span class="ml-3  ">Online Marketplace</span>
     </a>
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <a href="" class="mr-5 hover:text-gray-900">Account</a>
+      <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">Account</button>
+      <div id="account_dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
+        <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
+          <li>
+            <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Purchase</a>
+          </li>
+          <li>
+            <a href="/subcription" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Subcription</a>
+          </li>
+          
+          
+        </ul>
+    </div>
+
       @if(!Auth::user())
       <a href="{{route('login')}}" class="mr-5 hover:text-gray-900">Login</a>
         @else

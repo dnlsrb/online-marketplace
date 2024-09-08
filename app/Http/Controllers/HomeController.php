@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index(){
         $authUser = Auth::user();
 
-        $role = $authUser->roles()->first()->name;
+        $role = $authUser->roles()->first();
 
         switch ($role) {
             case UserRoles::ADMIN->value:

@@ -39,16 +39,19 @@ class CartController extends Controller
 
         }
 
+        // to get total price??
+        $total = $request->quantity * $product->price;
+
         CartProduct::create([
             'product_id' => $product->id,
             'cart_id' => $cart->id,
             'quantity' => $request->quantity,
-            'total' => $request->total
+            'total' => $total,
         ]);
 
 
         return back()->with(['message_success', 'Product Added']);
-    }
+    }   
 
     public function removeProduct(string $id){
         $cartProduct = CartProduct::find($id);

@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CustomerProductController::class, 'index'])->name('customer.index');
 
+
+Route::get('/subcription', function(){
+    return view('subcription');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -34,7 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
+    Route::prefix('product')->as('products.')->group(function(){
+        Route::get('{product}', [CustomerProductController::class, 'show'])->name('show');
+    });
 
     Route::middleware(['role:admin'])->prefix('admin')->as('admin.')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
@@ -43,13 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
         Route::resource('products', ProductController::class);
+        
     });
 
     Route::middleware(['role:customer'])->prefix('customer')->as('customer.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
-        Route::prefix('product')->as('products.')->group(function(){
-            Route::get('{product}', [CustomerProductController::class, 'show'])->name('show');
-        });
+       
         Route::prefix('cart')->as('cart.')->group(function(){
             Route::get('', [CartController::class, 'index'])->name('index');
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');

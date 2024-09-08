@@ -20,21 +20,20 @@
                 <h5 class="text-xl font-medium text-gray-900 mb-6">Log In</h5>
 
                 <div>
-                    <input type="email" name="email" id="email" placeholder="Username"
+                    @if ($errors->has('email'))
+                    <x-elements.error message="{{ $errors->first('email') }}" />
+                @endif
+                    <input type="email" name="email" id="email" placeholder="Email"
                         class="mb-4  bg-gray-50 border border-gray-300 text-gray-900 text-sm roundedfocus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{old('email')}}"
                         required />
-                    @if ($errors->has('email'))
-                        <x-elements.error message="{{ $errors->first('email') }}" />
-                    @endif
+                 
                 </div>
                 <div>
                     <input type="password" name="password" id="password" placeholder="Password"
                         class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         required  />
 
-                    @if ($errors->has('password'))
-                        <x-elements.error message="{{ $errors->first('password') }}" />
-                    @endif
+                    
                 </div>
                 <div class="flex justify-between mb-4">
                     <div class="flex items-start">
