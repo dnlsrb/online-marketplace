@@ -1,4 +1,4 @@
-<x-main.base>
+<x-layouts.app>
     <x-notauth.nav />
 
     <section class="flex   sm:bg-orange-400 bg-white min-h-[calc(40em)]  flex justify-evenly items-center">
@@ -21,7 +21,7 @@
 
                 <div>
                     @if ($errors->has('email'))
-                    <x-elements.error message="{{ $errors->first('email') }}" />
+                    <x-shared.error message="{{ $errors->first('email') }}" />
                 @endif
                     <input type="email" name="email" id="email" placeholder="Email"
                         class="mb-4  bg-gray-50 border border-gray-300 text-gray-900 text-sm roundedfocus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{old('email')}}"
@@ -58,4 +58,4 @@
     </section>
 
     <x-notauth.footer />
-</x-main.base>
+</x-layouts.app>

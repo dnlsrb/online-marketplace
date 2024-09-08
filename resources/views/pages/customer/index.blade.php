@@ -1,4 +1,4 @@
-<x-sections.content-index>
+<x-layouts.customer-index>
     
     <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
 
@@ -6,7 +6,7 @@
 
 
         @forelse ($products as $product)
-            <x-elements.card
+            <x-shared.card
              link="{{ route('products.show', ['product' => $product->id]) }}"
                 {{-- ^ add link here  --}}
                 ratings="{{rand(1, 5)}}"
@@ -23,4 +23,4 @@
         {{ $products->links() }}
 
     </div>
-</x-sections.content-index>
+</x-layouts.customer-index>

@@ -1,8 +1,8 @@
-<x-sections.content-show>
+<x-layouts.customer-show>
   
   
   @if (session('message_success'))
-  <x-elements.success :message="session('message_success')" />
+  <x-shared.success :message="session('message_success')" />
 @endif
 
   <div class="sm:flex bg-white p-5 "> 
@@ -15,7 +15,7 @@
 
  
     @php $fakeratings = rand(1, 5); @endphp
-  <x-elements.ratings ratings={{$fakeratings}} />
+  <x-shared.ratings ratings={{$fakeratings}} />
  
  
     <div class="my-5"> 
@@ -65,7 +65,7 @@
     
     @for($i=0; $i < 16; $i++)
    
-        <x-elements.card 
+        <x-shared.card 
         link="product/{{$i}}" 
         {{-- ^ add link here  --}}
         ratings="{{rand(1, 5)}}"
@@ -84,4 +84,4 @@
  
  
 
-</x-sections.content-show>
+</x-layouts.customer-show>

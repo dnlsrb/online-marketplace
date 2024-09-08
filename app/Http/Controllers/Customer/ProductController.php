@@ -12,12 +12,12 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(10);
 
 
-        return view('customer.index', compact(['products']));
+        return view('pages.customer.index', compact(['products']));
     }
 
     public function show(string $id){
         $product = Product::find($id);
 
-        return view('customer.show', compact(['product']));
+        return view('pages.customer.show', compact(['product']));
     }
 }

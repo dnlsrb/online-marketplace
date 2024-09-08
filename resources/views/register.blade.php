@@ -1,4 +1,4 @@
-<x-main.base >
+<x-layouts.app >
     <x-notauth.nav/>
 
     <section class="flex   sm:bg-orange-400 bg-white min-h-[calc(40em)]  flex justify-evenly items-center">
@@ -21,19 +21,19 @@
                 <div>
                     <input type="text" name="username" id="username"  placeholder="Username" class="mb-4  bg-gray-50 border border-gray-300 text-gray-900 text-sm roundedfocus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
                      @if ($errors->has('username'))
-                        <x-elements.error message="{{ $errors->first('username') }}" />
+                        <x-shared.error message="{{ $errors->first('username') }}" />
                     @endif
                 </div>
                 <div>
                     <input type="email" name="email" id="email"  placeholder="Email" class="mb-4  bg-gray-50 border border-gray-300 text-gray-900 text-sm roundedfocus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
                     @if ($errors->has('email'))
-                        <x-elements.error message="{{ $errors->first('email') }}" />
+                        <x-shared.error message="{{ $errors->first('email') }}" />
                     @endif
                 </div>
                 <div>
                     <input type="password" name="password" id="password" placeholder="Password" class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                     @if ($errors->has('password'))
-                    <x-elements.error message="{{ $errors->first('password') }}" />
+                    <x-shared.error message="{{ $errors->first('password') }}" />
                 @endif
                 </div>
                 <div>
@@ -51,4 +51,4 @@
 
 
     <x-notauth.footer/>
-</x-main.base>
+</x-layouts.app>

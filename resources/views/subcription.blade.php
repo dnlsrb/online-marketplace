@@ -1,4 +1,4 @@
-<x-main.base>
+<x-layouts.app>
     <x-notauth.nav />
 
 
@@ -197,4 +197,4 @@
 
 
       <x-notauth.footer />
-</x-main.base>
+</x-layouts.app>

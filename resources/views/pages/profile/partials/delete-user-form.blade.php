@@ -9,12 +9,12 @@
         </p>
     </header>
 
-    <x-danger-button
+    <x-vendor.breeze.danger-button
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
-
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+    >{{ __('Delete Account') }}</x-vendor.breeze.danger-button>
+{{-- 
+    <x-vendor.breeze.modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
             @csrf
             @method('delete')
@@ -28,9 +28,9 @@
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-vendor.breeze.input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
-                <x-text-input
+                <x-vendor.breeze.text-input
                     id="password"
                     name="password"
                     type="password"
@@ -38,18 +38,18 @@
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                <x-vendor.breeze.input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-vendor.breeze.secondary-button x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </x-vendor.breeze.secondary-button>
 
-                <x-danger-button class="ms-3">
+                <x-vendor.breeze.danger-button class="ms-3">
                     {{ __('Delete Account') }}
-                </x-danger-button>
+                </x-vendor.breeze.danger-button>
             </div>
         </form>
-    </x-modal>
+    </vendor.breeze.x-modal> --}}
 </section>
