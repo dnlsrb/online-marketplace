@@ -14,18 +14,17 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            theme: {
-          
-                "primary": "#003fff",   
-                "secondary": "#00d1ff",    
-                "accent": "#f08700",    
-                "neutral": "#1f2937",       
-                "base-100": "#ffffff",      
-                "info": "#00a6ff",     
-                "success": "#a6e21d",       
-                "warning": "#ffcc00",        
-                "error": "#d8002e",
-                          },
+            colors: {
+                primary: '#003fff',
+                secondary: '#00d1ff',
+                accent: '#f08700',
+                neutral: '#1f2937',
+                'base-100': '#ffffff',
+                info: '#00a6ff',
+                success: '#a6e21d',
+                warning: '#ffcc00',
+                error: '#d8002e',
+              },
         },
     },
 

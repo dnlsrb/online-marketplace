@@ -1,5 +1,5 @@
 <x-layouts.customer-index>
-    
+   
     <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
 
 
@@ -23,4 +23,5 @@
         {{ $products->links() }}
 
     </div>
+ 
 </x-layouts.customer-index>

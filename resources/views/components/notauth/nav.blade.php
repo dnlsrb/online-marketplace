@@ -1,11 +1,12 @@
 <header class="text-gray-600 body-font p-3">
-    <div class="container  px-0 md:px-40 mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 hidden sm:block">
-        <i class="fa-solid fa-shop  stroke-2 text-2xl"></i>
-        </svg>
-        <span class="ml-3 text-xl  ">Online Marketplace</span>
-      </a>
-  
-    
+    <div class="container  px-0 md:px-40 mx-auto flex justify-between   p-5   items-center">
+      <x-shared.logo class=" md:mb-0 hidden sm:block font-medium title-font text-2xl" />
+     
+      @if(!Auth::user() && request()->route()->getName() !==  'login')
+      <a href="/login"
+      class="text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded"> 
+      Login
+    </a>
+      @endif
     </div>
   </header>
