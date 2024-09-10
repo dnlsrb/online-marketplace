@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-    //    $this->Admin();
+       $this->Admin();
     // $this->Product();
         \App\Models\Product::factory(20)->create();
  
@@ -52,8 +52,8 @@ class DatabaseSeeder extends Seeder
         });
 
 
-        $adminRole = Role::where('name', UserRoles::CUSTOMER->value)->first();
-
+        $adminRoleCustomer = Role::where('name', UserRoles::CUSTOMER->value)->first();
+        $adminRoleSeller = Role::where('name', UserRoles::SELLER->value)->first();
 
         $admin = User::create([
             'name' => 'admin',
@@ -61,6 +61,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin123')
         ]);
 
-        $admin->assignRole($adminRole);
+        $admin->assignRole($adminRoleCustomer);
+        $admin->assignRole($adminRoleSeller);
     }
 }

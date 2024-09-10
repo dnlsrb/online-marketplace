@@ -70,7 +70,7 @@
         {{-- ^ add link here  --}}
         ratings="{{rand(1, 5)}}"
         imagesrc="https://picsum.photos/id/2{{$i}}/400/400"
-        productname="Product Name here // Product Name Here //"
+        productname="DUMMY DONT CLICK"
         productprice="1{{$i}}0"/>
 
     @endfor

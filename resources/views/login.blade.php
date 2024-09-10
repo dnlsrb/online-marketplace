@@ -15,7 +15,7 @@
             </a>
 
 
-            <form class="space-y-6" method="POST" action="{{ route('login') }}">
+            <form class="space-y-6" method="POST" action="{{ route('login') }}" autocomplete="off">
                 @csrf
                 <h5 class="text-xl font-medium text-gray-900 mb-6">Log In</h5>
 
@@ -23,7 +23,7 @@
                     @if ($errors->has('email'))
                     <x-shared.error message="{{ $errors->first('email') }}" />
                 @endif
-                    <input type="email" name="email" id="email" placeholder="Email"
+                    <input type="email" name="email" id="email" placeholder="Email" 
                         class="mb-4  bg-gray-50 border border-gray-300 text-gray-900 text-sm roundedfocus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{old('email')}}"
                         required />
                  
