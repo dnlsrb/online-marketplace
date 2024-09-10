@@ -3,7 +3,7 @@
 
  
      
-<aside id="default-sidebar" class="sticky   border top-0 left-0 z-40 grow-0 w-96 h-screen mx-3  transition-transform -translate-x-full sm:translate-x-0 hidden md:block" aria-label="Sidebar">
+<aside id="default-sidebar" class="sticky bg-white  border top-0 left-0 z-40 grow-0 w-96 h-screen mx-3  transition-transform -translate-x-full sm:translate-x-0 hidden md:block" aria-label="Sidebar">
   <div class="h-full px-3 py-4  ">
    
     <ul class="menu bg-base-200 text-base-content min-h-full  ">

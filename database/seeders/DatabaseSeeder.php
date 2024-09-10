@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-       $this->Admin();
+    //    $this->Admin();
     // $this->Product();
-        // \App\Models\Product::factory(20)->create();
+        \App\Models\Product::factory(20)->create();
  
 
     }

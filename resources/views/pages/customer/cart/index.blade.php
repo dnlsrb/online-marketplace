@@ -1,4 +1,4 @@
-<x-layouts.customer-index>
+<x-layouts.customer-show>
 
  
 
@@ -20,7 +20,7 @@
       <label for="counter-input" class="sr-only">Choose quantity:</label>
       <div class="flex items-center justify-between md:order-3 md:justify-end">
         <div class="flex items-center">
-            <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class=" border-gray-300 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md     hover:bg-gray-200  ">
+            <button type="button" id="decrement-button{{$c_product->id}}" data-input-counter-decrement="counter-input" class=" border-gray-300 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md     hover:bg-gray-200  ">
                 <i class="fa-solid fa-minus"></i>
             </button> 
             <input type="text" id="counter-input" value="{{$c_product->quantity}}"   
@@ -74,4 +74,4 @@
            
 
 
-</x-layouts.customer-index>
+</x-layouts.customer-show>
