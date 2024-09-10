@@ -11,7 +11,7 @@ class SubscriptionController extends Controller
     public function index(){
         $subscriptions = Subscription::get();
 
-        return view('subcription', compact(['subscriptions']));
+        return view('pages.customer.subcription', compact(['subscriptions']));
     }
 
     public function show(string $id){

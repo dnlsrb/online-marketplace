@@ -1,10 +1,10 @@
 <form class="p-5">
-    <h2 class="text-lg font-medium  bg-gray-100 p-2 rounded mb-2">
+    <h2 class="text-md sm:text-lg font-medium  bg-gray-100     rounded mb-2">
       {{ __('Business Partner Recommendation Form') }}
     </h2>
   
    
-      <label for="name" class="block mt-2 text-sm font-medium    ">Business Name</label>
+      <label for="name" class="block mt-2 text-sm font-medium">Business Name</label>
       <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "   required />
 
       <label for="type" class="block text-sm font-medium  mt-3  ">Business Type</label>
@@ -39,9 +39,12 @@
       </div>
       <label for="terms" class="ms-2 text-sm font-medium   dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
   </div>
-
+  <div class="flex justify-between">
     <input type="submit" value="Procced" 
-    class="flex items-center text-center mt-auto text-white bg-indigo-500 border-0 py-2 w-48 px-4  focus:outline-none hover:bg-indigo-600 rounded"> 
-        
-
+    class="flex  text-center mt-auto text-white bg-indigo-500 border-0 py-2 w-48 px-4  focus:outline-none hover:bg-indigo-600 rounded"> 
+    <a href="{{route('customer.subscriptions.index')}}"  class="flex  text-center mt-auto text-white bg-gray-500 border-0 py-2 w-48 px-4  focus:outline-none hover:bg-gray-400 rounded"> 
+    Back
+    </a>
+  </div>
+   
   </form>

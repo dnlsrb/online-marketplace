@@ -6,7 +6,7 @@
 
 
         @forelse ($products as $product)
-            <x-shared.card
+            <x-shared.product-card
              link="{{ route('products.show', ['product' => $product->id]) }}"
                 {{-- ^ add link here  --}}
                 ratings="{{rand(1, 5)}}"
@@ -18,7 +18,7 @@
                
         @empty
 
-            <h1>No Product Available</h1>
+      <x-shared.empty/>
         @endforelse
         {{ $products->links() }}
 

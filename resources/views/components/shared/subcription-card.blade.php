@@ -1,11 +1,24 @@
      
 
-@props(['price', 'title', 'date', 'description', 'popular' => false])
+@props(['price', 'title', 'date', 'description', 'popular' ])
 
-     
+ 
+
+@if($popular == "true") 
+@php 
+    $theme = "border-indigo-600 "
+@endphp
+@else
+@php 
+        $theme = "border-gray-500   "
+@endphp
+@endif     
+
+
             <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
-                <div class="h-full p-6 rounded-lg border-2  @if($popular) border-indigo-500 @else border-gray-500 @endif flex flex-col relative overflow-hidden">
-                    @if($popular)
+                <div class="h-full p-6 rounded-lg border-2   {{  $theme   }}  flex flex-col relative overflow-hidden">
+               
+                  @if($popular == "true") 
                   <span class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                   @endif
                   <h2 class="text-sm tracking-widest title-font mb-1 font-medium">{{$title}}</h2>

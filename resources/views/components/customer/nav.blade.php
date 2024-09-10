@@ -2,7 +2,7 @@
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap    items-center  justify-evenly">
     <x-shared.logo class=" md:mb-0   md:hidden  title-font font-small "/>
-
+    
 
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">Account</button>
@@ -17,7 +17,9 @@
           <li>
             <a href="{{route('customer.subscriptions.index')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Subcription</a>
           </li>
-
+          <li>
+            <a href="{{route('seller.index')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Seller Dashboard</a>
+          </li>
 
         </ul>
     </div>

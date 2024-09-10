@@ -7,7 +7,7 @@
 
   <div class="sm:flex bg-white p-5 ">
     <div>
-    <img class="p-1 rounded-t-lg object-fill min-w-96 max-w-96"   src="{{$product->image}}" alt="product image" />
+    <img class="p-1 rounded-t-lg object-fill min-w-64 min-w-64"   src="{{$product->image}}" alt="product image" />
   </div>
   <section class="py-0  sm:px-10">
     <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
@@ -37,7 +37,7 @@
           </button>
           <input type="text" name="quantity" data-input-counter-min="1" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
           class="  border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm   block w-full py-2.5   dark:placeholder-gray-400 "
-          placeholder="1"  required />
+            value="1" required />
           <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="   hover:bg-gray-200 border border-gray-300  p-3 h-11 focus:ring-gray-100   focus:outline-none">
             <i class="fa-solid fa-plus"></i>
           </button>
@@ -65,7 +65,7 @@
 
     @for($i=0; $i < 16; $i++)
 
-        <x-shared.card
+        <x-shared.product-card
         link="product/{{$i}}"
         {{-- ^ add link here  --}}
         ratings="{{rand(1, 5)}}"
