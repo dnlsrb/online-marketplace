@@ -19,10 +19,13 @@ class CartController extends Controller
         if(!$cart){
 
            $cart = Cart::create([
-                'cart_number' => 'CRT' .  uniqid()
+                'cart_number' => 'CRT' .  uniqid(),
+                'user_id' => $user->id
             ]);
 
         }
+
+        return view('pages.customer.cart.index', compact(['cart']));
     }
 
     public function addProduct(string $id, Request $request){
@@ -51,7 +54,7 @@ class CartController extends Controller
 
 
         return back()->with(['message_success', 'Product Added']);
-    }   
+    }
 
     public function removeProduct(string $id){
         $cartProduct = CartProduct::find($id);

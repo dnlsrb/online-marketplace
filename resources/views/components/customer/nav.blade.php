@@ -2,8 +2,8 @@
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap    items-center  justify-evenly">
     <x-shared.logo class=" md:mb-0   md:hidden  title-font font-small "/>
-    
-     
+
+
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">Account</button>
       <div id="account_dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
@@ -15,10 +15,10 @@
             <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Purchase</a>
           </li>
           <li>
-            <a href="/subcription" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Subcription</a>
+            <a href="{{route('customer.subscriptions.index')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Subcription</a>
           </li>
-          
-          
+
+
         </ul>
     </div>
 
@@ -41,7 +41,7 @@
   <div class="container mx-auto  flex p-0">
 
     <x-shared.logo class=" md:flex hidden  title-font font-medium mb-4 md:mb-0 stroke-2 text-2xl" />
-    
+
 
 <div class="md:hidden flex items-center text-center ">
   <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
@@ -64,9 +64,9 @@
     </form>
 
       <div class="flex items-center text-center">
-      <button class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+      <a href="{{route('customer.cart.index')}}" class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
         <i class="fa-solid fa-cart-shopping"></i>
-      </button>
+      </a>
     </div>
 
   </div>

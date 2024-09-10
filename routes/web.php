@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
+use App\Http\Controllers\Customer\SubscriptionController as CustomerSubscriptionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
@@ -45,20 +47,26 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:admin'])->prefix('admin')->as('admin.')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+        Route::resource('subscriptions', SubscriptionController::class);
     });
 
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
         Route::resource('products', ProductController::class);
-        
+
     });
 
     Route::middleware(['role:customer'])->prefix('customer')->as('customer.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
-       
+
         Route::prefix('cart')->as('cart.')->group(function(){
             Route::get('', [CartController::class, 'index'])->name('index');
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
+        });
+
+        Route::prefix('subscriptions')->as('subscriptions.')->group(function(){
+            Route::get('', [CustomerSubscriptionController::class, 'index'])->name('index');
+            Route::get('/{subscription}', [CustomerSubscriptionController::class, 'show'])->name('show');
         });
     });
 });

@@ -67,30 +67,30 @@
           </a>
 
              @if(!Auth::user())
-                <a href="/login"   value="Buy Subcription" 
-                class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"> 
+                <a href="/login"   value="Buy Subcription"
+                class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Apply as Seller
                   </a>
                 @else
-                <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'subcription-open')"  value="Buy Subcription" 
-                  class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"> 
+                <a href="{{route('customer.subscriptions.show', ['subscription' => 1])}}" x-data=""   value="Buy Subcription"
+                  class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                   Apply as Seller
-                </button>
+                </a>
                 @endif
-                
-    
+
+
               <x-vendor.breeze.modal name="subcription-open" >
                 @include('partials.subcription-form');
             </x-vendor.breeze.modal>
-             
-        </div>  
+
+        </div>
       </div>
     </section>
 
 
 
- 
-  
+
+
 
 
       <x-notauth.footer />
