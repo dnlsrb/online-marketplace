@@ -1,8 +1,9 @@
 
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap    items-center  justify-evenly">
-    <x-shared.logo class=" md:mb-0   md:hidden  title-font font-small "/>
     
+    <x-shared.logo class=" md:mb-0   md:hidden  title-font font-small "/>
+   
 
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">Account</button>
@@ -19,6 +20,9 @@
           </li>
           <li>
             <a href="{{route('seller.index')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Seller Dashboard</a>
+          </li>
+          <li>
+            <a href="{{route('admin.index')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin Dashboard</a>
           </li>
 
         </ul>
@@ -42,7 +46,7 @@
 <header class="text-gray-600 body-font">
   <div class="container mx-auto  flex p-0">
 
-    <x-shared.logo class=" md:flex hidden  title-font font-medium mb-4 md:mb-0 stroke-2 text-2xl" />
+    <x-shared.logo class=" md:flex hidden items-center title-font font-medium mb-4 md:mb-0 stroke-2 text-2xl" />
 
 
 <div class="md:hidden flex items-center text-center ">
@@ -65,11 +69,17 @@
 
     </form>
 
+
+ 
       <div class="flex items-center text-center">
-      <a href="{{route('customer.cart.index')}}" class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+      <a href="{{route('customer.cart.index')}}" class=" inline-flex items-center  mx-2 p-2 py-2.5 rounded-sm hover:text-white text-sm font-medium text-center   hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300   ">
         <i class="fa-solid fa-cart-shopping"></i>
+        <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold   bg-blue-200 rounded-full">
+          2
+          </span>
       </a>
     </div>
+ 
 
   </div>
 </header>

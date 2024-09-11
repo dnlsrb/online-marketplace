@@ -16,16 +16,16 @@
             <x-shared.logo class=" md:mb-0 hidden sm:block font-medium title-font text-2xl" />
              
           </a>
-          <h2 class="ml-2 underline underline-offset-2">Seller Account </h2> 
+          <h2 class="ml-2 underline underline-offset-2">Admin</h2> 
         </div>
         </div>
         <div class="flex items-center">
             <div class="flex items-center ms-3">
-                <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">Shop Name Here <i class="fa-solid fa-chevron-down"></i></button>
+                <button class="mr-5 hover:text-gray-900"  data-dropdown-toggle="account_dropdown">{{Auth::user()->name}}<i class="fa-solid fa-chevron-down"></i></button>
                 <div id="account_dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
                   <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
                     <li>
-                      <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Shop Profile</a>
+                      <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                     </li>
                     
                     <li>
@@ -38,7 +38,6 @@
                     </form>
                    
                     </li>
-          
                   </ul>
               </div>
             </div>

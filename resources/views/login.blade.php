@@ -6,14 +6,11 @@
         </div>
 
 
-        <div class="w-full max-w-md p-4 bg-white  md:border  border-gray-200 rounded md:shadow sm:p-6 md:p-8  ">
+        <div class="w-full  max-w-md p-4 bg-white  md:border  border-gray-200 rounded md:shadow sm:p-6 md:p-8  ">
 
-            <a class=" text-center title-font font-medium  text-gray-900 mb-4  md:mb-0 block sm:hidden">
-                <i class="fa-solid fa-shop  stroke-2 text-2xl"></i>
-                </svg>
-                <span class="ml-3 text-xl  ">Online Marketplace</span>
-            </a>
-
+            <x-shared.logo class="text-2xl stroke-2 block sm:hidden text-center"/>
+       
+           
 
             <form class="space-y-6" method="POST" action="{{ route('login') }}" autocomplete="off">
                 @csrf

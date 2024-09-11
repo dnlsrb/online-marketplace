@@ -26,11 +26,11 @@
                     <span>₱{{$price}}</span>
                     <span class="text-lg ml-1 font-normal text-gray-500">/{{$date}}</span>
                   </h1>
- 
-                  {{$slot}}
-                 
                   @if(!empty($description))
                   <p class="text-xs text-gray-500 mt-3">{{$description}}</p>
                   @endif
+                  {{$slot}}
+                 
+               
                 </div>
               </div>
