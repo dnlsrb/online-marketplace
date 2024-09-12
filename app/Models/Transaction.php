@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscription extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
 
     protected $fillable = [
-        'name',
-        'price',
-        'description',
-        'total_months'
+        'transaction_reference',
+        'transaction_type',
+        'payment_type',
+        'payment_reference',
+        'amount',
+        'currency'
     ];
 
 
 
-    public function subscribers(){
-        return $this->hasMany(SubscribeUser::class);
-    }
     public function subscriptionTransaction(){
         return $this->hasOne(SubscriptionTransaction::class);
     }

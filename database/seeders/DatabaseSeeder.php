@@ -27,17 +27,17 @@ class DatabaseSeeder extends Seeder
        $this->Admin();
     // $this->Product();
         \App\Models\Product::factory(20)->create();
- 
+
 
     }
 
-    
+
     public function Product(){
-        
+
         $product = Product::create([
             'name' => 'Product-Test',
             'image' => 'https://picsum.photos/id/2/400/400',
-            'description' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure non tempore a facere error 
+            'description' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure non tempore a facere error
                                 est exercitationem magni facilis! Minus pariatur aperiam quod facilis omnis.",
             'price' => 2000,
             'type' => 'Test-Category',
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         });
 
 
-        $adminRoleCustomer = Role::where('name', UserRoles::CUSTOMER->value)->first();
+        $adminRoleCustomer = Role::where('name', UserRoles::ADMIN->value)->first();
         $adminRoleSeller = Role::where('name', UserRoles::SELLER->value)->first();
 
         $admin = User::create([

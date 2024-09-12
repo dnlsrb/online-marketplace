@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('subscriptions')->as('subscriptions.')->group(function(){
             Route::get('', [CustomerSubscriptionController::class, 'index'])->name('index');
             Route::get('/{subscription}', [CustomerSubscriptionController::class, 'show'])->name('show');
+            Route::post('', [CustomerSubscriptionController::class, 'store'])->name('store');
         });
     });
 });

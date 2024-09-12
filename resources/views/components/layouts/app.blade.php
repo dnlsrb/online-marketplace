@@ -11,6 +11,13 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        {{-- paypal --}}
+        <script src="https://sandbox.paypal.com/sdk/js?client-id={{env('PAYPAL_CLIENT')}}&currency=PHP"></script>
+
+        {{-- Toast --}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
         <!-- Scripts -->
         @vite(['resources/css/app.css','resources/js/app.js', 'resources/scss/app.scss'])
     </head>
@@ -31,6 +38,10 @@
             <main>
                 {{ $slot }}
             </main>
+
+            {{-- toast --}}
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
         </div>
     </body>
 </html>
