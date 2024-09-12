@@ -1,4 +1,4 @@
-<form action="{{ route('customer.subscriptions.store') }}" method="POST" class=" " enctype="multipart/form-data">
+<form action="{{ route('customer.subscriptions.store') }}"  id="FormPaypal" method="POST" class=" " enctype="multipart/form-data">
     @csrf
     <div class="p-5 flex flex-wrap border rounded rounded-md border-gray-300  mb-4 md:w-full bg-white">
 
@@ -80,8 +80,8 @@
             <img src="{{ asset('loading.gif') }}" alt="" srcset="" class="w-1/2 aspect-square">
         </template>
 
-        <div x-show="item && !orderData" x-ref="buttonsContainer" class="w-1/2">
-
+        <div x-show="item && !orderData" x-ref="buttonsContainer" class=" sm:w-1/2 ">
+            
         </div>
 
         <template x-if="orderData">
@@ -125,17 +125,17 @@
                 <input type="hidden" x-model="JSON.stringify(orderData)" name="orderData">
             </div>
         </template>
+        <a href="{{ route('customer.subscriptions.index') }}"
+        class="text-center mt-auto text-white bg-gray-500 border-0  sm:w-1/2 w-48 p-2 sm:p-3 sm:text-xl text-md font-semibold   focus:outline-none hover:bg-gray-400 rounded-sm">
+        Cancel
+    </a>
+           
+         
+ 
     </div>
 
     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
-    <div class=" flex flex-col sm:flex-row justify-between">
-        <input type="submit" value="Subcribe"
-            class="flex   text-center   text-white bg-indigo-500 border-0 py-2 mb-4 sm:mb-0 sm:w-48 w-full sm:mb-4 px-4  focus:outline-none hover:bg-indigo-600 rounded">
-        <a href="{{ route('customer.subscriptions.index') }}"
-            class="
-     text-center mt-auto text-white bg-gray-500 border-0 py-2 w-48 px-4 my-4 sm:w-48 w-full focus:outline-none hover:bg-gray-400 rounded">
-            Cancel
-        </a>
-    </div>
+    
+   
 
 </form>

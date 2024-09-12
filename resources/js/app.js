@@ -20,8 +20,7 @@ Alpine.data("paypalGateWay", () => ({
 
         this.$watch("item", () => {
             const item = this.item;
-            paypal
-                .Buttons({
+            paypal.Buttons({
                     style: {
                         layout: "vertical",
                         color: "gold",
@@ -35,20 +34,23 @@ Alpine.data("paypalGateWay", () => ({
                     },
                     onApprove: (data, actions) => {
                         return actions.order.capture().then((orderData) => {
-
+                       
+                    
                            this.orderData = orderData;
 
 
                            console.log(orderData);
-
-                            Toastify({
-                                text: "Thank You for your Payment",
-                                duration: 3000,
-                            }).showToast();
+                         
+                       
                         });
                     },
                 })
                 .render(buttonsContainer);
+            
+        });
+
+        this.$watch("orderData", () => {
+            document.getElementById("FormPaypal").submit();
         });
     },
 }));
