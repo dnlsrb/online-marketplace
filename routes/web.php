@@ -64,11 +64,13 @@ Route::middleware('auth')->group(function () {
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
         });
 
-        Route::prefix('subscriptions')->as('subscriptions.')->group(function(){
+        Route::middleware(['subscriptionsMiddleware'])->prefix('subscriptions')->as('subscriptions.')->group(function(){
             Route::get('', [CustomerSubscriptionController::class, 'index'])->name('index');
             Route::get('/{subscription}', [CustomerSubscriptionController::class, 'show'])->name('show');
             Route::post('', [CustomerSubscriptionController::class, 'store'])->name('store');
         });
+
+        Route::get('{subscription}/subscribe', [CustomerSubscriptionController::class, 'subscribe'])->name('subscribe');
     });
 });
 
