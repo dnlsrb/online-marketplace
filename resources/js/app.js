@@ -55,4 +55,7 @@ Alpine.data("paypalGateWay", () => ({
     },
 }));
 
+ 
+
 Alpine.start();
+ 
