@@ -22,7 +22,7 @@
                         <img  class=" h-16 h-16 dark:block   " src="{{ $c_product->product->image }}"
                             alt="imac image" />
                         </div>
-                    </label>
+             
                         <div class=" sm:flex ms-5 sm:w-full ">
                                           {{-- cart name --}}
                             <a href="{{ route('products.show', ['product' => $c_product->product->id]) }}" class="hover:underline cursor-pointer  sm:basis-1/2   ">
@@ -78,7 +78,6 @@
                            
                             <input id="checkbox_selectall" type="checkbox" value="yes" x-model="checked"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 me-1 focus:ring-blue-500 focus:ring-2">
-                            
                             <label for="checkbox_selectall">Select all</label>
                             
                                
@@ -91,13 +90,14 @@
                     <div class="sm:flex sm:flex-row">
                         
                                                                 {{-- total selected product --}}
-                    <input type="submit" value="Checkout {{ $c_product->id }}" id=" "
-                    class="flex   text-center   text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
+                    <a href="checkout"  id=" "
+                    class="flex justify-center  text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
                     focus:outline-none hover:bg-amber-600 sm:order-2">
-           
+                    Checkout 23
+                    </a>
              
                         <a href="{{ route('customer.index') }}"
-                        class=" flex justify-center   text-center   text-white bg-gray-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
+                        class=" flex justify-center     text-white bg-gray-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
                     focus:outline-none hover:bg-gray-400 sm:order-1  ">
                         Add more
                         </a>

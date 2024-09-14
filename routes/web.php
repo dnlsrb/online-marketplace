@@ -11,6 +11,10 @@ use App\Http\Controllers\Seller\DashboardController as SellerDashboardController
 use App\Http\Controllers\Seller\ProductController;
 use Illuminate\Support\Facades\Route;
 
+
+
+// 
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +67,25 @@ Route::middleware('auth')->group(function () {
             Route::get('', [CartController::class, 'index'])->name('index');
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
         });
+
+                
+        // just for display you can remove it
+        Route::get('/checkout', function(){
+            $user = Auth::user();
+            $cart = User::find($user->id)->cart;
+    
+            if(!$cart){
+    
+               $cart = Cart::create([
+                    'cart_number' => 'CRT' .  uniqid(),
+                    'user_id' => $user->id
+                ]);
+    
+            }
+    
+            return view('pages.customer.checkout.index', compact(['cart']));
+        });
+
 
         Route::middleware(['subscriptionsMiddleware'])->prefix('subscriptions')->as('subscriptions.')->group(function(){
             Route::get('', [CustomerSubscriptionController::class, 'index'])->name('index');
