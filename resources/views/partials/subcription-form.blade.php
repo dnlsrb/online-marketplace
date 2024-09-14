@@ -8,27 +8,27 @@
     </h2>
 
 
-    <label for="name" class="block mt-2 text-sm sm:text-lg font-medium">Business Name</label>
+    <label for="name" class="block mt-2 text-sm sm:text-lg font-medium">Business Name <span class="text-red-600 font-bold">*</span></label>
     <input type="text" id="name" name="name"
         class="bg-gray-50 border border-gray-300   text-sm sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
         required />
 
-    <label for="type" class="block text-sm sm:text-lg font-medium  mt-3  ">Business Type</label>
+    <label for="type" class="block text-sm sm:text-lg font-medium  mt-3  ">Business Type<span class="text-red-600 font-bold">*</span></label>
     <input type="text" name="type" id="type"
         class="bg-gray-50 border border-gray-300   text-sm sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
         required />
 
-    <label for="email" class="block mt-2 text-sm sm:text-lg font-medium    ">Email address</label>
+    <label for="email" class="block mt-2 text-sm sm:text-lg font-medium    ">Email address<span class="text-red-600 font-bold">*</span></label>
     <input type="email" name="email" id="email"
         class="bg-gray-50 border border-gray-300   text-sm sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
         placeholder="john.doe@company.com" required />
 
-    <label for="description" class="block  text-sm sm:text-lg font-medium  mt-2 ">Business Description</label>
+    <label for="description" class="block  text-sm sm:text-lg font-medium  mt-2 ">Business Description<span class="text-red-600 font-bold">*</span></label>
     <textarea id="description" name="description" rows="4"
         class="block p-2.5 w-full text-sm sm:text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300   "
         placeholder="Description here"></textarea>
 
-    <label class="block mt-2 text-sm sm:text-lg font-medium    ">Business Logo</label>
+    <label class="block mt-2 text-sm sm:text-lg font-medium    ">Business Logo<span class="text-red-600 font-bold">*</span></label>
     <div  x-data="{src: ''}" class="flex flex-col items-center justify-center w-full">
        
       
@@ -62,10 +62,10 @@
         </div>
         <label for="terms" class="ms-2 text-sm sm:text-lg font-medium   dark:text-gray-300">I agree with the <a
                 href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and
-                conditions</a>.</label>
+                conditions<span class="text-red-600 font-bold">*</span></a>.</label>
     </div>
  
-    <div class="flex flex-col sm:flex-row gap-2 w-full items-start p-2 border border-2" x-data="paypalGateWay" x-init="getSubscription({{ json_encode($subscription) }})">
+    <div class="flex flex-col sm:flex-row gap-2 w-full items-start p-2 border  rounded bg-gray-100" x-data="paypalGateWay" x-init="getSubscription({{ json_encode($subscription) }})">
         <div class="flex flex-col w-full   "> 
             <div class=" flex p-2  flex-col sm:flex-row flex-wrap   bg-gray-100  border-b-2  w-full  ">
         
@@ -94,7 +94,7 @@
 
 
         <div class="w-full flex flex-col  rounded p-4 bg-gray-100"> 
-        <h1 class="text-xl my-3   font-bold  rounded  ">Payment Option</h1>
+        <h1 class="text-xl mb-3   font-bold  rounded  ">Payment Option</h1>
         <div x-show="item && !orderData" x-ref="buttonsContainer" class="   ">
             
         </div>
