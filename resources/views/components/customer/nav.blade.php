@@ -62,10 +62,11 @@
 
 
         <div class="md:hidden flex items-center text-center ">
-            <button
-                class=" flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="flex inline-flex items-center  border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+                <span class="sr-only">Open sidebar</span>
                 <i class="fa-solid fa-filter"></i>
-            </button>
+             </button>
+            
         </div>
 
         <form action="" class=" flex  flex-1 w-32 relative my-5 mx-0   md:mx-20">
@@ -101,3 +102,8 @@
 
     </div>
 </header>
+
+
+
+ 
+ 
