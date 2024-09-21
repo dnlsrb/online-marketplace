@@ -7,11 +7,19 @@
         {{ __('Business Partner Recommendation Form') }}
     </h2>
 
-
+    <div class="mb-4" x-data="{
+        name: '',
+        limit: $el.dataset.limit,
+        get remaining() {
+            return this.limit - this.name.length
+        }
+    }" data-limit="50" > 
     <label for="name" class="block mt-2 text-sm sm:text-lg font-medium">Business Name <span class="text-red-600 font-bold">*</span></label>
-    <input type="text" id="name" name="name"
+    <input type="text" id="name" name="name" x-model="name"  maxlength="50"
         class="bg-gray-50 border border-gray-300   text-sm sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
         required />
+        <label class="text-gray-400"> <span x-text="remaining"></span>/50</label>
+    </div>
 
     <label for="type" class="block text-sm sm:text-lg font-medium  mt-3  ">Business Type<span class="text-red-600 font-bold">*</span></label>
     <input type="text" name="type" id="type"
@@ -23,33 +31,48 @@
         class="bg-gray-50 border border-gray-300   text-sm sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
         placeholder="john.doe@company.com" required />
 
+
+        <div class="mb-4" x-data="{
+            description: '',
+            limit: $el.dataset.limit,
+            get remaining() {
+                return this.limit - this.description.length
+            }
+        }" data-limit="2000" > 
     <label for="description" class="block  text-sm sm:text-lg font-medium  mt-2 ">Business Description<span class="text-red-600 font-bold">*</span></label>
-    <textarea id="description" name="description" rows="4"
+    <textarea id="description" name="description" rows="4" x-model="description" maxlength="2000"
         class="block p-2.5 w-full text-sm sm:text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300   "
         placeholder="Description here"></textarea>
+        <label class="text-gray-400"> <span x-text="remaining"></span>/2000</label>
+        </div>
 
     <label class="block mt-2 text-sm sm:text-lg font-medium    ">Business Logo<span class="text-red-600 font-bold">*</span></label>
-    <div  x-data="{src: ''}" class="flex flex-col items-center justify-center w-full">
-       
+ 
+    <div  x-data="{src: ''}" class="flex flex-col  items-start">
+     
+    
       
-        <template x-if="src">
-            <img :src="src" class="w-60 "  alt>
-        </template>
-        <label for="dropzone-file" id="label"
-            class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  0">
-           
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
-                <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to
-                        upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                <div  > 
-                        <h1   x-text="src"> </h1>
-                </div>
+      <label for="dropzone-file" id="label"
+          class="flex flex-col items-center justify-center  min-w-56 min-h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  0">
+         
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <template x-if="src">
+              <img :src="src" class="w-60 "  alt>
+          </template>
+          <template x-if="!src">
+            <div class="text-center p-5"> 
+              <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
+              <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to
+                      upload</span>  </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+            
             </div>
-            <input id="dropzone-file" name="logo" type="file"  accept="image/*" class="hidden" @change="src = URL.createObjectURL($event.target.files[0]) " />
-        
-        </label>
+            </template>
+          </div>
+          <input id="dropzone-file" name="logo" type="file"  accept="image/*" class="hidden" @change="src = URL.createObjectURL($event.target.files[0]) " />
+      
+      </label>
+
  
 
     </div>

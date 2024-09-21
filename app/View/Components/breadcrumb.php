@@ -11,16 +11,20 @@ class breadcrumb extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
-    }
+  
+    public function __construct(
+        public string $nav,
+        public string $cur,
+        public string $home,
+    )
+    {}
+
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.breadcrumb');
+        return view('components.shared.breadcrumb');
     }
 }

@@ -56,8 +56,16 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
-        Route::resource('products', ProductController::class);
+        Route::get('/add-product', function(){
+            return view('pages.seller.product');
+        })->name('add');
+        Route::get('/listing', function(){
+            return view('pages.seller.listing');
+        })->name('listing');
 
+
+        Route::resource('products', ProductController::class);
+        
     });
 
     Route::middleware(['role:customer'])->prefix('customer')->as('customer.')->group(function(){

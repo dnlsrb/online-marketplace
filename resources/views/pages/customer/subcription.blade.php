@@ -21,8 +21,9 @@
             <x-shared.subcription-button routeTo="{{$subcription->id}}" popular="false"  />
             </x-shared.subcription-card>
             @empty
+            <div class="w-full text-center "> 
            <x-shared.empty/>
-            
+          </div>
             @endforelse
     
  
