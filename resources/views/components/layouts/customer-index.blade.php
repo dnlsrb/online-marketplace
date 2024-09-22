@@ -8,6 +8,8 @@
             <x-wrapper>
                 {{ $slot }}
             </x-wrapper>
+            <x-customer.footer />
         </div>
     </div>
+    
 </x-layouts.app>

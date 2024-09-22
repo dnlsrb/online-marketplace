@@ -20,8 +20,9 @@
 
       <x-shared.empty/>
         @endforelse
-        {{ $products->links() }}
-
+    
     </div>
- 
+    <div class="flex justify-center sm:justify-start  "> 
+        {{ $products->links() }}
+        </div>
 </x-layouts.customer-index>

@@ -14,7 +14,7 @@ $cur = "Product";
 @endphp --}}
 
 <div class="w-full  py-4 bg-gray-50 "> 
-<nav class="flex m-5" aria-label="Breadcrumb">
+<nav class=" m-5" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
       

@@ -108,7 +108,7 @@
                     <x-shared.empty />  
                 @endforelse
             </div>
-            <div class="bg-white mt-5 p-1 rounded rounded-sm sticky   bottom-0 left-0 z-10 w-full h-36 mb-3  p-3">
+            <div class="bg-white mt-5 p-1 rounded rounded-sm sticky   bottom-12 left-0 z-10 w-full h-36 mb-3  p-3">
             
             
               
