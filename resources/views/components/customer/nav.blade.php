@@ -55,7 +55,7 @@
 
 
 
-<header class="text-gray-600 body-font  bg-amber-500">
+<header class="text-gray-600 body-font  bg-amber-500 mb-10">
     <div class="container mx-auto  flex p-0">
 
         <x-shared.logo class=" md:flex hidden items-center title-font font-medium mb-4 md:mb-0 stroke-2 text-2xl" />
@@ -107,7 +107,7 @@
 
  
  
-<div class="fixed bottom-0 left-0 z-50 w-full  sm:hidden bg-white border-t border-gray-200   ">
+<aside class="fixed bottom-0 left-0 z-50 w-full  sm:hidden bg-white border-t border-gray-200   ">
     <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
 
         {{-- HOME --}}
@@ -170,5 +170,5 @@
             <span class="text-sm text-gray-500 dark:text-gray-400 dark:group-hover:text-blue-500">Account</span>
         </button>
     </div>
-  </div>
+</aside>
   

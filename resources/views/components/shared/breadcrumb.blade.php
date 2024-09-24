@@ -15,7 +15,7 @@ $cur = "Product";
 
 <div class="w-full  py-4 bg-gray-50 "> 
 <nav class=" m-5" aria-label="Breadcrumb">
-    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <ol class="sm:inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
       <li class="inline-flex items-center">
       
         <a href="{{route($home[1])}}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600    ">
