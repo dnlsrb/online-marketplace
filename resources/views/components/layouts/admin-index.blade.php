@@ -4,7 +4,7 @@
   <x-admin.nav/>
   <x-admin.sidebar/>
   </span>
-  <div :class="open ? 'sm:ml-64' : ' sm:ml-20 '"   class="p-4  sm:ml-64"  >
+  <div :class="open ? 'sm:ml-64' : ' sm:ml-20 '"   class="p-4   "  >
       {{$slot}}
 
 
