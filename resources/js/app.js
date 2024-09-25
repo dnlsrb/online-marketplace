@@ -152,25 +152,4 @@ var options = {
   
 
 
-  
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('dropdown', () => ({
-        open: false,
-
-        trigger: {
-            ['x-ref']: 'trigger',
-            ['@click']() {
-                this.open = true
-            },
-        },
-
-        dialogue: {
-            ['x-show']() {
-                return this.open
-            },
-            ['@click.outside']() {
-                this.open = false
-            },
-        },
-    }))
-})
+ 
