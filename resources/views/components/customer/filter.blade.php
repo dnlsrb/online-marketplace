@@ -3,7 +3,6 @@
  
    
  
-    <p class="text-lg mb-3"><i class="fa-solid fa-filter"></i> Filter</p> 
       <p class="text-lg mb-3">Product Type</p>
       <li>
         <div class="flex items-center mb-3">
