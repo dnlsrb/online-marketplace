@@ -77,9 +77,9 @@
                 @if (!Auth::user())
                 <a href="{{ route('login') }}" class="  block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Login</a>
             @else
-                <form action="{{ route('logout') }}" method="post">
+                <form action="{{ route('logout') }}"  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" method="post">
                     @csrf
-                    <button class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                    <button >Logout</button>
                 </form>
             @endif
                     </li>
