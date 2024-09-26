@@ -1,6 +1,6 @@
 
 
-<aside id="logo-sidebar" x-transition class="sm:hidden fixed top-0 left-0 z-40 w-full h-screen pt-5 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 " aria-label="Sidebar">
+<aside id="logo-sidebar" x-transition class="md:hidden fixed top-16 left-0 z-40 w-full h-screen pt-5 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 " aria-label="Sidebar">
     
    <div class="h-full px-3 pb-4  bg-white  ">
       
@@ -28,8 +28,8 @@
 
 
 <aside id="search_product" x-transition 
-class="   sm:hidden fixed top-0 left-0 z-40 w-full   py-3 transition-transform -translate-x-full 
-bg-white border-r border-gray-200 sm:translate-x-0 " aria-label="Sidebar">
+class="   md:hidden fixed top-0 left-0 z-40 w-full   py-3 transition-transform -translate-x-full 
+bg-white border-r border-gray-200 md:translate-x-0 " aria-label="Sidebar">
    <div class="flex justify-between"> 
  
    <form action="" class=" flex  flex-1 w-32 relative      w-full md:mx-20">

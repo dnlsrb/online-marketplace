@@ -1,13 +1,19 @@
 <x-layouts.customer-show>
 
+  <div class="flex">
+   <a href="/"   type="button" 
+  class="mx-1  h-full flex items-center p-4 my-5 block border-gray-300 bg-white border hover:bg-gray-200   text-xl  md:mt-0">
+  <i class="fa-solid fa-reply"></i>
+  </a>  
+</div>
 
   @if (session('message_success'))
   <x-shared.success :message="session('message_success')" />
 @endif
 
   <div class="sm:flex bg-white p-5 ">
-    <div>
-    <img class="p-1 rounded-t-lg object-fill min-w-64 min-w-64"   src="{{$product->image}}" alt="product image" />
+    <div class=" ">
+    <img class="p-1 rounded-t-lg object-fill min-w-64 min-h-64"   src="{{$product->image}}" alt="product image" />
   </div>
   <section class="py-0  sm:px-10">
     <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>

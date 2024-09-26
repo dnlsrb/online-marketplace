@@ -16,7 +16,7 @@
      </button>
      <ul x-show="dropdown" :class="open ? ' ' : 'sm:invisible'" x-transition class="py-2 space-y-2">
            <li class=" ">
-              <a href="{{ route('seller.product') }}" class="ps-20 flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100   ">
+              <a href="{{ route('seller.add') }}" class="ps-20 flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100   ">
                Add Product</a>
            </li>
            <li>

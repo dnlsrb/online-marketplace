@@ -1,6 +1,10 @@
 <x-layouts.app>
 
-    <x-customer.nav />
+    <x-customer.nav>  
+    <x-customer.search/>
+    </x-customer.nav>
+ 
+    
     <x-customer.minisidebar/>
  
     <div class="container mx-auto">
