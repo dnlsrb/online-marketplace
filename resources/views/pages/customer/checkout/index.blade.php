@@ -6,9 +6,14 @@
 
     <div class="mt-6 sm:mt-8 md:gap-6  lg:items-start xl:gap-8">
 
-        <div class="mx-auto w-full flex-none  xl:max-w-7xl bg-white p-5 rounded">
-
-            <h1 class="text-xl mb-5 font-semibold">Products Ordered</h1>
+        <div class=" w-full flex-none  xl:max-w-7xl bg-white   rounded">
+            <div class="flex  w-full items-center  bg-white"> 
+                <a href="{{route("customer.cart.index")}}"   type="button" 
+                class="mx-1  h-full flex items-center p-4 my-5 block border-gray-300 bg-white border hover:bg-gray-200   text-xl ms-3">
+                <i class="fa-solid fa-reply"></i>
+                </a>   <h1 class="text-2xl  font-semibold h-full flex items-center ms-3">Checkout</h1>
+            </div>
+            
 
             <div class="overflow-x-auto bg-white p-1 rounded"  >
                 @forelse ($cart->cartProducts as $c_product)

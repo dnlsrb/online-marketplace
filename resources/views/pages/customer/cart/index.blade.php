@@ -1,14 +1,21 @@
+ 
 <x-layouts.customer-show>
 
+ 
 
-
-
-
+ 
     <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
 
+       
+      
         <div class="mx-auto w-full flex-none  xl:max-w-7xl">
 
-            <h1 class="text-2xl mb-5 font-semibold">Shopping Cart</h1>
+            <div class="flex  w-full items-center  bg-white"> 
+                <a href="/"   type="button" 
+                class="mx-1  h-full flex items-center p-4 my-5 block border-gray-300 bg-white border hover:bg-gray-200   text-xl ms-3">
+                <i class="fa-solid fa-reply"></i>
+                </a>   <h1 class="text-2xl  font-semibold h-full flex items-center ms-3">Shopping Cart</h1>
+            </div>
           
             <div class="overflow-x-auto bg-white p-1 rounded" x-data="{ count: 0 }" >
                 @forelse ($cart->cartProducts as $c_product)
@@ -108,7 +115,7 @@
                     <x-shared.empty />  
                 @endforelse
             </div>
-            <div class="bg-white mt-5 p-1 rounded rounded-sm sticky   bottom-12 left-0 z-10 w-full h-36 mb-3  p-3">
+            <div class="bg-white mt-5 p-1 rounded rounded-sm sticky   bottom-0 left-0 z-10 w-full h-26  mb-3  p-3">
             
             
               
@@ -124,23 +131,23 @@
                             
                         </div>
                        
-                    <p class="text-md font-bold sm:text-3xl">Total $384</p>
+                     
                   
                     </div>
-                    <div class="sm:flex sm:flex-row">
-                        
+                    <div class="flex-row flex items-center p-3">
+                        <p class="text-md font-bold sm:text-3xl flex-1">Total $384</p>
                                                                 {{-- total selected product --}}
                     <a href="checkout"  id=" "
-                    class="flex justify-center  text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
+                    class="flex justify-center flex-1 text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
                     focus:outline-none hover:bg-amber-600 sm:order-2">
                     Checkout  <span x-text="status.length"></span>
                     </a>
              
-                        <a href="{{ route('customer.index') }}"
+                        {{-- <a href="{{ route('customer.index') }}"
                         class=" flex justify-center     text-white bg-gray-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
                     focus:outline-none hover:bg-gray-400 sm:order-1  ">
                         Add more
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
  
