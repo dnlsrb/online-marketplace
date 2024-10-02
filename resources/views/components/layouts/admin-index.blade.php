@@ -1,6 +1,6 @@
 <x-layouts.app>
 <div  x-data="{ open: false}"> 
-  <span      > 
+  <span    @click.outside="open = false"    > 
   <x-admin.nav/>
   <x-admin.sidebar/>
   </span>

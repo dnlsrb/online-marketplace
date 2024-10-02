@@ -4,9 +4,9 @@
 
 
 
-    <div class="mt-6 sm:mt-8 md:gap-6  lg:items-start xl:gap-8">
+    <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
 
-        <div class=" w-full flex-none  xl:max-w-7xl bg-white   rounded">
+        <div class="mx-auto  w-full flex-none  xl:max-w-7xl bg-white   rounded">
             <div class="flex  w-full items-center  bg-white"> 
                 <a href="{{route("customer.cart.index")}}"   type="button" 
                 class="mx-1  h-full flex items-center p-4 my-5 block border-gray-300 bg-white border hover:bg-gray-200   text-xl ms-3">

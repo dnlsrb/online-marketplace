@@ -1,6 +1,7 @@
 <x-layouts.seller-index>
-
-
+<div class="mb-5">
+    <h1 class="text-xl">Add Product</h1>
+ 
     @php 
     $home= array("Home", "seller.index");
     // home
@@ -13,7 +14,7 @@
     // Current Route
     @endphp
  <x-shared.breadcrumb :home="$home" :nav="$nav" :cur="$cur"/>
- 
+</div>
 @include('partials.add-product-form')
 
 

@@ -59,6 +59,9 @@ Alpine.data("paypalGateWay", () => ({
 
 Alpine.start();
  
+
+
+// Chart
 var options = {
     chart: {
       height: 350,
