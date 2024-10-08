@@ -16,37 +16,72 @@ $cur = "Product Listing";
     </div>
 
 <div>
-    
-
-<div class="relative overflow-x-auto shadow-md  bg-white p-2">
+    <form class="max-w-lg  " class="py-5  ">   
+ 
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none text-gray-900 ">
+                <i class="fa-solid fa-filter"></i>
+            </div>
+            <input type="search" id="default-search" class="placeholder:italic block w-full p-4 ps-10 text-sm border-0 bg-transparent mb-3 border-b  " placeholder="Search Product"  />
+           
+        </div>
+    </form>
+ 
+<div class="relative overflow-x-auto   bg-white p-2">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3  ">
-                    Product name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Available Qty
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
-            </tr>
+        <thead>
+            {{-- Table Header --}}
+            <th scope="col" class="  py-3  ">
+                {{-- select all --}}
+                <div class="flex items-center ">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2  ">
+                  
+                </div>
+            </th>
+             <th>
+
+            </th>
+             <th scope="col" class="  py-3  ">
+                Item Listing
+            </th>
+       
+            <th scope="col" class=" pe-5 py-3">
+                Qty
+            </th>
+            <th scope="col" class="  py-3">
+                Item ID
+            </th>
+            <th scope="col" class="  py-3">
+                Price
+            </th>
+            <th scope="col" class="  py-3">
+                Active
+            </th>
+              {{-- Table Header --}}
         </thead>
         <tbody>
-            <tr class="odd:bg-white    odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          
+
+            {{-- table data here --}}
+            <tr class="    ">
+                <td>
+                    <div class="flex items-center">
+                        <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2  ">
+                      
+                    </div>
+
+                </td>
+                <td>
+                    <button type="button" class=" py-1  px-2 text-sm font-medium text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700   ">
+                        <i class="fa-solid fa-pencil"></i>
+                    </button>
+                </td>
+                <th scope="row" class="pe-6 py-4 font-medium   whitespace-nowrap ">
                     <div class="flex  items-center"  x-data="{ open: false}" >
                         <img x-on:click="open = true" class="cursor-pointer  w-11   dark:block  mx-2 " src="https://picsum.photos/id/215/400/400" />
 
                         <template x-if="open">
-                        <div class=" top-0 start-0 flex bg-gray-500/75 fixed flex flex-col   bg-black h-screen w-full" x-on:click="open = false" > 
+                        <div class=" top-0 start-0 flex bg-gray-500/75 fixed flex flex-col   bg-black h-screen w-full z-50" x-on:click="open = false" > 
                             
                             <div class="items-center justify-center flex flex-col h-screen w-full"> 
                                 <div class="  w-96 flex justify-end">
@@ -61,30 +96,35 @@ $cur = "Product Listing";
                         </div>
                         </template>
                         
-                        <div class="flex flex-col">
-                        <h1>Apple MacBook Pro 17</h1>
-                        <p class="text-gray-200">Laptop</p>
+                        <div class="flex flex-col truncate">
+                        <h1  >Apple MacBook Pro 17</h1>
+                        <p class="text-gray-900">Laptop</p>
                         </div> 
                     
                     </div>
 
                 </th>
-                <td class="px-6 py-4">
-                    Silver
+          
+                <td>
+                23
                 </td>
-                <td class="px-6 py-4">
-                    Laptop
+                <td class="pe-6 py-4 ">
+                    234325
                 </td>
-                <td class="px-6 py-4">
+                <td class="pe-6 py-4 ">
                     $2999
                 </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <td class="pe-6 py-4 ">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300   rounded-full peer   peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all   peer-checked:bg-blue-600"></div>
+            
+                      </label>
                 </td>
             </tr>
-         
+             {{-- table data here --}}
            
-        </tbody>
+        </tbody>    
     </table>
 </div>
 

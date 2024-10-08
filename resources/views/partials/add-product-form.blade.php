@@ -81,8 +81,43 @@
 
  
     <div class="text-center">
-      <input type="submit" name="submit" value="Add Product" class="flex items-center text-center mt-auto text-white bg-indigo-500 border-0 py-2 w-48 px-4  focus:outline-none hover:bg-indigo-600 rounded"> 
+      <button type="submit" name="submit" 
+       x-data=""
+      x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"  class="flex items-center text-center mt-auto text-white  bg-amber-500 hover:bg-amber-700  border-0 py-2 w-48 px-4  focus:outline-none  rounded"> 
+      Add Product
+      </button>
     </div>
+
+ 
+
+    <x-vendor.breeze.modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+ 
+  
+
+         <div class="p-6  "> 
+          <h2 class="text-lg font-medium text-gray-900">
+            {{ __('Are you sure you want to add this product?') }}
+        </h2>
+
+        <p class="mt-1 text-sm text-gray-600">
+          {{ __('Do you want to publish this product instantly?') }}
+      </p>
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" value="" class="sr-only peer">
+            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer   peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all   peer-checked:bg-blue-600"></div>
+          </label>
+          
+          <div class="flex justify-between">
+            <input type="button"   value="confirm" class="text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800"> 
+
+            <button type="button" x-on:click="$dispatch('close')" class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800"> 
+           Cancel
+            </button>
+            </div>
+
+      </div>
+ 
+    </x-vendor.breeze.modal>
   </div>
    
 </form>
