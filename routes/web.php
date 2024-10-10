@@ -1,20 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\SubscriptionController;
-use App\Http\Controllers\Customer\CartController;
-use App\Http\Controllers\Customer\ProductController as CustomerProductController;
-use App\Http\Controllers\Customer\SubscriptionController as CustomerSubscriptionController;
+use App\Models\Cart;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
+use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Seller\ProductController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SubscriptionController;
+use App\Http\Controllers\Customer\OrderController;
+use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 
 
 
-// 
-use App\Models\User;
+//
+use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
+use App\Http\Controllers\Customer\SubscriptionController as CustomerSubscriptionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,19 +58,13 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
-        Route::get('/add-product', function(){
-            return view('pages.seller.product');
-        })->name('add');
-        Route::get('/listing', function(){
-            return view('pages.seller.listing');
-        })->name('listing');
 
 
         Route::resource('products', ProductController::class);
-        
+
     });
 
-    Route::middleware(['role:customer'])->prefix('customer')->as('customer.')->group(function(){
+    Route::middleware(['role:customer|admin'])->prefix('customer')->as('customer.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('cart')->as('cart.')->group(function(){
@@ -76,22 +72,14 @@ Route::middleware('auth')->group(function () {
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
         });
 
-                
+
         // just for display you can remove it
-        Route::get('/checkout', function(){
-            $user = Auth::user();
-            $cart = User::find($user->id)->cart;
-    
-            if(!$cart){
-    
-               $cart = Cart::create([
-                    'cart_number' => 'CRT' .  uniqid(),
-                    'user_id' => $user->id
-                ]);
-    
-            }
-    
-            return view('pages.customer.checkout.index', compact(['cart']));
+
+        Route::resource('orders', OrderController::class);
+
+        Route::prefix('products')->as('products.')->group(function(){
+            Route::get('{product}/buy-now', [CustomerProductController::class, 'buyNow'])->name('buy-now');
+            Route::post('checkout', [CustomerProductController::class, 'checkOut'])->name('checkout');
         });
 
 
