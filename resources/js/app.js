@@ -7,7 +7,7 @@ window.Alpine = Alpine;
 
 Alpine.data("paypalGateWay", () => ({
     item: null,
-    orderData : null,
+    orderData: null,
     getSubscription(data) {
         this.item = {
             id: data.id,
@@ -17,10 +17,13 @@ Alpine.data("paypalGateWay", () => ({
     },
     init() {
         const buttonsContainer = this.$refs.buttonsContainer;
-
+        console.log(buttonsContainer);
         this.$watch("item", () => {
             const item = this.item;
-            paypal.Buttons({
+
+            console.log(item, "init paypal");
+            paypal
+                .Buttons({
                     style: {
                         layout: "vertical",
                         color: "gold",
@@ -34,19 +37,13 @@ Alpine.data("paypalGateWay", () => ({
                     },
                     onApprove: (data, actions) => {
                         return actions.order.capture().then((orderData) => {
-                       
-                    
-                           this.orderData = orderData;
+                            this.orderData = orderData;
 
-
-                           console.log(orderData);
-                         
-                       
+                            console.log(orderData);
                         });
                     },
                 })
                 .render(buttonsContainer);
-            
         });
 
         this.$watch("orderData", () => {
@@ -55,8 +52,222 @@ Alpine.data("paypalGateWay", () => ({
     },
 }));
 
- 
+Alpine.data("paypalGateWayOrder", () => ({
+    item: null,
+    orderData: null,
+    quantity: 1,
+    getSubscription(data) {
+        this.item = {
+            id: data.id,
+            name: data.name,
+            amount: { value: data.price },
+        };
+    },
+    changeQuantity(action) {
+        if (action === "add") {
+            this.quantity++;
+        } else if (action === "minus" && this.quantity > 1) {
+            this.quantity--;
+        }
+        this.updateAmount();
+    },
+    updateAmount() {
+        this.item = {
+            amount: {
+                value: this.item.amount.value * this.quantity,
+            },
+        };
+
+        this.renderPaypalButtons();
+    },
+
+    renderPaypalButtons() {
+        const buttonsContainer = this.$refs.buttonsContainer;
+
+        // Remove previous buttons to prevent duplication
+        while (buttonsContainer.firstChild) {
+            buttonsContainer.removeChild(buttonsContainer.firstChild);
+        }
+
+        // Render the new PayPal buttons
+        paypal
+            .Buttons({
+                style: {
+                    layout: "vertical",
+                    color: "gold",
+                    shape: "rect",
+                    label: "paypal",
+                },
+                createOrder: (data, actions) => {
+                    // Use updated item and quantity when creating the order
+                    return actions.order.create({
+                        purchase_units: [
+                            {
+                                ...this.item,
+                                amount: {
+                                    value: (
+                                        this.quantity *
+                                        parseFloat(this.item.amount.value)
+                                    ).toFixed(2), // Dynamically calculate the total
+                                },
+                            },
+                        ],
+                    });
+                },
+                onApprove: (data, actions) => {
+                    return actions.order.capture().then((orderData) => {
+                        this.orderData = orderData;
+                        console.log(orderData);
+                    });
+                },
+            })
+            .render(buttonsContainer); // Render in the container
+    },
+    init() {
+        const buttonsContainer = this.$refs.buttonsContainer;
+
+        const item = this.item;
+
+        console.log(item, "init paypal");
+
+        this.$watch("item", () => {
+            if (this.item) {
+                this.renderPaypalButtons(); // Render PayPal buttons after item is initialized
+            }
+        });
+        this.$watch("orderData", () => {
+            document.getElementById("FormPaypal").submit();
+        });
+    },
+}));
+
+Alpine.data("checkOutProducts", () => ({
+    cartProducts: [],
+    checkoutData: {
+        selectProducts: [],
+        total: 0,
+    },
+    count: 0,
+    openPayment: false,
+    errors : {
+
+    },
+    init() {
+        this.$watch("checkoutData.selectProducts", () => {
+            this.checkoutData.total = this.checkoutData.selectProducts.reduce(
+                (total, product) => {
+                    return total + (product.total || 0);
+                },
+                0
+            );
+        });
+    },
+    getProductsInitData(data) {
+        console.log(data, "getProductsInit");
+        this.cartProducts = [...data];
+    },
+    changeQuantity(id, action) {
+        const product = this.cartProducts.find((item) => item.id === id);
+        const deleteModal = this.$refs[`deleteModal-${product.id}`];
+
+        console.log(deleteModal);
+        if (action === "add") {
+            product.quantity++;
+            product.total = product.product.price * product.quantity;
+        } else {
+            product.quantity--;
+            product.total = product.product.price * product.quantity;
+        }
+
+        this.cartProducts = [
+            ...this.cartProducts.map((item) => {
+                if (item.id === product.id) {
+                    return product;
+                }
+
+                return item;
+            }),
+        ];
+    },
+    selectCarProduct(data, event) {
+        const { checked } = event.target;
+
+        if (!checked) {
+            this.checkoutData.selectProducts =
+                this.checkoutData.selectProducts.filter(
+                    (item) => item.id !== data.id
+                );
+        } else {
+            this.checkoutData.selectProducts = [
+                ...this.checkoutData.selectProducts,
+                data,
+            ];
+        }
+
+        console.log(this.checkoutData);
+    },
+    openCheckoutPayment() {
+        if(this.checkoutData.selectProducts.length === 0){
+            this.errors = {
+                selectProduct : 'Select Product First'
+            }
+            return;
+        }
+        this.errors = {}
+        this.openPayment = true;
+        const buttonsContainer = this.$refs.buttonsContainer;
+
+       
+        const checkoutData = this.checkoutData;
+
+       
+        console.log("init paypal", buttonsContainer);
+        if (buttonsContainer) {
+            paypal
+                .Buttons({
+                    style: {
+                        layout: "vertical",
+                        color: "gold",
+                        shape: "rect",
+                        label: "paypal",
+                    },
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [
+                                ...checkoutData.selectProducts.map(
+                                    (item) => {
+                                        return {
+                                            id: item.id,
+                                            name: item.product.name,
+                                            amount: {
+                                                value: (
+                                                    item.quantity *
+                                                    parseFloat(item.total)
+                                                ).toFixed(2),
+                                            },
+                                        };
+                                    }
+                                ),
+                            ],
+                        });
+                    },
+                    onApprove: (data, actions) => {
+
+                        document.getElementById("FormPaypal").submit();
+                        return actions.order.capture().then((orderData) => {
+                            this.orderData = orderData;
+
+                            console.log(orderData);
+                        });
+                    },
+                })
+                .render(buttonsContainer);
+        }
+    },
+    closeCheckoutPayment(){
+        this.openPayment = false;
+        location.reload()
+    }
+}));
 
 Alpine.start();
- 
- 
