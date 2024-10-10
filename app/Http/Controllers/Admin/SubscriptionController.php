@@ -14,6 +14,10 @@ class SubscriptionController extends Controller
     public function index()
     {
         $subscriptions = Subscription::latest()->paginate(10);
+
+
+
+        return view('pages.admin.subscription.index', compact(['subscriptions']));
     }
 
     /**
@@ -21,7 +25,7 @@ class SubscriptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.subscription.create');
     }
 
     /**

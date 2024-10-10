@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::where('user_id', Auth::user()->id)->latest()->paginate(10);
+
+        return view('pages.seller.product.index', compact(['products']));
     }
 
     /**
@@ -22,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+       return view('pages.seller.product.create');
     }
 
     /**
@@ -30,6 +32,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'image' => 'required',
             'name' => 'required',
@@ -37,6 +40,7 @@ class ProductController extends Controller
             'price' => 'required',
             'type' => 'required'
         ]);
+
 
         $user = Auth::user();
 
