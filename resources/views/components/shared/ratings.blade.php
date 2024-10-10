@@ -10,7 +10,7 @@
   <i class="fa-solid fa-star text-amber-400 "></i>
   @endfor
   
-  @for($i=0; $i <  5 - $ratings  ; $i++)
+  @for($i=0; $i <  5 - $ratings; $i++)
   <i class="fa-solid fa-star text-neutral-700"></i>
   @endfor
   </span>
