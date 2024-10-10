@@ -7,9 +7,6 @@
 <x-shared.back/>
     <x-shared.logo class="text-2xl stroke-2 block sm:hidden text-center mb-5"/>
     @include('partials.subcription-form')
-
-
- 
 </div>
  
         
