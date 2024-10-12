@@ -1,13 +1,13 @@
 @props([
     'columns' => ['name', 'Email', 'Tenement'],
-    'label' => 'sample table',
+    // 'label' => 'sample table',
     'create_url' => null,
     'archived_url' => null,
 ])
 
 <div class="w-full h-auto flex flex-col gap-2">
     <div class="w-full flex  items-center justify-between">
-        <h1 class="text-2xl font-bold tex">{{ $label }}</h1>
+        {{-- <h1 class="text-2xl font-bold tex">{{ $label }}</h1> --}}
         <div class="flex items-center space-x-2">
             @if ($archived_url)
                 <a href="{{ $archived_url }}" class="btn btn-sm btn-gray-200 text-primary">
@@ -38,11 +38,11 @@
             <!-- head -->
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
-                    <th class="px-6 py-3"></th>
+             
                     @foreach ($columns as $column)
                         <th class="px-6 py-3">{{ $column }}</th>
                     @endforeach
-                    <th class="text-center">Action</th>
+          
                 </tr>
             </thead>
             <tbody>

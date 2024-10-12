@@ -6,8 +6,8 @@
     $home= array("Home", "seller.index");
     // home
     $nav = array(
-    "1" => ["No Link",  ],
-     "2" => ["Have Link", "seller.index"],
+ 
+     "2" => ["Product",  ],
     // add more items here in route
     ); 
     $cur = "Add Product";
@@ -15,6 +15,13 @@
     @endphp
  <x-shared.breadcrumb :home="$home" :nav="$nav" :cur="$cur"/>
 </div>
+
+@if ($errors->any())
+ 
+<div class="my-3 p-4 text-sm rounded-sm text-blue-800 rounded-lg text-error border border-error bg-white" role="alert">
+    <i class="fa-solid fa-circle-exclamation me-2"></i><span class="font-medium">Error</span> 
+  </div>
+@endif
 @include('partials.add-product-form')
 
 

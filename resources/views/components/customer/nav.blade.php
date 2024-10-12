@@ -5,12 +5,7 @@
     <div class="  flex flex-wrap   items-center  justify-between  px-2 sm:px-0">
 
         <div class="flex">
-
-        <a href="/" class="flex    text-gray-900  md:flex  items-center title-font font-medium   md:mb-0 stroke-2 sm:text-2xl  ">
-            <i class="fa-solid fa-shop  text-gray-900    text-4xl sm:text-2xl"></i>
-            </svg>
-            <span class="ml-3 sm:block hidden ">PMA ONLINE MARKETPLACE</span>
-          </a>
+        <x-shared.logo/>
           <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button"
           class="mx-1 md:hidden block flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
             <i class="fa-solid fa-filter"></i>
@@ -41,7 +36,7 @@
         </button>
 
 
-            <div id="account_dropdown_1" class="z-10 hidden bg-white divide-y divide-gray-100 py-2 rounded-sm shadow w-44 ">
+            <div id="account_dropdown_1" class="z-40 hidden bg-white divide-y divide-gray-100 py-2 rounded-sm shadow w-44 ">
                 <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
                     <li>
                         <a href="/profile"

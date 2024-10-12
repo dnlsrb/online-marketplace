@@ -1,6 +1,9 @@
 <x-layouts.admin-index>
 
-    <form class="flex flex-col gap-2" method="POST" action="{{route('admin.subscriptions.store')}}">
+
+    @include("partials.add-subcription-form")
+ 
+    {{-- <form class="flex flex-col gap-2" method="POST" action="{{route('admin.subscriptions.store')}}">
         @csrf
         <h1>
             Subscription
@@ -33,6 +36,6 @@
         <button class="btn btn-primary">
             Submit
         </button>
-    </form>
+    </form> --}}
 
  </x-layouts.admin-index>

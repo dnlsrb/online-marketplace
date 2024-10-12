@@ -14,33 +14,24 @@
                     return this.limit - this.name.length
                 }
             }" data-limit="120">
-                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Product Name  @if ($errors->has('name')) <span class="text-xs text-error">({{ $errors->first('name') }})</span> @endif</label>
+                </label>
                 <input type="text" x-model="name" maxlength="120" id="product-name" name="name"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter product name">
                 <label class="text-gray-400"> <span x-text="remaining"></span>/120</label>
 
-                @if ($errors->has('name'))
-                    <span class="text-xs text-error">{{ $errors->first('name') }}</span>
-                @endif
+       
             </div>
 
-            <div class="mb-4" x-data="{
-                name: '',
-                limit: $el.dataset.limit,
-                get remaining() {
-                    return this.limit - this.name.length
-                }
-            }" data-limit="120">
-                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Price</label>
+            <div class="    mb-4"  >
+                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Price @if ($errors->has('price')) <span class="text-xs text-error">({{ $errors->first('price') }})</span> @endif
+                    </label>
                 <input type="number" x-model="name" maxlength="120" id="product-name" name="price"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter product name">
-                <label class="text-gray-400"> <span x-text="remaining"></span>/120</label>
-
-                @if ($errors->has('price'))
-                    <span class="text-xs text-error">{{ $errors->first('price') }}</span>
-                @endif
+                    placeholder="Enter price amount">
+        
+              
             </div>
 
 
@@ -52,18 +43,19 @@
                 }
             }" data-limit="2000">
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Product
-                    Description</label>
+                    Description @if ($errors->has('description')) <span class="text-xs text-error">({{ $errors->first('description') }})</span>@endif</label>
                 <textarea id="description" x-model="description" maxlength="2000" name="description"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="3" placeholder="Enter product description"></textarea>
                 <label class="text-gray-400"> <span x-text="remaining"></span>/2000</label>
-                @if ($errors->has('description'))
-                    <span class="text-xs text-error">{{ $errors->first('description') }}</span>
-                @endif
+                 
             </div>
 
             <div class="mb-4">
-                <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+                <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Product Image
+                    @if ($errors->has('image')) <span class="text-xs text-error">({{ $errors->first('image') }})</span>@endif
+
+                </label>
                 <div x-data="{ src: '' }" class="flex flex-col  items-start">
 
 
@@ -91,9 +83,7 @@
                             @change="src = URL.createObjectURL($event.target.files[0]) " />
 
                     </label>
-                    @if ($errors->has('image'))
-                        <span class="text-xs text-error">{{ $errors->first('image') }}</span>
-                    @endif
+              
 
                 </div>
 
@@ -111,10 +101,7 @@
                     <option value="service">Service</option>
 
                 </select>
-
-                @if ($errors->has('image'))
-                    <span class="text-xs text-error">{{ $errors->first('image') }}</span>
-                @endif
+ 
 
 
             </div>

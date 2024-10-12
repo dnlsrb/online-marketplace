@@ -52,6 +52,28 @@ Alpine.data("paypalGateWay", () => ({
     },
 }));
 
+
+
+Alpine.data('DeleteModal', () => ({
+    open: false,
+
+    trigger: {
+        ['x-ref']: 'trigger',
+        ['@click']() {
+            this.open = true
+        },
+    },
+
+    dialogue: {
+        ['x-show']() {
+            return this.open
+        },
+        ['@click.outside']() {
+            this.open = false
+        },
+    },
+}))
+
 Alpine.data("paypalGateWayOrder", () => ({
     item: null,
     orderData: null,
@@ -71,10 +93,11 @@ Alpine.data("paypalGateWayOrder", () => ({
         }
         this.updateAmount();
     },
+    
     updateAmount() {
         this.item = {
             amount: {
-                value: this.item.amount.value * this.quantity,
+                value: this.item.amount.value  * this.quantity,
             },
         };
 
@@ -143,6 +166,7 @@ Alpine.data("paypalGateWayOrder", () => ({
 
 Alpine.data("checkOutProducts", () => ({
     cartProducts: [],
+   
     checkoutData: {
         selectProducts: [],
         total: 0,
@@ -171,10 +195,12 @@ Alpine.data("checkOutProducts", () => ({
         const deleteModal = this.$refs[`deleteModal-${product.id}`];
 
         console.log(deleteModal);
+     
         if (action === "add") {
             product.quantity++;
             product.total = product.product.price * product.quantity;
-        } else {
+        }
+        else {
             product.quantity--;
             product.total = product.product.price * product.quantity;
         }
@@ -189,6 +215,7 @@ Alpine.data("checkOutProducts", () => ({
             }),
         ];
     },
+ 
     selectCarProduct(data, event) {
         const { checked } = event.target;
 
@@ -265,7 +292,7 @@ Alpine.data("checkOutProducts", () => ({
         }
     },
     closeCheckoutPayment(){
-        this.openPayment = false;
+        // this.openPayment = false;
         location.reload()
     }
 }));

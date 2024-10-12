@@ -15,7 +15,7 @@
            <div class="flex items-center  ">
           <a href="/seller/dashboard" class="flex ms-2    text-center">
               
-            <x-shared.logo class=" md:mb-0 hidden sm:block font-medium title-font text-2xl" />
+            <x-shared.logo   />
              
           </a>
           <h2 class="ml-2 underline underline-offset-2">Seller Account </h2> 

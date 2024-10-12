@@ -72,8 +72,9 @@ Route::middleware('auth')->group(function () {
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
         });
 
-
-        // just for display you can remove it
+        Route::prefix('order')->as('order.')->group(function(){
+            
+        });
 
         Route::resource('orders', OrderController::class);
 
