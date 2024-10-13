@@ -38,12 +38,14 @@
 
             <div id="account_dropdown_1" class="z-40 hidden bg-white divide-y divide-gray-100 py-2 rounded-sm shadow w-44 ">
                 <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
+                    @if(Auth::user())
                     <li>
                         <a href="/profile"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                     </li>
+                  
                     <li>
-                        <a href="#"
+                        <a href="{{route('customer.orders.index')}}"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Purchase</a>
                     </li>
                     <li>
@@ -66,8 +68,9 @@
                                 Dashboard</a>
                         </li>
                     @endrole
-
+                    
                     <li>
+                        @endif
 
                 @if (!Auth::user())
                 <a href="{{ route('login') }}" class="  block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Login</a>

@@ -17,11 +17,16 @@ $cur = "Product Listing";
 
 <div>
   
+
+
+
+ 
  
 <div class="relative overflow-x-auto   bg-white sm:p-8 p-3">
-    <div class="flex items-center justify-between mb-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900   ">Products (63)</h5>
-    
+    <div class="flex items-center justify-start gap-3 mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-700   ">All Products: <span class="text-gray-900">63</span> </h5>
+        <h5 class="text-xl font-bold leading-none text-gray-700   ">Total Sales: <span class="text-gray-900">₱2405</span></h5>
+       
     </div>
     <form class="max-w-lg  " class="py-5  ">   
  
@@ -33,7 +38,7 @@ $cur = "Product Listing";
            
         </div>
     </form>
-    <x-shared.table-body :columns="['', ' ', 'Item Listing', 'Price', 'type']">
+    <x-shared.table-body :columns="['', ' ', 'Item Listing', 'Category','Ratings', 'Price']">
         @forelse ($products as $product)
         <tr class="    ">
             <td>
@@ -70,19 +75,23 @@ $cur = "Product Listing";
                     
                     <div class="flex flex-col truncate">
                     <h1  >{{$product->name}}</h1>
-                    <p class="text-gray-900">{{$product->type}}</p>
+                     
                     </div> 
                 
                 </div>
 
             </th>
-      
+            <td  >
+                {{$product->type}}
+            </td>
+            <td>
+
+                <x-shared.ratings ratings="4"/>
+            </td>
             <td>
             {{$product->price}}
             </td>
-            <td class="pe-6 py-4 ">
-                {{$product->type}}
-            </td>
+          
             {{-- <td class="pe-6 py-4 ">
                 $2999
             </td>
@@ -101,7 +110,9 @@ $cur = "Product Listing";
         @endforelse
         {{-- table data here --}}
     </x-shared.table-body>
-
+    <div class="flex justify-between flex-col   "> 
+        {{ $products->links() }}
+        </div>
    
 </div>
 
