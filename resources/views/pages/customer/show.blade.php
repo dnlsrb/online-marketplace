@@ -5,20 +5,33 @@
   @if (session('message_success'))
   <x-shared.success :message="session('message_success')" />
 @endif
+<div class=" "> 
 
-  <div class="sm:flex bg-white p-5 ">
+  {{-- MESSAGE --}}
+ 
+
+  <div class="sm:flex   bg-white  p-5">
+    
     <div class=" ">
-    <img class="p-1 rounded-t-lg object-fill min-w-64 min-h-64"   src="{{$product->image}}" alt="product image" />
-  </div>
+    <img class="p-1 rounded-t-lg object-fill sm:min-w-96 sm:min-h-96 w-full"   src="{{$product->image}}" alt="product image" />
+    </div>
   <section class="py-0  sm:px-10">
-    <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
+    <div class="flex justify-between mt-3">
+      <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
+     
+  <a href="{{route('customer.chat')}}" class="  text-black bg-gray-100 shadow 
+  border-0 py-2 px-5 sm:px-8 focus:outline-none hover:bg-gray-300 text-sm sm:text-lg  ">
+  <span class=" flex items-center justify-center"><i class="fa-regular fa-message sm:me-2"></i> <span class="hidden sm:block">Chat Now</span></span></a>
+    </div>
+     
+ 
+ 
 
 
 
     @php $fakeratings = rand(1, 5); @endphp
   <x-shared.ratings ratings={{$fakeratings}} />
-
-
+ 
     <div class="my-5">
     <h4 class="mt-5">Product Description</h4>
     <hr class="my-3">
@@ -48,12 +61,13 @@
 
         <input type="submit" value="Add to cart" name="submit" class=" px-8 text-amber-900 outline-amber-500 bg-amber-300 outline-2 outline border-0 py-2 px-8 focus:outline-none hover:bg-amber-100 text-sm sm:text-lg me-5">
         <a href={{route('customer.products.buy-now', ['product' => $product->id])}} class="  text-white bg-amber-500 border-0 py-2 px-8 focus:outline-none hover:bg-amber-700 text-sm sm:text-lg me-5">Buy now</a>
+ 
       </div>
     </form>
 
   </section>
   </div>
-
+</div>
 {{-- PRODUCT REVIEWS --}}
 
 <div class="sm:flex bg-white p-5 my-4">

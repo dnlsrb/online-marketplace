@@ -35,6 +35,8 @@ Route::get('/subcription', function(){
     return view('subcription');
 });
 
+ 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -66,6 +68,13 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:customer|admin'])->prefix('customer')->as('customer.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
+
+
+ 
+Route::get('/chat', function(){
+    return view('pages.customer.chat.index');
+})->name('chat'); 
+
 
         Route::prefix('cart')->as('cart.')->group(function(){
             Route::get('', [CartController::class, 'index'])->name('index');

@@ -22,7 +22,7 @@
         @endforelse
     
     </div>
-    <div class="flex justify-center sm:justify-start  "> 
+    <div class="  mt-3 "> 
         {{ $products->links() }}
         </div>
 </x-layouts.customer-index>
