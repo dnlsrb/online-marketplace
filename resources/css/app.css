@@ -4,3 +4,11 @@
 
 
 [x-cloak] { @media(max-width: 640px) { display: none !important;} }
+
+
+.message {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+     
+}

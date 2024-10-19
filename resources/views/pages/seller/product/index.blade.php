@@ -14,14 +14,8 @@ $cur = "Product Listing";
 @endphp
 <x-shared.breadcrumb :home="$home" :nav="$nav" :cur="$cur"/>
     </div>
-
-<div>
-  
-
-
-
  
- 
+
 <div class="relative overflow-x-auto   bg-white sm:p-8 p-3">
     <div class="flex items-center justify-start gap-3 mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-700   ">All Products: <span class="text-gray-900">63</span> </h5>
@@ -116,7 +110,7 @@ $cur = "Product Listing";
    
 </div>
 
-</div>
+ 
 
 
 

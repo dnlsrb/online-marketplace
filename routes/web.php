@@ -60,6 +60,12 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function(){
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
+    
+// report here
+
+Route::get('/report', function(){
+    return view('pages.seller.report.index');
+})->name('report'); 
 
 
         Route::resource('products', ProductController::class);
@@ -70,9 +76,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
 
 
- 
+//  chat here
 Route::get('/chat', function(){
-    return view('pages.customer.chat.index');
+    return view('pages.chat.index');
 })->name('chat'); 
 
 

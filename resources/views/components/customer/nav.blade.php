@@ -28,8 +28,9 @@
                 <i class="fa-solid fa-cart-shopping  "></i>
              </a>
 
-            <a href="{{route('customer.chat')}}"  class="flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+            <a href="{{route('customer.chat')}}"  class="relative flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
             <i class="fa-solid fa-envelope"></i>
+            <span class="absolute top-0.5 end-1 p-1 bg-error rounded-full text-white text-xs"></span>
             </a>
         <button type="button"  data-dropdown-toggle="account_dropdown_1" class="  flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
             <i class="fa-solid fa-bars"></i>
