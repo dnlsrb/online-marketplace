@@ -11,5 +11,6 @@
       {{-- product --}}
       <x-shared.user-chat message="asdaweaweawe" profile="https://picsum.photos/id/433/600/600"/>
  
-
+      {{-- mag aadd pako ng magfoforward ng ui for product na gusto pagusapan ng customer --}}
+      {{-- gantong format nlng gawin ko next time excep sa report antok nako e haha --}}
 </x-layouts.user-chat>
