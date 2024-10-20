@@ -5,12 +5,31 @@
       {{-- no chat in the user --}}
       <x-shared.no-message/>
 
+      {{-- time chat --}}
+      <x-shared.time-chat time="5:09 PM"/>
+
+      
       {{-- Other user chat --}}
-       <x-shared.other-chat message="asdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaw" profile="https://picsum.photos/id/433/600/600" />
+       <x-shared.other-chat
+      message="asdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaweaweeasdaweaw" 
+      time="5:09 PM"
+      profile="https://picsum.photos/id/433/600/600" />
   
       {{-- product --}}
-      <x-shared.user-chat message="asdaweaweawe" profile="https://picsum.photos/id/433/600/600"/>
+      <x-shared.user-chat 
+      message="asdaweaweawe" 
+      profile="https://picsum.photos/id/433/600/600"
+      time="5:09 PM"
+      />
+      
+
+      {{--  --}}
+      <x-shared.user-product 
+      user="You"
+       time="5:09 PM"
+       name="asdaweaweawe" 
+       image="https://picsum.photos/id/433/600/600" 
+       price="32" 
+       profile="https://picsum.photos/id/433/600/600"/>
  
-      {{-- mag aadd pako ng magfoforward ng ui for product na gusto pagusapan ng customer --}}
-      {{-- gantong format nlng gawin ko next time excep sa report antok nako e haha --}}
 </x-layouts.user-chat>

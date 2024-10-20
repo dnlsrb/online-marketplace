@@ -24,7 +24,7 @@
  
     <div class="relative overflow-x-auto     ">
 
-    <x-shared.table-body :columns="['Products','Quantity', 'Purchased By', 'Total', 'Profit','status' ]">
+    <x-shared.table-body :columns="['Products','Quantity', 'Purchased By', 'Total', 'Profit','status','Date' ]">
          
         <tr class="    ">
             <td   >
@@ -45,12 +45,14 @@
             </td>
             <td>
                 <span class="bg-blue-600 text-blue-100 px-4 py-1 rounded  flex sm:inline"><i class="fa-solid fa-hourglass-start px-2"></i> Waiting</span>
-                <span class="bg-yellow-600 text-yellow-100 px-4 py-1 rounded  flex sm:inline"><i class="fa-solid fa-truck-fast px-2"></i></i>Delivery</span>
+                {{-- <span class="bg-yellow-600 text-yellow-100 px-4 py-1 rounded  flex sm:inline"><i class="fa-solid fa-truck-fast px-2"></i></i>Delivery</span>
                 <span class="bg-red-600 text-red-100 px-4 py-1 rounded flex sm:inline"><i class="fa-solid fa-xmark px-2"></i> Cancelled</span>
-                <span class="bg-green-600 text-green-100 px-4 py-1 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i> Waiting</span>
+                <span class="bg-green-600 text-green-100 px-4 py-1 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i> Waiting</span> --}}
 
             </td>
-           
+            <td  >
+                Oct, 20 2024
+            </td>
           
       
         </tr>

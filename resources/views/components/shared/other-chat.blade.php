@@ -6,6 +6,7 @@
     />
     <div  class=" p-3  break-all ml-2  px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl  text-white  sm:max-w-[50%] "  >
      {{$message}}
+     <p class="text-xs text-gray-100 text-start">{{$time}}</p>
     </div>
   </div>
  
