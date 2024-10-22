@@ -10,7 +10,7 @@
 <a href="{{$link}}" class="w-full max-w-sm bg-white border  ">
    
    <div class=" border-b    "> 
-      <img class="p-1   object-contain   w-full       h-40  sm:h-72  z-40 " src="{{$imagesrc}}" alt="{{$imagesrc}}" />
+      <img class="p-1   object-contain   w-full       h-40  lg:h-40 xl:h-72  z-40 " src="{{$imagesrc}}" alt="{{$imagesrc}}" />
     
     
     </div>
