@@ -62,7 +62,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
     
 // report here
-
 Route::get('/report', function(){
     return view('pages.seller.report.index');
 })->name('report'); 

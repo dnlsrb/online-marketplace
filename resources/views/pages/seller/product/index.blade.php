@@ -43,9 +43,9 @@ $cur = "Product Listing";
 
             </td>
             <td>
-                <button type="button" class=" py-1  px-2 text-sm font-medium text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700   ">
+                <a href="{{route('seller.products.edit', $product->id)}}" class=" py-1  px-2 text-sm font-medium text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700   ">
                     <i class="fa-solid fa-pencil"></i>
-                </button>
+                </a>
             </td>
             <th scope="row" class="pe-6 py-4 font-medium   whitespace-nowrap ">
                 <div class="flex  items-center"  x-data="{ open: false}"  >

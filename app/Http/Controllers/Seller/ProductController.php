@@ -76,7 +76,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+
+ 
+        return view('pages.seller.product.update', compact(['product']));
     }
 
     /**
@@ -84,7 +87,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'image' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'type' => 'required'
+        ]);
+
+
+        $user = Auth::user();
+
+
+        $imageName = 'PRDCT-' . uniqid() . '.' . $request->image->extension();
+        $dir = $request->image->storeAs('/product', $imageName, 'public');
+
+
+        Product::update([
+            'name' => $request->name,
+            'image' => asset('/storage/' . $dir),
+            'description' => $request->description,
+            'price' => $request->price,
+            'type' => $request->type,
+            'user_id' => $user->id
+        ]);
+
+
+
+        return back()->with(['update_success' => 'Product Updated Success']);
     }
 
     /**

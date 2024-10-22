@@ -12,10 +12,10 @@
 
   <div class="sm:flex   bg-white  p-5">
     
-    <div class=" ">
-    <img class="p-1 rounded-t-lg object-fill sm:min-w-96 sm:min-h-96 w-full"   src="{{$product->image}}" alt="product image" />
+    <div class="max-w-lg w-full flex justify-center">
+    <img class="p-1 rounded-t-lg object-fill   w-full  h-48 sm:w-96 sm:h-96 sm:max-w-96  "   src="{{$product->image}}" alt="product image" />
     </div>
-  <section class="py-0  sm:px-10">
+  <section class="py-0  sm:px-10 w-full">
     <div class="flex justify-between mt-3">
       <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
      

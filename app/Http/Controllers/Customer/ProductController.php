@@ -53,5 +53,7 @@ class ProductController extends Controller
 
 
         return back()->with(['message_success' => 'Checkout Success']);
-    }  
+    } 
+
+ 
 }

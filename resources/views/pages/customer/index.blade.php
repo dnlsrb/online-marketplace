@@ -1,6 +1,6 @@
 <x-layouts.customer-index>
    
-    <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
+    <div class="grid   gap-1   grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 ">
 
 
 

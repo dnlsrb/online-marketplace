@@ -26,19 +26,19 @@
         <h5>Show:  </h5>
         <div class="flex flex-wrap">
             <div class="flex items-center me-4">
-                <input id="all-radio" type="radio" value=""  name="All" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2 focus:ring-2" >
+                <input id="all-radio" type="radio" value=""  name="radio" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2 focus:ring-2" >
                 <label for="all-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">All</label>
             </div>
             <div class="flex items-center me-4">
-                <input id="confirmed-radio" type="radio" value=""  name="Confirmed" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
+                <input id="confirmed-radio" type="radio" value=""  name="radio" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
                 <label for="confirmed-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">Confirmed</label>
             </div>
             <div class="flex items-center me-4">
-                <input id="inDelivery-radio" type="radio" value=""  name="InDelivery" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
+                <input id="inDelivery-radio" type="radio" value=""  name="radio" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
                 <label for="inDelivery-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">In Delivery</label>
             </div>
             <div class="flex items-center me-4">
-                <input id="Cancelled-radio" type="radio" value=""  name="Cancelled" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
+                <input id="Cancelled-radio" type="radio" value=""  name="radio" class="w-4 h-4 text-primary-400 bg-gray-100 border-gray-300 focus:ring-primary-400  mx-2  focus:ring-2 " >
                 <label for="Cancelled-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">Cancelled</label>
             </div>
         </div>
