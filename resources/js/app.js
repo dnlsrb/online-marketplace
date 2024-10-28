@@ -52,27 +52,25 @@ Alpine.data("paypalGateWay", () => ({
     },
 }));
 
-
-
-Alpine.data('DeleteModal', () => ({
+Alpine.data("DeleteModal", () => ({
     open: false,
 
     trigger: {
-        ['x-ref']: 'trigger',
-        ['@click']() {
-            this.open = true
+        ["x-ref"]: "trigger",
+        ["@click"]() {
+            this.open = true;
         },
     },
 
     dialogue: {
-        ['x-show']() {
-            return this.open
+        ["x-show"]() {
+            return this.open;
         },
-        ['@click.outside']() {
-            this.open = false
+        ["@click.outside"]() {
+            this.open = false;
         },
     },
-}))
+}));
 
 Alpine.data("paypalGateWayOrder", () => ({
     item: null,
@@ -93,11 +91,11 @@ Alpine.data("paypalGateWayOrder", () => ({
         }
         this.updateAmount();
     },
-    
+
     updateAmount() {
         this.item = {
             amount: {
-                value: this.item.amount.value  * this.quantity,
+                value: this.item.amount.value * this.quantity,
             },
         };
 
@@ -166,16 +164,14 @@ Alpine.data("paypalGateWayOrder", () => ({
 
 Alpine.data("checkOutProducts", () => ({
     cartProducts: [],
-   
+
     checkoutData: {
         selectProducts: [],
         total: 0,
     },
     count: 0,
     openPayment: false,
-    errors : {
-
-    },
+    errors: {},
     init() {
         this.$watch("checkoutData.selectProducts", () => {
             this.checkoutData.total = this.checkoutData.selectProducts.reduce(
@@ -195,12 +191,11 @@ Alpine.data("checkOutProducts", () => ({
         const deleteModal = this.$refs[`deleteModal-${product.id}`];
 
         console.log(deleteModal);
-     
+
         if (action === "add") {
             product.quantity++;
             product.total = product.product.price * product.quantity;
-        }
-        else {
+        } else {
             product.quantity--;
             product.total = product.product.price * product.quantity;
         }
@@ -215,7 +210,7 @@ Alpine.data("checkOutProducts", () => ({
             }),
         ];
     },
- 
+
     selectCarProduct(data, event) {
         const { checked } = event.target;
 
@@ -234,20 +229,18 @@ Alpine.data("checkOutProducts", () => ({
         console.log(this.checkoutData);
     },
     openCheckoutPayment() {
-        if(this.checkoutData.selectProducts.length === 0){
+        if (this.checkoutData.selectProducts.length === 0) {
             this.errors = {
-                selectProduct : 'Select Product First'
-            }
+                selectProduct: "Select Product First",
+            };
             return;
         }
-        this.errors = {}
+        this.errors = {};
         this.openPayment = true;
         const buttonsContainer = this.$refs.buttonsContainer;
 
-       
         const checkoutData = this.checkoutData;
 
-       
         console.log("init paypal", buttonsContainer);
         if (buttonsContainer) {
             paypal
@@ -261,25 +254,22 @@ Alpine.data("checkOutProducts", () => ({
                     createOrder: function (data, actions) {
                         return actions.order.create({
                             purchase_units: [
-                                ...checkoutData.selectProducts.map(
-                                    (item) => {
-                                        return {
-                                            id: item.id,
-                                            name: item.product.name,
-                                            amount: {
-                                                value: (
-                                                    item.quantity *
-                                                    parseFloat(item.total)
-                                                ).toFixed(2),
-                                            },
-                                        };
-                                    }
-                                ),
+                                ...checkoutData.selectProducts.map((item) => {
+                                    return {
+                                        id: item.id,
+                                        name: item.product.name,
+                                        amount: {
+                                            value: (
+                                                item.quantity *
+                                                parseFloat(item.total)
+                                            ).toFixed(2),
+                                        },
+                                    };
+                                }),
                             ],
                         });
                     },
                     onApprove: (data, actions) => {
-
                         document.getElementById("FormPaypal").submit();
                         return actions.order.capture().then((orderData) => {
                             this.orderData = orderData;
@@ -291,9 +281,55 @@ Alpine.data("checkOutProducts", () => ({
                 .render(buttonsContainer);
         }
     },
-    closeCheckoutPayment(){
+    closeCheckoutPayment() {
         // this.openPayment = false;
-        location.reload()
+        location.reload();
+    },
+}));
+
+Alpine.data("chat", () => ({
+    conversations: [],
+    selectedConversation: null,
+    message : {
+        content : null,
+        conversationId : null,
+    },
+    init(){
+        this.$watch('selectedConversation', () => {
+            this.message = {
+                ...this.message,
+                conversationId : this.selectedConversation.id
+            }
+        });
+    },
+    initConversation(data) {
+        console.log(data);
+        this.conversations = [...data];
+    },
+    selectConversation(conversation) {
+        if (!conversation) return;
+        console.log(conversation, "selected conversation");
+        this.selectedConversation = {
+            ...conversation
+        };
+    },
+    async sendMessage() {
+        try {
+
+            console.log(this.message)
+            const {data} = await axios.post('/customer/chat', this.message)
+            this.selectedConversation = {
+                ...this.selectedConversation,
+                messages : [
+                    data.message,
+                    ...this.selectedConversation.messages,
+                ]
+            }
+
+            this.message.content = null
+        } catch (error) {
+            console.timeLog(error)
+        }
     }
 }));
 
