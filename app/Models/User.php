@@ -63,4 +63,18 @@ class User extends Authenticatable
     public function business(){
         return $this->hasOne(Business::class);
     }
+
+    public function conversations(){
+        return Conversation::where(function($q){
+            $q->where('owner_id', $this->id)
+            ->orWhere('participant_id', $this->id);
+        });
+    }
+
+    public function messages(){
+        return ConversationMessage::where(function($q){
+            $q->where('sender_id', $this->id)
+            ->orWhere('receiver_id', $this->id);
+        });
+    }
 }
