@@ -5,33 +5,33 @@
   @if (session('message_success'))
   <x-shared.success :message="session('message_success')" />
 @endif
-<div class=" "> 
+<div class=" ">
 
   {{-- MESSAGE --}}
- 
+
 
   <div class="sm:flex   bg-white  p-5">
-    
+
     <div class="max-w-lg w-full flex justify-center">
     <img class="p-1 rounded-t-lg object-fill   w-full    sm:max-w-96      "   src="{{$product->image}}" alt="product image" />
     </div>
   <section class="py-0  sm:px-10 w-full">
     <div class="flex justify-between mt-3">
       <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
-     
-  <a href="{{route('customer.chat')}}" class="  text-black bg-gray-100 shadow 
+
+  <a href="{{route('customer.chat.index', ['product_id' => $product->id])}}" class="  text-black bg-gray-100 shadow
   border-0 py-2 px-5 sm:px-8 focus:outline-none hover:bg-gray-300 text-sm sm:text-lg  ">
   <span class=" flex items-center justify-center"><i class="fa-regular fa-message sm:me-2"></i> <span class="hidden sm:block">Chat Now</span></span></a>
     </div>
-     
- 
- 
+
+
+
 
 
 
     @php $fakeratings = rand(1, 5); @endphp
   <x-shared.ratings ratings={{$fakeratings}} />
- 
+
     <div class="my-5">
     <h4 class="mt-5">Product Description</h4>
     <hr class="my-3">
@@ -61,7 +61,7 @@
 
         <input type="submit" value="Add to cart" name="submit" class=" px-8 text-amber-900 outline-amber-500 bg-amber-300 outline-2 outline border-0 py-2 px-8 focus:outline-none hover:bg-amber-100 text-sm sm:text-lg me-5">
         <a href={{route('customer.products.buy-now', ['product' => $product->id])}} class="  text-white bg-amber-500 border-0 py-2 px-8 focus:outline-none hover:bg-amber-700 text-sm sm:text-lg me-5">Buy now</a>
- 
+
       </div>
     </form>
 
@@ -75,51 +75,51 @@
     <div class="mx-auto  px-4 2xl:px-0">
       <div class="flex items-center gap-2">
         <h2 class="text-2xl font-semibold text-gray-900  ">Reviews</h2>
-  
+
         <div class="mt-2 flex items-center gap-2 sm:mt-0">
-     
-        
-      
+
+
+
           <p class="text-sm font-medium leading-none text-gray-500  ">(4.6)</p>
           <a href="#" class="text-sm font-medium leading-none text-gray-900 underline hover:no-underline  "> 645 Reviews </a>
         </div>
       </div>
-  
-     
-  
+
+
+
       <div class="mt-6 divide-y divide-gray-200 dark:divide-gray-700">
         <div class="gap-3 pb-6 sm:flex sm:items-start">
           <div class="shrink-0 space-y-2 sm:w-48 md:w-72">
             <div class="flex items-center gap-0.5">
              <x-shared.ratings ratings="5"/>
             </div>
-  
+
             <div class="space-y-0.5">
               <p class="text-base font-semibold text-gray-900  ">Micheal Gough</p>
               <p class="text-sm font-normal text-gray-500  ">November 18 2023 at 15:35</p>
             </div>
-  
-            
+
+
           </div>
-  
+
           <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
             <p class="text-base font-normal text-gray-500  ">My old IMAC was from 2013. This replacement was well needed. Very fast, and the colour matches my office set up perfectly. The display is out of this world and I’m very happy with this purchase.</p>
-  
-             
+
+
           </div>
         </div>
-  
-       
-  
-      
-  
-         
-  
-    
+
+
+
+
+
+
+
+
     </div>
   </section>
- 
-   
+
+
 
 </div>
 

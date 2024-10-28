@@ -15,7 +15,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.order.index');
+
+        $orders = Order::where('user_id', Auth::user()->id)->latest()->get();
+
+        return view('pages.customer.order.index', compact(['orders']));
     }
 
     /**
@@ -49,7 +52,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-       
+
     }
 
     /**
@@ -74,5 +77,18 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function cancelOrder(string $id){
+        $order = Order::find($id);
+
+
+        $order->update([
+            'status' => OrderStatus::CANCEL->value
+        ]);
+
+
+
+        return back()->with(['message' => 'Order Cancel']);
+
     }
 }
