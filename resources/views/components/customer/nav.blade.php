@@ -28,7 +28,7 @@
                 <i class="fa-solid fa-cart-shopping  "></i>
              </a>
 
-            <a href="{{route('customer.chat')}}"  class="relative flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
+            <a href="{{route('customer.chat.index')}}"  class="relative flex inline-flex items-center text-gray-900 border-0 py-1 px-2  focus:outline-none hover:bg-gray-200 rounded text-base text-xl  md:mt-0">
             <i class="fa-solid fa-envelope"></i>
             <span class="absolute top-0.5 end-1 p-1 bg-error rounded-full text-white text-xs"></span>
             </a>
@@ -44,7 +44,7 @@
                         <a href="/profile"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                     </li>
-                  
+
                     <li>
                         <a href="{{route('customer.orders.index')}}"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Purchase</a>
@@ -69,7 +69,7 @@
                                 Dashboard</a>
                         </li>
                     @endrole
-                    
+
                     <li>
                         @endif
 

@@ -1,13 +1,13 @@
 <div class="flex flex-row justify-between bg-white h-screen w-full">
-  
+
     <!-- message -->
     <div class="w-full     justify-between h-screen  relative ">
            {{-- HEADER --}}
       <div class="border-b-2 py-4 px-2 flex justify-between">
-    
 
-        
-          <div class="flex justify-center items-center"> 
+
+
+          <div class="flex justify-center items-center">
               {{-- button  --}}
               <button   aria-controls="logo-sidebar" type="button"
               class="py-2.5 px-5    rounded ">
@@ -28,25 +28,24 @@
 
 
       {{-- MESSAGES --}}
-        <div class="flex flex-col  content-end     ">  
+        <div class="flex flex-col  content-end     ">
           <div class="  overflow-y-auto  p-5 ">
-   
- 
-  
+
+
+
         {{$slot}}
- 
-   
+
+
           </div>
       </div>
       {{-- MESSAGES --}}
-    
+
 
 
        {{-- enter message --}}
-          
+
        <div class="py-5 absolute bottom-0 w-full px-3">
         @include('partials.chat.enter-message')
       </div>
     </div>
 </div>
-    
