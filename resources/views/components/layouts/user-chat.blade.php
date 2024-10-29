@@ -12,7 +12,7 @@
 
 
             <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto hidden sm:block   relative"
-                x-init="initConversation({{ json_encode($conversations) }})">
+                x-init="initConversation({{ json_encode($conversations) }}, {{Auth::user()->id}})">
                 {{-- footer --}}
                 <div class="absolute bottom-0 w-full  bg-white shadow-inner py-10 px-5">
                     <a href="/" class="  bg-gray-300 p-5   rounded-xl"><i
@@ -74,7 +74,7 @@
                     </div>
                 </template>
                 {{--  user list --}}
-
+                <button class="hidden" @click="playRingtone" x-ref="playRingtone"></button>
 
                 <!-- end user list -->
             </div>
@@ -90,9 +90,6 @@
 
 
                         <div class="border-b-2 py-4 px-2 flex justify-between">
-
-
-
                             <div class="flex justify-center items-center">
                                 {{-- button  --}}
                                 <button aria-controls="logo-sidebar" type="button" class="py-2.5 px-5    rounded ">
@@ -115,8 +112,11 @@
 
 
                         {{-- MESSAGES --}}
-                        <div class="flex flex-col  content-end" x-show="selectedConversation?.messages.length !== 0">
-                            <div class="  overflow-y-auto  p-5 flex flex-col-reverse">
+                        <div class="flex flex-col  content-end h-screen overflow-y-auto pb-32"
+                         x-show="selectedConversation?.messages.length !== 0"
+                         x-ref="chatContainer"
+                         x-init="$nextTick(() => { $refs.chatContainer.scrollTop = $refs.chatContainer.scrollHeight; })">
+                            <div class="p-5 flex flex-col-reverse">
 
                                 <template x-for="convoMessage in selectedConversation?.messages" :key="convoMessage.id">
                                     <div>
