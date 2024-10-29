@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\Events\GotMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Conversation;
 use App\Models\ConversationMessage;
@@ -73,6 +74,8 @@ class ConversationController extends Controller
             'sender_id' => $user->id,
             'receiver_id' => $conversation->owner->id === $user->id ? $conversation->participant->id : $conversation->owner->id
         ]);
+
+        GotMessage::dispatch($message);
 
         return response([
             'message' => $message
