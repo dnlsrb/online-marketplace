@@ -290,10 +290,12 @@ Alpine.data("checkOutProducts", () => ({
 Alpine.data("chat", () => ({
     conversations: [],
     selectedConversation: null,
+    authId: null,
     message : {
         content : null,
         conversationId : null,
     },
+    ringtone: new Audio('/1.mp3'),
     init(){
         this.$watch('selectedConversation', () => {
             this.message = {
@@ -301,10 +303,28 @@ Alpine.data("chat", () => ({
                 conversationId : this.selectedConversation.id
             }
         });
+
+
+
+
+        this.$watch('authId', () => {
+            window.Echo.private(`chat.${this.authId}`)
+            .listen('GotMessage', (event) =>{
+                console.log(this.$refs.playRingtone.click())
+                this.playRingtone()
+                this.selectedConversation.messages = [
+                    event.message,
+                    ...this.selectedConversation.messages
+                ]
+
+                this.scrollToBottom();
+            })
+        });
     },
-    initConversation(data) {
-        console.log(data);
+    initConversation(data, authId) {
+        console.log(data, authId);
         this.conversations = [...data];
+        this.authId = authId;
     },
     selectConversation(conversation) {
         if (!conversation) return;
@@ -327,10 +347,23 @@ Alpine.data("chat", () => ({
             }
 
             this.message.content = null
+            this.scrollToBottom();
         } catch (error) {
             console.timeLog(error)
         }
-    }
+    },
+    playRingtone() {
+        this.ringtone.play().catch((error) => {
+            console.error("Audio play error:", error);
+        });
+    },
+    scrollToBottom() {
+        this.$nextTick(() => {
+            if (this.$refs.chatContainer) {
+                this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight;
+            }
+        });
+    },
 }));
 
 Alpine.start();
