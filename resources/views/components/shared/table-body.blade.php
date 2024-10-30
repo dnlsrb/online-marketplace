@@ -1,5 +1,5 @@
 @props([
-    'columns' => ['name', 'Email', 'Tenement'],
+    'columns' => [],
     // 'label' => 'sample table',
     'create_url' => null,
     'archived_url' => null,
