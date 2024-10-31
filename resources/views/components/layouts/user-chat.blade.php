@@ -6,12 +6,12 @@
 <x-layouts.app>
 
 
-    <div class="container-fluid h-screen mx-auto  " x-data="chat">
-        <div class="flex flex-row justify-between bg-white h-screen">
+    <div class="container-fluid h-screen mx-auto overflow-y-hidden " x-data="chat">
+        <div class="flex flex-row justify-between bg-white h-screen" x-data="{ open: true}">
 
 
 
-            <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto hidden sm:block   relative"
+            <div  x-show="open"   class="flex flex-col w-full sm:w-1/2 border-r-2 overflow-y-auto   sm:block   relative"
                 x-init="initConversation({{ json_encode($conversations) }}, {{Auth::user()->id}})">
                 {{-- footer --}}
                 <div class="absolute bottom-0 w-full  bg-white shadow-inner py-10 px-5">
@@ -21,7 +21,7 @@
 
                 {{-- end footer --}}
                 <!-- search compt -->
-                <div class="border-b-2 py-4 px-2">
+                <div class="border-b-2 py-4 px-2 ">
                     @include('partials.chat.search-user')
                 </div>
                 <!-- end search compt -->
@@ -29,7 +29,7 @@
 
                 <template x-if="conversations.length !== 0">
                     <template x-for="conversation in conversations" :key="conversation?.id">
-                        <a href="#" @click="selectConversation(conversation)"
+                        <a href="#" @click="selectConversation(conversation); open = false"  
                             class="flex flex-row py-4 px-2 justify-center items-center border-b-2  hover:bg-gray-100">
 
                             <div class="w-1/4">
@@ -80,7 +80,7 @@
             </div>
 
 
-            <div class="flex flex-row justify-between bg-white h-screen w-full" x-init="selectConversation({{ json_encode($conversation) }})">
+            <div   :class="open ? 'hidden sm:block' : 'block '"    class="flex flex-row justify-between bg-white h-screen w-full" x-init="selectConversation({{ json_encode($conversation) }})">
 
                 <!-- message -->
                 <template x-if="selectedConversation">
@@ -92,8 +92,11 @@
                         <div class="border-b-2 py-4 px-2 flex justify-between">
                             <div class="flex justify-center items-center">
                                 {{-- button  --}}
-                                <button aria-controls="logo-sidebar" type="button" class="py-2.5 px-5    rounded ">
+                                <button x-show="!open" @click="open = true" aria-controls="logo-sidebar" type="button" class="py-2.5 px-5    rounded ">
                                     <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <button x-show="open" @click="open = false" aria-controls="logo-sidebar" type="button" class="py-2.5 px-5    rounded ">
+                                    <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                                 {{-- profile and name --}}
                                 <img src="https://picsum.photos/id/433/600/600"class="object-cover h-8 w-8 rounded-full"
