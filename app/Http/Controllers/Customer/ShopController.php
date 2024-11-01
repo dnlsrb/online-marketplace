@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class ShopController extends Controller
 {
     public function show(string $id){
- 
+        Product::where('user_id', $id)->firstOrFail();
         $shop = User::where('id', $id)->first();
         $products = Product::latest()->paginate(11)->where('user_id', $id);
 
