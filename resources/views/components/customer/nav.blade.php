@@ -41,7 +41,7 @@
                 <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
                     @if(Auth::user())
                     <li>
-                        <a href="/profile"
+                        <a href="/profile/user"
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                     </li>
 

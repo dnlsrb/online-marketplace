@@ -3,7 +3,7 @@
 <x-shared.back/>
 
   @if (session('message_success'))
-  <x-shared.success :message="session('message_success')" />
+  <x-shared.alert alert="success"> {{session('message_success')}}</x-shared.alert>
 @endif
 <div class=" ">
 
@@ -16,7 +16,9 @@
     <img class="p-1 rounded-t-lg object-fill   w-full    sm:max-w-96      "   src="{{$product->image}}" alt="product image" />
     </div>
   <section class="py-0  sm:px-10 w-full">
-    <div class="flex justify-between mt-3">
+ 
+    <div class="flex justify-between  ">
+      
       <h4 class="text-2xl subpixel-antialiased font-semibold">{{$product->name}}   </h4>
 
   <a href="{{route('customer.chat.index', ['product_id' => $product->id])}}" class="  text-black bg-gray-100 shadow
@@ -65,11 +67,23 @@
       </div>
     </form>
 
+     
+<div class="sm:flex bg-white p-5 my-4 border">
+  <section class="bg-white   flex justify-between w-full">
+    <h2 class="   text-lg font-medium   ">{{$product->user->name}}</h2>
+    <a href="{{route('show.shop', $product->user->id)}}" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" >
+      View Shop</a>
+  </section>
+</div>
   </section>
   </div>
 </div>
-{{-- PRODUCT REVIEWS --}}
+ 
 
+{{-- SELLER --}}
+ 
+
+{{-- PRODUCT REVIEWS --}}
 <div class="sm:flex bg-white p-5 my-4">
   <section class="bg-white py-8 antialiased  md:py-16">
     <div class="mx-auto  px-4 2xl:px-0">
@@ -133,17 +147,21 @@
 
 
 
-    @for($i=0; $i < 16; $i++)
+    @forelse ($products as $product)
 
-        <x-shared.product-card
-        link="product/{{$i}}"
-        {{-- ^ add link here  --}}
-        ratings="{{rand(1, 5)}}"
-        imagesrc="https://picsum.photos/id/2{{$i}}/400/400"
-        productname="DUMMY DONT CLICK"
-        productprice="1{{$i}}0"/>
+    <x-shared.product-card
+    link="{{ route('products.show', ['product' => $product->id]) }}"
+       {{-- ^ add link here  --}}
+       ratings="{{rand(1, 5)}}"
+       imagesrc="{{$product->image}}"
+       productname="{{ $product->name}}" 
+       productprice="{{ $product->price}}" />
 
-    @endfor
+           
+       @empty
+
+       <x-shared.empty/>
+         @endforelse
 
 
 

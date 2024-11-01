@@ -27,7 +27,7 @@
                 <div id="account_dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
                   <ul class="py-2 text-sm text-gray-700  " aria-labelledby="dropdownDefaultButton">
                     <li>
-                      <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Shop Profile</a>
+                      <a href="{{route('profile.seller.edit')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Shop Profile</a>
                     </li>
                     
                     <li>

@@ -8,6 +8,7 @@ use App\Models\CartProduct;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,9 @@ class ProductController extends Controller
     public function show(string $id){
         $product = Product::find($id);
 
-        return view('pages.customer.show', compact(['product']));
+        $products = Product::latest()->paginate(11)->where('id', '!=' , $id);
+
+        return view('pages.customer.show', compact(['product', 'products']));
     }
 
     public function buyNow(string $id) {

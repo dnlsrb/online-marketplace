@@ -65,7 +65,14 @@
 
     <form>
     @csrf 
-        <x-shared.primary-button  >PACK</x-shared.primary-button>
+        <x-shared.primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'pack-order{{$order->id}}')" >PACK</x-shared.primary-button>
+ 
+    <x-vendor.breeze.modal name="pack-order{{$order->id}}">
+
+        @include('partials.pack-order')
+    
+    </x-vendor.breeze.modal>
+
     </form>
 
     </div>

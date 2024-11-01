@@ -22,6 +22,7 @@ class ProfileController extends Controller
         ]);
     }
 
+    
     /**
      * Update the user's profile information.
      */
@@ -57,5 +58,21 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+
+
+    // SELLER PROFILE
+
+
+     /*
+    Display Seller Profile Form
+
+    */
+    public function selleredit(Request $request): View
+    {
+        return view('pages.profile.seller', [
+            'user' => $request->user(),
+        ]);
     }
 }

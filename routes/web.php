@@ -10,6 +10,7 @@ use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Customer\ConversationController;
+use App\Http\Controllers\Customer\ShopController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 
@@ -48,13 +49,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/user', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/user', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/user', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile/seller', [ProfileController::class, 'selleredit'])->name('profile.seller.edit');
 
     Route::prefix('product')->as('products.')->group(function () {
         Route::get('{product}', [CustomerProductController::class, 'show'])->name('show');
     });
+
+    Route::get('shop/{user}', [ShopController::class, 'show'])->name('show.shop');
 
     Route::middleware(['role:admin'])->prefix('admin')->as('admin.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');

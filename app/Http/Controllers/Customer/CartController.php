@@ -53,7 +53,7 @@ class CartController extends Controller
         ]);
 
 
-        return back()->with(['message_success', 'Product Added']);
+        return back()->with(['message_success' => "Product Added $product->name x$request->quantity Total of ₱$total"]);
     }
 
     public function removeProduct(string $id){
