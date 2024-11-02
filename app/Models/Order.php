@@ -25,4 +25,7 @@ class Order extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+    public function delivery(){
+        return $this->hasOne(Delivery::class);
+    }
 }
