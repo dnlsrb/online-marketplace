@@ -114,6 +114,13 @@
 
                                     <h1 class="font-semibold text-lg py-2">Order Details</h1>
                                     <hr class="my-2">
+                                    @if(isset($order->delivery->tracking_number))
+                                    <div class="border border-green-700 rounded p-3 bg-white"> 
+                                    <h1 class="font-semibold text-md py-2 text-green-700">Tracking Number</h1>
+                                    <span class="text-green-700">{{ $order->delivery->tracking_number}}</span>
+                                </div>
+                                    @endif
+                                 
                                     <h1 class="font-semibold text-md py-2">Billing & Delivery Information</h1>
                                   {{$order->user->profile->address}}
                                     <hr class="my-2">
@@ -165,7 +172,7 @@
             <div class="p-3">
 
 
-                <h1 class="font-semibold text-lg py-2">Orde Cancel</h1>
+                <h1 class="font-semibold text-lg py-2">Order Cancel</h1>
                 <hr class="my-2">
                 <h1 class="font-semibold text-md py-2">Are you sure ?</h1>
 
@@ -173,13 +180,14 @@
 
 
             </div>
-            <div class="flex sm:flex-row w-full">
+            <div class="flex  justify-between p-3 ">
             <form action="{{ route('customer.products.cancel', ['order' => $order->id]) }}" method="post">
                 @csrf
-                <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
+                <x-shared.primary-button>Yes</x-shared.primary-button>
+    
             </form>
             <button type="button" x-on:click="$dispatch('close')"
-            class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
+            class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5   me-2  focus:outline-none dark:focus:ring-blue-800">
             Cancel
             </button>
             </div>

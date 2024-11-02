@@ -24,8 +24,9 @@ class CartController extends Controller
             ]);
 
         }
+        $products = Product::latest()->paginate(10);
 
-        return view('pages.customer.cart.index', compact(['cart']));
+        return view('pages.customer.cart.index', compact(['cart', 'products']));
     }
 
     public function addProduct(string $id, Request $request){

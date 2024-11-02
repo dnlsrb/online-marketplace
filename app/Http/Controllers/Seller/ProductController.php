@@ -58,7 +58,7 @@ class ProductController extends Controller
             'user_id' => $user->id
         ]);
 
-
+        
 
         return back()->with(['success' => 'Product Added Success']);
     }
@@ -112,9 +112,8 @@ class ProductController extends Controller
             'user_id' => $user->id
         ]);
 
-
-
         return back()->with(['update_success' => 'Product Updated Success']);
+ 
     }
 
     /**
@@ -127,6 +126,10 @@ class ProductController extends Controller
         $product->delete();
 
 
-        return back()->with(['success' => 'Product Deleted!']);
+ 
+
+
+        return redirect()->route('seller.products.index')->with(['alert' => 'Product Deleted']);
+ 
     }
 }

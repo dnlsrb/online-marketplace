@@ -20,7 +20,7 @@
 
     <section class=" bg ">
         <div class="hidden sm:block">
-            <x-shared.table-body :columns="['Tracking Number', 'Courier', 'Product', '', 'Total Amount', '', 'Status', 'Actions']">
+            <x-shared.table-body :columns="['Tracking Number & Courier',  'Product', '', 'Total Amount', '', 'Status', 'Actions']">
             </x-shared.table-body>
         </div>
         @foreach ($deliveries as $delivery)

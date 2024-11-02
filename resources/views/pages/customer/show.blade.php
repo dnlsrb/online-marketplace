@@ -89,6 +89,56 @@
 
 
 {{-- SELLER --}}
+{{-- WRITE A REVIEW --}}
+<div class="sm:flex bg-white p-5 my-4">
+  <section class="bg-white  antialiased  md:pb-8 py-2 w-full ">
+    <div class="border mb-3  p-3 rounded flex justify-center items-center"><i class="fa-regular fa-bell mx-2 font-medium"></i> <h1 class="   font-semibold  ">You recently purchased this product. Would you like to write a review?</h1></div>
+    
+ 
+    <form action="" method="">
+      @csrf
+
+      {{-- rating star --}}
+      <div class="flex flex-wrap">
+      <p class="me-3">Ratings: </p>
+        <div class="flex items-center me-4">
+            <input id="yellow-radio" type="radio" value="1" name="rating" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600  focus:ring-2 ">
+            <label for="yellow-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">1</label>
+        </div>
+        <div class="flex items-center me-4">
+          <input id="yellow-radio" type="radio" value="2" name="rating" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600  focus:ring-2 ">
+          <label for="yellow-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">2</label>
+      </div>
+      <div class="flex items-center me-4">
+        <input id="yellow-radio" type="radio" value="3" name="rating" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600  focus:ring-2 ">
+        <label for="yellow-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">3</label>
+    </div>
+    <div class="flex items-center me-4">
+      <input id="yellow-radio" type="radio" value="4" name="rating" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600  focus:ring-2 ">
+      <label for="yellow-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">4</label>
+  </div>
+  <div class="flex items-center me-4">
+    <input id="yellow-radio" type="radio" value="5" name="rating" class="w-4 h-4 text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600  focus:ring-2 ">
+    <label for="yellow-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">5</label>
+</div>
+      </div>
+      <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50  ">
+          <div class="px-4 py-2 bg-white rounded-t-lg">
+              <label for="comment" class="sr-only">Your comment</label>
+              <textarea id="comment" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 focus:ring-0    " placeholder="Write a comment..." required ></textarea>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2 border-t  ">
+              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200   hover:bg-blue-800">
+                  Post a comment
+              </button>
+              <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+               
+              </div>
+          </div>
+      </div>
+   </form>
+  </section>
+</div>
 
 
 {{-- PRODUCT REVIEWS --}}

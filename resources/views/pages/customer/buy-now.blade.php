@@ -3,7 +3,8 @@
     <x-shared.back />
 
     @if (session('message_success'))
-        <x-shared.success :message="session('message_success')" />
+    <x-shared.alert alert="success" >{{session('message_success')}} Please check your recent purchases!</x-shared.alert>
+       
     @endif
 
     <div class="sm:flex bg-white p-5 ">
