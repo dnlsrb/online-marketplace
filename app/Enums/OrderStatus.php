@@ -8,4 +8,6 @@ enum OrderStatus : string {
     case DONE = 'done';
     case CANCEL = 'cancel';
     case PENDING = 'pending';
+    case DELIVERY = 'delivery';
+    case RECEIVED = 'received';
 }
