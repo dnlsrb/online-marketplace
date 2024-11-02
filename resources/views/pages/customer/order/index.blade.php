@@ -1,3 +1,6 @@
+@php
+    use App\Enums\OrderStatus;
+@endphp
 <x-layouts.customer-show>
 
     <section class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
@@ -84,12 +87,23 @@
                                             Details</button>
                                     </li>
                                     <li>
+                                        @if (in_array($order->status, [OrderStatus::PENDING->value, OrderStatus::ORDERED->value]))
                                         <button
-                                            @click.prevent="$dispatch('open-modal', 'cancel-order{{ $order->id }}')"
-                                            class="block   py-2 hover:bg-gray-100 w-full text-center ">Cancel
-                                            Order</button>
-                                    </li>
+                                        @click.prevent="$dispatch('open-modal', 'cancel-order{{ $order->id }}')"
+                                        class="block   py-2 hover:bg-gray-100 w-full text-center ">Cancel
+                                        Order</button>
+                                        @endif
 
+                                    </li>
+                                    <li>
+                                        <form action="{{route('customer.products.received', ['order' => $order->id])}}" method="post">
+                                            @csrf
+                                            <button
+                                            class="block   py-2 hover:bg-gray-100 w-full text-center ">Received
+                                            Order</A>
+                                        </form>
+
+                                    </li>
                                 </ul>
                             </div>
 
@@ -101,8 +115,7 @@
                                     <h1 class="font-semibold text-lg py-2">Order Details</h1>
                                     <hr class="my-2">
                                     <h1 class="font-semibold text-md py-2">Billing & Delivery Information</h1>
-                                    Bonnie Green - +1 234 567 890, San Francisco, California, United States, 3454, Scott
-                                    Street
+                                  {{$order->user->profile->address}}
                                     <hr class="my-2">
                                     <table class="w-full text-left font-medium text-gray-900   md:table-fixed">
                                         <tbody>
@@ -157,10 +170,10 @@
                 <h1 class="font-semibold text-md py-2">Are you sure ?</h1>
 
                 <hr class="my-2">
-            
+
 
             </div>
-            <div class="flex sm:flex-row w-full"> 
+            <div class="flex sm:flex-row w-full">
             <form action="{{ route('customer.products.cancel', ['order' => $order->id]) }}" method="post">
                 @csrf
                 <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
