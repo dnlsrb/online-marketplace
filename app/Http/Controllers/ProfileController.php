@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Profile;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\ProfileUpdateRequest;
 
 
 class ProfileController extends Controller
@@ -22,7 +23,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    
+
     /**
      * Update the user's profile information.
      */
@@ -37,6 +38,45 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+
+    public function additionalProfile(Request $request)
+    {
+
+        $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'contact_no' => 'required',
+            'address' => 'required'
+        ]);
+
+        $profile = $request->user()->profile;
+
+
+        if (!$profile) {
+            Profile::create([
+                'last_name' => $request->last_name,
+                'first_name' => $request->first_name,
+                'contact_no' => $request->contact_no,
+                'address' => $request->address,
+                'user_id' => $request->user()->id
+            ]);
+
+            return back()->with(['message' => 'profile Added Success']);
+        }
+
+
+        $profile->update([
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'contact_no' => $request->contact_no,
+            'address' => $request->address,
+            'user_id' => $request->user()->id
+        ]);
+
+
+        return back()->with(['message' => 'profile Updated Success']);
     }
 
     /**
@@ -65,7 +105,7 @@ class ProfileController extends Controller
     // SELLER PROFILE
 
 
-     /*
+    /*
     Display Seller Profile Form
 
     */

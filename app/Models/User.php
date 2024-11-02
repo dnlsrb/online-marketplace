@@ -77,4 +77,8 @@ class User extends Authenticatable
             ->orWhere('receiver_id', $this->id);
         });
     }
+
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
 }
