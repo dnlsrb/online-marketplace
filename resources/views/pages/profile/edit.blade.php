@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-white w-screen top-0 fixed "> 
+    <div class="bg-white w-screen top-0 fixed ">
     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class=" bg-white  inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   ">
         <span class="sr-only">Open sidebar</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -7,21 +7,21 @@
         </svg>
      </button>
     </div>
-          
+
 <x-layouts.profile-sidebar/>
-     
+
      <div class="p-4 sm:ml-64">
         <div class="py-12 basis-1/2">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="mb-5">
                     <h1 class="text-xl">User Profile</h1>
-                @php 
+                @php
                 $home= array("Profile", "customer.index");
                 // home
-                $nav = array( 
-                
+                $nav = array(
+
                 // add more items here in route
-                ); 
+                );
                 $cur = "User";
                 // Current Route
                 @endphp
@@ -29,18 +29,31 @@
                     </div>
 
 
+
+                @if(Session::has('warning'))
+                <x-shared.alert alert="warning">
+                    {{Session::get('warning') }}
+                </x-shared.alert>
+
+                @endif
+
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="max-w-xl">
                         @include('pages.profile.partials.update-profile-information-form')
                     </div>
                 </div>
-    
+
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        @include('pages.profile.partials.additional-information')
+                    </div>
+                </div>
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="max-w-xl">
                         @include('pages.profile.partials.update-password-form')
                     </div>
                 </div>
-    
+
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="max-w-xl">
                         @include('pages.profile.partials.delete-user-form')
@@ -50,6 +63,6 @@
         </div>
      </div>
 
- 
- 
+
+
 </x-app-layout>
