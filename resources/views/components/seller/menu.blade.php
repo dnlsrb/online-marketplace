@@ -39,6 +39,16 @@
  </li>
 
 
+ <li>
+    <a href="{{route('seller.deliveries.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg  relative hover:bg-gray-100   group">
+        <i class="fa-solid fa-truck-fast px-2"></i>
+
+
+       <span    :class="open ? 'sm:visible' : 'sm:invisible'" class="me-3">Deliveries</span>
+    </a>
+ </li>
+
+
    <li>
    <a href="{{route('seller.report')}}" class="flex items-center p-2 text-gray-900 rounded-lg  relative hover:bg-gray-100   group">
       <i class="fa-solid fa-magnifying-glass-chart text-lg ms-2 me-8  "> </i>
