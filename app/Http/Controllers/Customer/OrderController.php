@@ -34,6 +34,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $order = Order::create([
             'order_number' => 'ORDR-' . uniqid(),
             'product_id' => $request->productId,
@@ -89,6 +91,18 @@ class OrderController extends Controller
 
 
         return back()->with(['message' => 'Order Cancel']);
+
+    }
+
+    public function receivedOrder(string $id){
+        $order = Order::find($id);
+
+
+        $order->update([
+            'status' => OrderStatus::RECEIVED->value
+        ]);
+
+        return back()->with(['message' => 'Order Received']);
 
     }
 }
