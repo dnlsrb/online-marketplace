@@ -27,6 +27,20 @@
 
 <span class="bg-green-600 text-green-100 px-4 py-2 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i>Ordered</span>
 @endif
-{{-- <span class="bg-yellow-600 text-yellow-100 px-4 py-1 rounded  flex sm:inline"><i class="fa-solid fa-truck-fast px-2"></i></i>Delivery</span>
 
-<span class="bg-green-600 text-green-100 px-4 py-1 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i> Waiting</span> --}}
+
+@if($status === OrderStatus::DELIVERY->value)
+<span class="bg-yellow-600 text-yellow-100 px-4 py-1 rounded  flex sm:inline"><i class="fa-solid fa-truck-fast px-2"></i></i>Delivery</span>
+
+@endif
+
+
+@if($status === OrderStatus::RECEIVED->value)
+
+<span class="bg-green-600 text-green-100 px-4 py-2 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i>Received</span>
+@endif
+
+
+
+
+{{--<span class="bg-green-600 text-green-100 px-4 py-1 rounded flex sm:inline"><i class="fa-solid fa-check px-2"></i> Waiting</span> --}}
