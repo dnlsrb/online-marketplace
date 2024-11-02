@@ -60,7 +60,7 @@ class ProductController extends Controller
 
 
 
-        return back()->with(['message_success' => 'Product Added Success']);
+        return back()->with(['success' => 'Product Added Success']);
     }
 
     /**
@@ -78,7 +78,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
- 
+
         return view('pages.seller.product.update', compact(['product']));
     }
 
@@ -127,6 +127,6 @@ class ProductController extends Controller
         $product->delete();
 
 
-
+        return back()->with(['success' => 'Product Deleted!']);
     }
 }
