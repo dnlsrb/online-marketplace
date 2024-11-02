@@ -19,6 +19,7 @@ use App\Http\Controllers\Customer\ProductController as CustomerProductController
 //
 use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
 use App\Http\Controllers\Customer\SubscriptionController as CustomerSubscriptionController;
+use App\Http\Controllers\Seller\DeliveryController;
 use App\Http\Controllers\Seller\OrderController as SellerOrderController;
 
 /*
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile/user', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/user', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/additional-profile/user', [ProfileController::class, 'additionalProfile'])->name('additional.profile.update');
     Route::delete('/profile/user', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/profile/seller', [ProfileController::class, 'selleredit'])->name('profile.seller.edit');
@@ -74,8 +76,14 @@ Route::middleware('auth')->group(function () {
             return view('pages.seller.report.index');
         })->name('report');
 
+
+        Route::prefix('deliveries')->as('deliveries.')->group(function(){
+            Route::get('{delivery}/status', [DeliveryController::class, 'status'])->name('status');
+        });
+
         Route::resource('products', ProductController::class);
         Route::resource('orders', SellerOrderController::class);
+        Route::resource('deliveries', DeliveryController::class);
     });
 
     Route::middleware(['role:customer|admin'])->prefix('customer')->as('customer.')->group(function () {
@@ -98,6 +106,7 @@ Route::middleware('auth')->group(function () {
             Route::get('{product}/buy-now', [CustomerProductController::class, 'buyNow'])->name('buy-now');
             Route::post('checkout', [CustomerProductController::class, 'checkOut'])->name('checkout');
             Route::post('{order}/cancel', [OrderController::class, 'cancelOrder'])->name('cancel');
+            Route::post('{order}/received', [OrderController::class, 'receivedOrder'])->name('received');
         });
 
 
