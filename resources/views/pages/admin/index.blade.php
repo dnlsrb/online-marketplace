@@ -13,12 +13,12 @@
                    <!-- Card Item Start -->
                    <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
                       <div class="flex flex-col justify-center items-center"> 
-                          <div class="flex items">
+                          {{-- <div class="flex items">
                               <i class="fa-solid fa-user-secret text-4xl me-2"></i>   <h1 class="text-4xl font-bold"></h1>
                           </div>
                           <div >
                              Orders
-                          </div>
+                          </div> --}}
                       </div>
                   
                        
@@ -29,12 +29,12 @@
                   <!-- Card Item Start -->
                   <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
                       <div class="flex flex-col justify-center items-center"> 
-                          <div class="flex items">
+                          {{-- <div class="flex items">
                               <i class="fa-solid fa-user-secret text-4xl me-2"></i>   <h1 class="text-4xl font-bold">18.7k</h1>
                           </div>
                           <div >
                               Unique Visitors
-                          </div>
+                          </div> --}}
                       </div>
                   
                        
@@ -45,12 +45,12 @@
                   <!-- Card Item Start -->
                   <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
                       <div class="flex flex-col justify-center items-center"> 
-                          <div class="flex items">
+                          {{-- <div class="flex items">
                               <i class="fa-solid fa-user-secret text-4xl me-2"></i>   <h1 class="text-4xl font-bold">18.7k</h1>
                           </div>
                           <div >
                               Unique Visitors
-                          </div>
+                          </div> --}}
                       </div>
                   
                        
@@ -62,12 +62,12 @@
                   <!-- Card Item Start -->
                   <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
                       <div class="flex flex-col justify-center items-center"> 
-                          <div class="flex ">
+                          {{-- <div class="flex ">
                               <i class="fa-solid fa-user-secret text-4xl me-2"></i>   <h1 class="text-4xl font-bold">18.7k</h1>
                           </div>
                           <div >
                               Unique Visitors
-                          </div>
+                          </div> --}}
                       </div>
                   
                        
