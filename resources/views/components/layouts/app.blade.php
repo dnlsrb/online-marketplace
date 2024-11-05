@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>PMA - Online Marketplace</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -13,6 +13,10 @@
 
         {{-- paypal --}}
         <script src="https://sandbox.paypal.com/sdk/js?client-id={{env('PAYPAL_CLIENT')}}&currency=PHP"></script>
+
+        {{-- favicon --}}
+        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16"href="{{asset('favicon-16x16.png')}}">
 
         {{-- Toast --}}
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">

@@ -13,8 +13,6 @@
                 imagesrc="{{$product->image}}"
                 productname="{{ $product->name}}" 
                 productprice="{{ $product->price}}" />
-                
-                
                
         @empty
 

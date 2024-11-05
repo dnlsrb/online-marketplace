@@ -8,7 +8,12 @@
 
         <div class="w-full  max-w-md p-4 bg-white  md:border  border-gray-200 rounded md:shadow sm:p-6 md:p-8  ">
 
-            <x-shared.logo class="text-2xl stroke-2 block sm:hidden text-center"/>
+            <a href="/"   class="text-gray-900   md:mb-0 flex flex-col items-center justify-center   sm:hidden font-medium title-font text-2xl">
+                <img src="{{ asset('pma_online_marketplace.png') }}" alt="" srcset="" class="w-24 mb-3 sm:mb-0 ">
+                   
+                  <h1 class="  ">PMA ONLINE MARKETPLACE</h1>
+            </a>
+              
        
            
 
