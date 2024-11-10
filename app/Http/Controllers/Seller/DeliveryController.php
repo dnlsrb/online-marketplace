@@ -40,12 +40,13 @@ class DeliveryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tracking_number',
-            'order',
-            'courier'
+            'tracking_number'=> 'required',
+            'order'=> 'required',
+            'courier'=> 'required',
         ]);
 
-
+   
+       
         $order = Order::find($request->order);
 
         Delivery::create([

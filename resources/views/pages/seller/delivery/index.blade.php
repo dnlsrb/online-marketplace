@@ -18,9 +18,18 @@
     </div>
 
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <section class=" bg ">
         <div class="hidden sm:block">
-            <x-shared.table-body :columns="['Tracking Number', 'Courier', 'Product', '', 'Total Amount', '', 'Status', 'Actions']">
+            <x-shared.table-body :columns="['Tracking Number & Courier',  'Product', '', 'Total Amount', '', 'Status', 'Actions']">
             </x-shared.table-body>
         </div>
         @foreach ($deliveries as $delivery)
@@ -35,22 +44,22 @@
                         </a>
                         <p class="mx-1">(1 Item)</p>
                     </div>
-                    <p class="text-sm">delivery Number: {{ $delivery->order->delivery_number }}</p>
+                    <p class="text-sm">Order Number: {{ $delivery->order->order_number }}</p>
                 </div>
                 <hr class="my-3">
-                <div class="grid grid-cols-2 gap-2  grid-flow-col">
+                <div class="xl:grid xl:grid-cols-2 xl:gap-2  xl:grid-flow-col">
                     <div class="col-span-2">
                         <x-shared.table-body>
 
                             <tr class="    ">
-                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-10">
+                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-56">
                                     {{ $delivery->tracking_number }}
                                 </td>
-                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-10">
+                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-56">
                                     {{ $delivery->courier }}
                                 </td>
-                                <th class="xl:whitespace-nowrap px-6 py-3  ">
-                                    <div class="sm:flex items-center aspect-square w-10 h-10  ">
+                                <th class="xl:whitespace-nowrap px-6 py-3  w-56">
+                                    <div class="sm:flex items-center aspect-square   h-10  ">
                                         <img class="hidden h-auto w-full max-h-full dark:block"
                                             src="{{ $delivery->order->product->image }}" alt="imac image" />
                                         <div href="#" class=" sm:m-2 whitespace-nowrap">
@@ -58,23 +67,24 @@
                                         </div>
                                     </div>
                                 </th>
-                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-10">
+                                <td class="  text-amber-700 font-bold text-center  ">
                                     {{ $delivery->order->quantity }}x
                                 </td>
-                                <td class="font-bold text-center px-6 py-3">
+                                <td class="font-bold text-center px-6 py-3 w-72">
                                     ₱{{ $delivery->order->total }}
                                 </td>
-                                <td class="px-6 py-3   text-center">
+                                <td class="px-6 py-3   text-center ">
 
                                     <x-shared.status :status="$delivery->order->status" />
                                 </td>
 
-
+                                
                             </tr>
                         </x-shared.table-body>
                     </div>
-                    <div class="col-span-1 flex items-center">
-
+                    @if($delivery->order->status == "delivery")  
+                    <div class="col-span-2 md:col-span-1 flex items-center  md:w-56 md:mt-0 mt-3">
+                        
                         <div>
 
                             <a href="{{ route('seller.deliveries.status', ['delivery' => $delivery->id, 'status' => OrderStatus::DONE->value]) }}"
@@ -150,9 +160,13 @@ uppercase tracking-widest hover:bg-red-700 dark:hover:bg-white focus:bg-red-700 
                             </x-vendor.breeze.modal>
 
                         </div>
+                 
+                   
+                            
 
+                        
                     </div>
-
+                    @endif   
 
 
                 </div>

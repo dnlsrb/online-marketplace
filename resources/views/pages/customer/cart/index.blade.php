@@ -147,13 +147,31 @@
      </div>
 
      <p class="text-2xl my-10 ">Suggested for you</p>
-     <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
-
-         @for ($i = 0; $i < 16; $i++)
-             <x-shared.product-card link="product/{{ $i }}" {{-- ^ add link here  --}}
-                 ratings="{{ rand(1, 5) }}" imagesrc="https://picsum.photos/id/2{{ $i }}/400/400"
-                 productname="DUMMY DONT CLICK" productprice="1{{ $i }}0" />
-         @endfor
-     </div>
+ {{-- Recommendation --}}
+<div class="mt-20">
+    <p class="text-2xl my-10 ">Recommendation</p>
+    <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
+  
+  
+  
+      @forelse ($products as $product)
+  
+      <x-shared.product-card
+      link="{{ route('products.show', ['product' => $product->id]) }}"
+         {{-- ^ add link here  --}}
+         ratings="{{rand(1, 5)}}"
+         imagesrc="{{$product->image}}"
+         productname="{{ $product->name}}"
+         productprice="{{ $product->price}}" />
+  
+  
+         @empty
+  
+         <x-shared.empty/>
+           @endforelse
+  
+  
+  
+    </div>
 
  </x-layouts.customer-show>

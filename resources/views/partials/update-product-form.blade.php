@@ -1,16 +1,7 @@
 <div class="bg-white p-5">
     <div class="flex items-center justify-between">
         <h1 class="font-bold">Basic information</h1>
-        <form action="{{route('seller.products.destroy', ['product' => $product->id])}}" method="post">
-            @csrf
-            @method('DELETE')
-
-            <button
-            class="mx-5 flex items-center text-center mt-auto
-            text-white  bg-red-500 hover:bg-red-700  border-0 py-2 w-48 px-4  focus:outline-none  rounded">
-                      Delete
-              </button>
-        </form>
+  
     </div>
 
 
@@ -40,9 +31,9 @@
             <div class="    mb-4"  >
                 <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Price @if ($errors->has('price')) <span class="text-xs text-error">({{ $errors->first('price') }})</span> @endif
                     </label>
-                <input type="number" x-model="name" maxlength="120" id="product-name" name="price"
+                <input type="number"  maxlength="120" id="product-name" name="price"  value="{{$product->price}}"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                     value="{{$product->price}}"
+                      
                     placeholder="₱ {{$product->price}}">
 
 
@@ -75,13 +66,13 @@
 
 
                     <label for="dropzone-file" id="label"
-                        class="flex flex-col items-center justify-center  min-w-56 min-h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  0">
+                        class="flex flex-col items-center justify-center  min-w-56 min-h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  ">
 
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
 
-                                <img   id="image-source" class="w-60 " alt>
+                                <img  src="{{$product->image}}" id="image-source" class="w-60 " alt>
 
-                                <div class="text-center p-5" id="hide">
+                                <div class="text-center p-5 hidden" id="hide">
                                     <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
                                     <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span
                                             class="font-semibold">Click to
@@ -91,7 +82,7 @@
 
                                 </div>
                         </div>
-                        <input id="dropzone-file" name="image" type="file" accept="image/*" class="hidden"
+                        <input id="dropzone-file" name="image"  type="file" accept="image/*" class="w-56 " value="{{$product->image}}"
                         @change="handleImageChange($event)" />
                     </label>
                     <span class="text-green-500" id="notBlurry"></span>
@@ -184,15 +175,25 @@
 
             <div class="text-center flex">
                 <button type="submit" name="submit"
-                    class="flex items-center text-center mt-auto text-white  bg-amber-500 hover:bg-amber-700  border-0 py-2 w-48 px-4  focus:outline-none  rounded">
+                    class="flex items-center text-center mt-auto text-white  bg-amber-500 hover:bg-amber-700  border-0 py-2  px-4  focus:outline-none  rounded">
                     Update
                 </button>
-                <a href="{{route('seller.products.index')}}" name="submit"
-          class="mx-5 flex items-center text-center mt-auto text-white  bg-gray-500 hover:bg-gray-700  border-0 py-2 w-48 px-4  focus:outline-none  rounded">
-                    Cancel
-            </a>
+               
             </form>
-
+            <form action="{{route('seller.products.destroy', ['product' => $product->id])}}" method="post">
+                @csrf
+                @method('DELETE')
+    
+                <button
+                class="mx-5 flex items-center text-center mt-auto
+                text-white  bg-red-500 hover:bg-red-700  border-0 py-2   px-4  focus:outline-none  rounded">
+                          Delete
+                  </button>
+            </form>
+            <a href="{{route('seller.products.index')}}" name="submit"
+            class="  flex items-center text-center mt-auto text-white  bg-gray-500 hover:bg-gray-700  border-0 py-2  px-4  focus:outline-none  rounded">
+                      Cancel
+              </a>
             </div>
         </div>
     </form>

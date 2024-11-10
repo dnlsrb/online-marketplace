@@ -13,7 +13,7 @@
                 </a>
                 <h1 class="text-2xl  font-semibold h-full flex items-center ms-3">Orders</h1>
             </div>
-            <form class="max-w-lg  " class="py-5  ">
+            {{-- <form class="max-w-lg  " class="py-5  ">
 
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none text-gray-900 ">
@@ -24,8 +24,8 @@
                         placeholder="Search Order ID" />
 
                 </div>
-            </form>
-            <h5>Show: </h5>
+            </form> --}}
+            {{-- <h5>Show: </h5>
             <div class="flex flex-wrap">
                 <div class="flex items-center me-4">
                     <input id="all-radio" type="radio" value="" name="radio"
@@ -50,7 +50,7 @@
                     <label for="Cancelled-radio"
                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">Cancelled</label>
                 </div>
-            </div>
+            </div> --}}
             <x-shared.table-body :columns="['ID', 'PRICE', 'STATUS', '']">
 
 
@@ -125,6 +125,15 @@
 
                                     <h1 class="font-semibold text-lg py-2">Order Details</h1>
                                     <hr class="my-2">
+                                    @if(isset($order->delivery->tracking_number))
+                                    <div class="border border-green-700 rounded p-3 bg-white">
+                                    <h1 class="font-semibold text-md py-2 text-green-700">Tracking Number</h1>
+                                    <span class="text-green-700">{{ $order->delivery->tracking_number}}</span>
+                                    <h1 class="font-semibold text-md py-2 text-green-700">Courier</h1>
+                                    <span class="text-green-700">{{ $order->delivery->courier}}</span>
+                                </div>
+                                    @endif
+
                                     <h1 class="font-semibold text-md py-2">Billing & Delivery Information</h1>
                                     {{ $order->user->profile->address }}
                                     <hr class="my-2">
@@ -164,7 +173,7 @@
                                     <hr class="my-2">
                                     <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-gray-500 ">Total</dt>
-                                        <dd class="text-base font-medium text-gray-900  ">₱{{ $order->total }}</dd>
+                                        <dd class="text-base font-medium text-gray-900 text-xl ">₱{{ $order->total }}</dd>
                                     </dl>
                                 </div>
 
@@ -176,7 +185,7 @@
             <div class="p-3">
 
 
-                <h1 class="font-semibold text-lg py-2">Orde Cancel</h1>
+                <h1 class="font-semibold text-lg py-2">Order Cancel</h1>
                 <hr class="my-2">
                 <h1 class="font-semibold text-md py-2">Are you sure ?</h1>
 

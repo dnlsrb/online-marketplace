@@ -14,6 +14,10 @@
     </div>
 
 
+    @if (session('success'))
+    <x-shared.alert alert="success" >{{session('success')}}. <a href="{{route("seller.deliveries.index")}}" class="underline text-blue-700">Check your delivery.</a></x-shared.alert>
+       
+    @endif
     <section class=" bg ">
         <div class="hidden sm:block">
             <x-shared.table-body :columns="['Product', '', 'Total Amount', '', 'Status', 'Actions']">
@@ -28,36 +32,38 @@
                         <a href="{{ route('customer.chat.index') }}">
                             <p class="mx-1">{{ $order->user->name }} <i class="fa-solid fa-comment-dots ms-2"></i></p>
                         </a>
-                        <p class="mx-1">(1 Item)</p>
+                    
 
-                        <p>
-                            {{$order->user->profile->address ?? 'No Address'}}
-                        </p>
+                       
                     </div>
+                    <p class="text-gray-400">
+                       address: {{$order->user->profile->address ?? 'No Address'}}
+                    </p>
                     <p class="text-sm">Order Number: {{ $order->order_number }}</p>
                 </div>
                 <hr class="my-3">
-                <div class="grid grid-cols-2 gap-2  grid-flow-col">
+                <div class="xl:grid xl:grid-cols-2 xl:gap-2  xl:grid-flow-col">
                     <div class="col-span-2">
                         <x-shared.table-body>
                             <tr class="    ">
 
-                                <th class="xl:whitespace-nowrap px-6 py-3  ">
+                                <th class="xl:whitespace-nowrap px-6 py-3 w-56">
                                     <div class="sm:flex items-center aspect-square w-10 h-10  ">
                                         <img class="hidden h-auto w-full max-h-full dark:block"
                                             src="{{ $order->product->image }}" alt="imac image" />
                                         <div href="#" class=" sm:m-2 whitespace-nowrap">
-                                            {{ $order->product->name }}
+                                            {{ $order->product->name }}  <br>
+                                            <span class="  text-amber-700 font-bold text-center  w-10">
+                                               Quantity: {{ $order->quantity }}x
+                                            </span>
                                         </div>
                                     </div>
                                 </th>
-                                <td class="  text-amber-700 font-bold text-center px-6 py-3 w-10">
-                                    {{ $order->quantity }}x
-                                </td>
-                                <td class="font-bold text-center px-6 py-3">
+                           
+                                <td class="font-bold text-center px-6 py-3 w-2/4">
                                     ₱{{ $order->total }}
                                 </td>
-                                <td class="px-6 py-3   text-center">
+                                <td class="px-6 py-3   text-start w-2/4">
 
                                     <x-shared.status :status="$order->status" />
                                 </td>
@@ -66,8 +72,9 @@
                             </tr>
                         </x-shared.table-body>
                     </div>
-                    <div class="col-span-1 flex items-center">
-
+               
+                    <div class="col-span-1 flex items-center w-56">
+                        @if($order->status == "ordered")  
                         <div>
 
                             <x-shared.primary-button x-data=""
@@ -108,7 +115,18 @@
                             </x-vendor.breeze.modal>
 
                         </div>
-
+                        @elseif($order->status == "received")
+                        <p>Completed</p>
+                        @elseif($order->status == "done")
+                        <p>Completed</p>
+                        @elseif($order->status == "cancel")
+                        <p>Cancelled</p>
+                        @else
+                        <p>Shipped</p>
+                        @endif
+                       
+                        
+                       
                     </div>
 
 

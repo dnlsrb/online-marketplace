@@ -15,7 +15,12 @@ $cur = "Product Listing";
 <x-shared.breadcrumb :home="$home" :nav="$nav" :cur="$cur"/>
     </div>
  
-
+    @if(session('alert'))
+ 
+    <div class="my-3 p-4 text-sm rounded-sm text-blue-500 rounded-lg  border border-blue-500 bg-white" role="alert">
+        <i class="fa-solid fa-circle-exclamation me-2"></i><span class="font-medium">  {{ session('alert') }}</span> 
+      </div>
+    @endif
 <div class="relative overflow-x-auto   bg-white sm:p-8 p-3">
     <div class="flex items-center justify-start gap-3 mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-700   ">All Products: <span class="text-gray-900">63</span> </h5>
