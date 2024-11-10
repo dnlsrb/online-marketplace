@@ -56,9 +56,8 @@ class CartController extends Controller
         return back()->with(['message_success' => "Product Added $product->name x$request->quantity Total of ₱$total"]);
     }
 
-    public function removeProduct(string $id){
-        $cartProduct = CartProduct::find($id);
-
+    public function removeProduct(Request $request){
+        $cartProduct = CartProduct::find($request->productID);
 
         $cartProduct->delete();
 

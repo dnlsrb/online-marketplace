@@ -19,7 +19,7 @@
                  <template x-for="cart in cartProducts" :key="cart.id">
                      <div class="flex   items-center my-2 border-0  border-b p-2 ">
                          <div class="flex flex-row   items-center  ">
-                             <input  type="checkbox" @change="selectCarProduct(cart, $event)"
+                             <input type="checkbox" @change="selectCarProduct(cart, $event)"
                                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-400 me-3 focus:ring-blue-500 focus:ring-2 ">
 
                              {{-- cart image --}}
@@ -31,7 +31,7 @@
                              {{-- cart name --}}
                              <a href="#" class="hover:underline cursor-pointer  sm:basis-1/2   ">
                                  <span x-text="cart.product.name"></span></a>
-                                
+
                              <div class="flex flex-row items-center sm:basis-full sm:w-full ">
                                  {{-- price --}}
                                  <div
@@ -47,7 +47,7 @@
                                          <i class="fa-solid fa-minus"></i>
                                      </button>
 
-                                     <input type="text" x-model="cart.quantity" value=" " min="1" 
+                                     <input type="text" x-model="cart.quantity" value=" " min="1"
                                          class="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0  "
                                          required readonly />
                                      <button type="button" @click="changeQuantity(cart.id, 'add')"
@@ -57,109 +57,92 @@
                                  </div>
 
 
-                                 <x-vendor.breeze.modal name="`remove-product-cart.id`" x-ref="`deleteModal-${cart.id}`"   >
-                                     <form method="post" class="p-6">
-                                         @csrf
-                                         @method('delete')
 
-                                         <h2 class="text-lg font-medium text-gray-900">
-                                             {{ __('Remove Product?') }}
-                                         </h2>
-
-                                         <p class="mt-1 text-sm text-gray-600">
-                                             <span x-text="cart.product.name"></span> Will be remove from your cart.
-                                         </p>
-
-
-                                         <div class="mt-6 flex justify-end">
-                                             <x-vendor.breeze.secondary-button x-on:click="$dispatch('close')">
-                                                 {{ __('Cancel') }}
-                                             </x-vendor.breeze.secondary-button>
-
-                                             <x-vendor.breeze.danger-button class="ms-3">
-                                                 {{ __('Remove') }}
-                                             </x-vendor.breeze.danger-button>
-                                         </div>
-                                     </form>
-                                 </x-vendor.breeze.modal>
                              </div>
 
 
                          </div>
                          <div class="flex">
+                            <form method="post" action="{{route('customer.cart.remove.product')}}"  class="p-6">
+                                @csrf
+                                <input type="hidden" name="productID" :value="cart.id">
 
-                             <button type="submit"         x-on:click.prevent="$dispatch('`remove-product`', 'confirm-user-deletion')"
+                             <button type="submit"
+
                                  class="text-white text-xs hover:underline cursor-pointer bg-red-500 p-3 rounded  ">
                                  Remove
                              </button>
-                            </div>
-                             </form>
-                      
+                            </form>
+                         </div>
 
                      </div>
 
                  </template>
 
-                  
-                 <div class="absolute z-10 backdrop-blur-sm top-0 h-full w-full flex justify-center items-center" x-show="openPayment">
-          
+
+                 <div class="absolute z-10 backdrop-blur-sm top-0 h-full w-full flex justify-center items-center"
+                     x-show="openPayment">
+
                  </div>
              </div>
              <div class="bg-white mt-5 p-1 rounded rounded-sm sticky   bottom-0 left-0 z-10 w-full h-26  mb-3  p-3">
-                <p class="text-md font-bold sm:text-3xl flex-1"  x-show="!openPayment">Total ₱<span x-text="checkoutData.total"  ></span>
-                </p>    
-                     
-                      
-                         {{-- total selected product --}}
-                         <div  x-show="!openPayment">
-                            <button id="checkbox_selectall" type="checkbox" @click="SelectAll"
-                            class="flex items-center justify-center   text-gray-500 bg-gray-200 border-0  p-5 mb-1 sm:mb-0   w-full sm:mb-2   
+                 <p class="text-md font-bold sm:text-3xl flex-1" x-show="!openPayment">Total ₱<span
+                         x-text="checkoutData.total"></span>
+                 </p>
+
+
+                 {{-- total selected product --}}
+                 <div x-show="!openPayment">
+                     <button id="checkbox_selectall" type="checkbox" @click="SelectAll"
+                         class="flex items-center justify-center   text-gray-500 bg-gray-200 border-0  p-5 mb-1 sm:mb-0   w-full sm:mb-2
                    hover:bg-gray-500 hover:text-gray-200  ">
-                            Select All
-                            </button>
-                    
-    
+                         Select All
+                     </button>
 
-                             <a x-show="!openPayment" @click="openCheckoutPayment"
-                                 class=" flex items-center justify-center  text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4  
+
+
+                     <a x-show="!openPayment" @click="openCheckoutPayment"
+                         class=" flex items-center justify-center  text-white bg-amber-500 border-0 py-2 mb-1 sm:mb-0   w-full sm:mb-4 px-4
                    focus:outline-none hover:bg-amber-600  ">
-                                 Checkout (<span x-text="checkoutData.selectProducts.length ?? 0"></span>)
-                             </a>
+                         Checkout (<span x-text="checkoutData.selectProducts.length ?? 0"></span>)
+                     </a>
 
-                             <span x-text="errors?.selectProduct" class="text-xs text-red-700"></span>
-                         </div>
-                     
-
-  
-                    <div class="  items-center  " x-show="openPayment"> 
-                        <div class="text-start p-5">
-                        <h1>Your order</h1>
-                        <hr>
-                        
-
- 
-
-                        <p class="text-md font-bold sm:text-3xl flex-1"  x-show="openPayment">Total ₱<span x-text="checkoutData.total"  ></span>
-                        </p>   
-                        </div> 
-                        <div class="     max-w-screen-lg"> 
-                        <div   x-ref="buttonsContainer" class="p-5    ">
-
-                        </div>
-                        <div class="flex text-center  p-5  shadow-gray-400  " x-show="openPayment">
-                            <button  @click="closeCheckoutPayment" class="underline underline-offset-1  bg-white">Change my mind</button>
-                         </div>
-                        </div>
-                    </div>
-
-                
-                   
-                     <form id="FormPaypal" action="{{ route('customer.products.checkout') }}" method="post">
-                        @csrf
-
-                        <input type="hidden" name="cartProducts" id="" :value="JSON.stringify(checkoutData)">
-                     </form>
+                     <span x-text="errors?.selectProduct" class="text-xs text-red-700"></span>
                  </div>
+
+
+
+                 <div class="  items-center  " x-show="openPayment">
+                     <div class="text-start p-5">
+                         <h1>Your order</h1>
+                         <hr>
+
+
+
+
+                         <p class="text-md font-bold sm:text-3xl flex-1" x-show="openPayment">Total ₱<span
+                                 x-text="checkoutData.total"></span>
+                         </p>
+                     </div>
+                     <div class="     max-w-screen-lg">
+                         <div x-ref="buttonsContainer" class="p-5    ">
+
+                         </div>
+                         <div class="flex text-center  p-5  shadow-gray-400  " x-show="openPayment">
+                             <button @click="closeCheckoutPayment" class="underline underline-offset-1  bg-white">Change
+                                 my mind</button>
+                         </div>
+                     </div>
+                 </div>
+
+
+
+                 <form id="FormPaypal" action="{{ route('customer.products.checkout') }}" method="post">
+                     @csrf
+
+                     <input type="hidden" name="cartProducts" id="" :value="JSON.stringify(checkoutData)">
+                 </form>
+             </div>
          </div>
      </div>
 

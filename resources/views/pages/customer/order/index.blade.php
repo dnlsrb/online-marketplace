@@ -88,21 +88,32 @@
                                     </li>
                                     <li>
                                         @if (in_array($order->status, [OrderStatus::PENDING->value, OrderStatus::ORDERED->value]))
-                                        <button
-                                        @click.prevent="$dispatch('open-modal', 'cancel-order{{ $order->id }}')"
-                                        class="block   py-2 hover:bg-gray-100 w-full text-center ">Cancel
-                                        Order</button>
+                                            <button
+                                                @click.prevent="$dispatch('open-modal', 'cancel-order{{ $order->id }}')"
+                                                class="block   py-2 hover:bg-gray-100 w-full text-center ">Cancel
+                                                Order</button>
                                         @endif
 
                                     </li>
                                     <li>
-                                        <form action="{{route('customer.products.received', ['order' => $order->id])}}" method="post">
-                                            @csrf
-                                            <button
-                                            class="block   py-2 hover:bg-gray-100 w-full text-center ">Received
-                                            Order</A>
-                                        </form>
+                                        @if (!in_array($order->status, [OrderStatus::RECEIVED->value]))
+                                            <form
+                                                action="{{ route('customer.products.received', ['order' => $order->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                <button
+                                                    class="block   py-2 hover:bg-gray-100 w-full text-center ">Received
+                                                    Order</A>
+                                            </form>
+                                        @endif
 
+
+                                        @if (in_array($order->status, [OrderStatus::RECEIVED->value]))
+                                            <button
+                                                @click.prevent="$dispatch('open-modal', 'review-order-{{ $order->id }}')"
+                                                class="block   py-2 hover:bg-gray-100 w-full text-center ">Review
+                                                Order</button>
+                                        @endif
                                     </li>
                                 </ul>
                             </div>
@@ -115,7 +126,7 @@
                                     <h1 class="font-semibold text-lg py-2">Order Details</h1>
                                     <hr class="my-2">
                                     <h1 class="font-semibold text-md py-2">Billing & Delivery Information</h1>
-                                  {{$order->user->profile->address}}
+                                    {{ $order->user->profile->address }}
                                     <hr class="my-2">
                                     <table class="w-full text-left font-medium text-gray-900   md:table-fixed">
                                         <tbody>
@@ -174,14 +185,60 @@
 
             </div>
             <div class="flex sm:flex-row w-full">
-            <form action="{{ route('customer.products.cancel', ['order' => $order->id]) }}" method="post">
-                @csrf
-                <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
-            </form>
-            <button type="button" x-on:click="$dispatch('close')"
-            class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
-            Cancel
-            </button>
+                <form action="{{ route('customer.products.cancel', ['order' => $order->id]) }}" method="post">
+                    @csrf
+                    <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
+                </form>
+                <button type="button" x-on:click="$dispatch('close')"
+                    class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
+                    Cancel
+                </button>
+            </div>
+
+            </div>
+        </x-vendor.breeze.modal>
+
+
+        <x-vendor.breeze.modal name="review-order-{{ $order->id }}" focusable>
+            <div class="p-3">
+
+
+                <h1 class="font-semibold text-lg py-2">Order Review </h1>
+                <form action="{{ route('customer.products.review', ['order' => $order->id]) }}" method="post">
+                <h1 class="font-semibold text-md py-2">Rating </h1>
+                <div class="flex items-center center gap-2">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="rate" value="{{ $i }}">
+                            <p>{{ $i }}</p>
+                            <i class="fa-solid fa-star text-amber-400"></i>
+                        </div>
+                    @endfor
+                </div>
+
+                <h1>
+                   Reviews
+                </h1>
+
+                <textarea id="message" name="review" rows="4" class="block p-2.5 w-full text-sm text-gray-900
+                 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500
+                 focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                <hr class="my-2">
+
+
+                <hr class="my-2">
+
+
+            </div>
+            <div class="flex sm:flex-row w-full">
+
+                    @csrf
+                    <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
+                </form>
+                <button type="button" x-on:click="$dispatch('close')"
+                    class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
+                    Cancel
+                </button>
             </div>
 
             </div>

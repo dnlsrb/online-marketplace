@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,5 +105,21 @@ class OrderController extends Controller
 
         return back()->with(['message' => 'Order Received']);
 
+    }
+
+    public function reviewOrder(Request $request, string $id){
+        $order = Order::find($id);
+        $product = $order->product;
+
+        ProductReview::create([
+            'product_id' => $product->id,
+            'user_id' => Auth::user()->id,
+            'rate' => $request->rate,
+            'description' => $request->review
+        ]);
+
+
+
+        return back()->with(['success' => 'order review']);
     }
 }

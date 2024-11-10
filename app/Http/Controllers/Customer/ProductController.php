@@ -12,17 +12,24 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::latest()->paginate(10);
+    public function index(Request $request){
+
+        $search = $request->search;
+        $products = Product::withAvg('reviews', 'rate')->latest()->paginate(10);
 
 
+        if($search){
+            $products =  Product::where(function($q) use($search){
+                $q->where('name', 'like', '%' . $search . '%');
+            })->withAvg('reviews', 'rate')->latest()->paginate(10);
+        }
         return view('pages.customer.index', compact(['products']));
     }
 
     public function show(string $id){
-        $product = Product::find($id);
+        $product = Product::withAvg('reviews', 'rate')->where('id', $id)->first();
 
-        $products = Product::latest()->paginate(11)->where('id', '!=' , $id);
+        $products = Product::withAvg('reviews', 'rate')->latest()->paginate(11)->where('id', '!=' , $id);
 
         return view('pages.customer.show', compact(['product', 'products']));
     }
@@ -35,11 +42,11 @@ class ProductController extends Controller
     public function checkOut(Request $request){
         $cartProducts = json_decode($request->cartProducts);
         $products = $cartProducts->selectProducts;
-        
+
 
         collect($products)->map(function($product){
             $cartProduct = CartProduct::find($product->id);
-           
+
 
             Order::create([
                 'order_number' => 'ORDR-' . uniqid(),
@@ -56,7 +63,7 @@ class ProductController extends Controller
 
 
         return back()->with(['message_success' => 'Checkout Success']);
-    } 
+    }
 
- 
+
 }

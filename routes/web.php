@@ -96,6 +96,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('cart')->as('cart.')->group(function () {
             Route::get('', [CartController::class, 'index'])->name('index');
             Route::post('add-to-cart/{product}', [CartController::class, 'addProduct'])->name('add.product');
+            Route::post('remove-to-cart', [CartController::class, 'removeProduct'])->name('remove.product');
         });
 
 
@@ -107,6 +108,7 @@ Route::middleware('auth')->group(function () {
             Route::post('checkout', [CustomerProductController::class, 'checkOut'])->name('checkout');
             Route::post('{order}/cancel', [OrderController::class, 'cancelOrder'])->name('cancel');
             Route::post('{order}/received', [OrderController::class, 'receivedOrder'])->name('received');
+            Route::post('{order}/review', [OrderController::class, 'reviewOrder'])->name('review');
         });
 
 

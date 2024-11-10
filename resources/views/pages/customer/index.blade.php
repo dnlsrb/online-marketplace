@@ -1,5 +1,5 @@
 <x-layouts.customer-index>
-   
+
     <div class="grid   gap-1   grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 ">
 
 
@@ -9,20 +9,20 @@
             <x-shared.product-card
              link="{{ route('products.show', ['product' => $product->id]) }}"
                 {{-- ^ add link here  --}}
-                ratings="{{rand(1, 5)}}"
+                ratings="{{ $product->reviews_avg_rate ?? 0}}"
                 imagesrc="{{$product->image}}"
-                productname="{{ $product->name}}" 
+                productname="{{ $product->name}}"
                 productprice="{{ $product->price}}" />
-                
-                
-               
+
+
+
         @empty
 
       <x-shared.empty/>
         @endforelse
-    
+
     </div>
-    <div class="  mt-3 "> 
+    <div class="  mt-3 ">
         {{ $products->links() }}
         </div>
 </x-layouts.customer-index>
