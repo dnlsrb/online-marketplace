@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                                <p class="text-base font-normal text-gray-500  ">{{ $review->descriptions }}</p>
+                                <p class="text-base font-normal text-gray-500  ">{{ $review->description }}</p>
 
 
                             </div>
