@@ -163,7 +163,13 @@
                     <option value="physical">Physical</option>
                     <option value="digital">Digital</option>
                     <option value="service">Service</option>
-
+                    <option value="appliances">Appliances</option>
+                    <option value="cosmetics">Cosmetics</option>
+                    <option value="food">food</option>
+                    <option value="accessories">accessories</option>
+                    <option value="clothes">clothes</option>
+                    <option value="bag">bag</option>
+                    <option value="shoes">shoes</option>
                 </select>
  
 

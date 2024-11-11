@@ -27,43 +27,16 @@
             <!-- Card Item End -->
 
             <!-- Card Item Start -->
-            <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
+            {{-- <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
                 <div class="flex flex-col justify-center items-center"> 
-                    {{-- <div class="flex items">
-                        <i class="fa-solid fa-user-secret text-4xl me-2"></i>   <h1 class="text-4xl font-bold">18.7k</h1>
-                    </div>
-                    <div >
-                        Unique Visitors
-                    </div> --}}
+            
                 </div>
             
                  
                 
-            </div>
+            </div> --}}
             <!-- Card Item End -->
-
-            <!-- Card Item Start -->
-            <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
-                <div class="flex flex-col justify-center items-center"> 
-                    
-                </div>
-            
-                 
-                
-            </div>
-            <!-- Card Item End -->
-
-
-            <!-- Card Item Start -->
-            <div class="grid grid-cols-2 gap-4 rounded-sm  bg-white px-7.5 py-6    ">
-                <div class="flex flex-col justify-center items-center"> 
-                  
-                </div>
-            
-                 
-                
-            </div>
-            <!-- Card Item End -->
+ 
             
           </div>
     </div>
@@ -72,12 +45,12 @@
 <div class="flex flex-col md:flex-row w-full ">
     
     {{-- CHART --}}
-    <div id="chart" class="flex-1 rounded-sm  py-10  relative overflow-x-auto shadow-md  bg-white p-2    ">
-    </div>
+    {{-- <div id="chart" class="flex-1 rounded-sm  py-10  relative overflow-x-auto shadow-md  bg-white p-2    ">
+    </div> --}}
     {{-- CHART --}}
 
     {{-- LATEST CUSTOMERS --}}
-    <div class="flex-2 sm:ms-5 rounded-sm  md:mt-0 mt-2 w-full max-w-md p-4 bg-white border border-gray-200  shadow sm:p-8  ">
+    <div class="flex-2   rounded-sm  md:mt-0 mt-2 w-full  bg-white border border-gray-200  shadow p-4 sm:p-8  ">
         <div class="flex items-center justify-between mb-4">
             <h5 class="text-xl font-bold leading-none text-gray-900  ">Latest Orders</h5>
             <a href="{{route('seller.orders.index')}}" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
