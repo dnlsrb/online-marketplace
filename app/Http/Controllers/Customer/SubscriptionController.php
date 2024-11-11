@@ -88,6 +88,6 @@ class SubscriptionController extends Controller
         $subscribe = SubscribeUser::find($id);
 
 
-        return view('pages.customer.subscription.subscribe', compact(['subscribe']));
+        return view('pages.profile.seller', compact(['subscribe']));
     }
 }

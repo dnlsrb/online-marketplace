@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 <x-app-layout>
     <div class="bg-white w-screen top-0 fixed ">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class=" bg-white  inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   ">
@@ -36,12 +37,38 @@
                 </div> --}}
     
                
-    
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        @include('pages.profile.admin.delete-user-form')
-                    </div>
+                
+                 
+                @if($subscribe->subscription->name)
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg ">
+                     
+                     
+                
+                <h1  class="text-6xl font-bold">      {{$subscribe->subscription->name}}</h1>
+                <div class="flex"> 
+                    <h1  class="border bg-amber-500 p-5 text-white">
+                        <span  >Start Date</span>
+                        {{date('F d, Y h:s A',  strtotime($subscribe->start_date))}}
+                    </h1>
+                     
+                    <h1 class="border bg-gray-500 p-5 text-white">
+                        <span>End Date </span>
+                        {{date('F d, Y h:s A', strtotime($subscribe->end_date))}}
+                    </h1>
+                    <h1 class="border bg-gray-500 p-5 text-white">
+                        <span>{{Carbon::now()->diffInDays($subscribe->end_date)}}</span>
+                         Days
+                    </h1>
                 </div>
+                 
+                </div>
+                @else
+                <a href="{{route('customer.subscriptions.index')}}" class="inline-flex items-center px-4 py-2
+                bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800
+                uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900
+                 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Subcribe Now!</a>
+                @endif     
+                  
             </div>
         </div>
      </div>

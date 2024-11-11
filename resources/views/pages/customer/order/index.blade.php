@@ -144,9 +144,9 @@
                                                     <div class="flex items-center aspect-square w-10 h-10 shrink-0">
                                                         <img class="hidden h-auto w-full max-h-full dark:block"
                                                             src="{{ $order->product->image }}" alt="imac image" />
-                                                        <div href="#" class="hover:underline mx-2">
+                                                        <a href="{{route('products.show', ['product' => $order->product->id]) }} " class="hover:underline mx-2">
                                                             {{ $order->product->name }}
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">₱ {{ $order->product->price }} </td>
@@ -209,9 +209,15 @@
 
 
         <x-vendor.breeze.modal name="review-order-{{ $order->id }}" focusable>
+ 
             <div class="p-3">
 
-
+                <div class="flex justify-end">
+                    <button type="button" x-on:click="$dispatch('close')"
+                        class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+                </div>
                 <h1 class="font-semibold text-lg py-2">Order Review </h1>
                 <form action="{{ route('customer.products.review', ['order' => $order->id]) }}" method="post">
                 <h1 class="font-semibold text-md py-2">Rating </h1>
@@ -233,21 +239,16 @@
                  bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500
                  focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
                 <hr class="my-2">
-
-
-                <hr class="my-2">
-
+ 
+                @csrf
+                <button class=" mx-3 text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">Submit</button>
+            </form>
 
             </div>
             <div class="flex sm:flex-row w-full">
 
-                    @csrf
-                    <button class="block   py-2 hover:bg-gray-100 w-full text-center ">Yes</button>
-                </form>
-                <button type="button" x-on:click="$dispatch('close')"
-                    class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-5 mb-2   focus:outline-none dark:focus:ring-blue-800">
-                    Cancel
-                </button>
+                   
+                 
             </div>
 
             </div>

@@ -38,7 +38,8 @@ class CartController extends Controller
         if(!$cart){
 
            $cart = Cart::create([
-                'cart_number' => 'CRT' .  uniqid()
+                'cart_number' => 'CRT' .  uniqid(),
+                'user_id' => $user->id,
             ]);
 
         }

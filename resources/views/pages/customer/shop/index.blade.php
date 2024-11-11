@@ -37,7 +37,7 @@
     </div>
 
     {{-- PRODUCT REVIEWS --}}
-<div class="sm:flex bg-white p-5 my-4">
+{{-- <div class="sm:flex bg-white p-5 my-4">
     <section class="bg-white py-8 antialiased  md:py-16">
       <div class="mx-auto  px-4 2xl:px-0">
         <div class="flex items-center gap-2">
@@ -88,7 +88,7 @@
   
   
   
-  </div>
+  </div> --}}
   
   {{-- PRODUCT REVIEWS --}}
   

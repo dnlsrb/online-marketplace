@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
-
+use App\Models\SubscribeUser;
 
 class ProfileController extends Controller
 {
@@ -110,9 +110,13 @@ class ProfileController extends Controller
 
     */
     public function selleredit(Request $request): View
-    {
-        return view('pages.profile.seller', [
-            'user' => $request->user(),
-        ]);
+    {      
+        $user = $request->user();
+        $subscribe = SubscribeUser::find($user->id);
+
+        return view('pages.profile.seller', compact(['subscribe', 'user']));
+
+
+        
     }
 }
