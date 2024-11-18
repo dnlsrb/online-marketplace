@@ -136,13 +136,14 @@
                  </div>
 
 
-
+ 
                  <form id="FormPaypal" action="{{ route('customer.products.checkout') }}" method="post">
                      @csrf
-
+                     <input type="hidden" x-model="JSON.stringify(orderData)" name="orderData">
                      <input type="hidden" name="cartProducts" id="" :value="JSON.stringify(checkoutData)">
                  </form>
              </div>
+         
          </div>
      </div>
 

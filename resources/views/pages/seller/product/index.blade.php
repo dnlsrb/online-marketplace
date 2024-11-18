@@ -22,11 +22,11 @@ $cur = "Product Listing";
       </div>
     @endif
 <div class="relative overflow-x-auto   bg-white sm:p-8 p-3">
-    <div class="flex items-center justify-start gap-3 mb-4">
+    {{-- <div class="flex items-center justify-start gap-3 mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-700   ">All Products: <span class="text-gray-900">63</span> </h5>
         <h5 class="text-xl font-bold leading-none text-gray-700   ">Total Sales: <span class="text-gray-900">₱2405</span></h5>
        
-    </div>
+    </div> --}}
     <form class="max-w-lg  " class="py-5  ">   
  
         <div class="relative">

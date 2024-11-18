@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Seller\ProductController;
+use App\Http\Controllers\Seller\TransactionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Customer\ConversationController;
@@ -70,7 +71,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:seller'])->prefix('seller')->as('seller.')->group(function () {
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])->name('index');
-
+        Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index');
         // report here
         Route::get('/report', function () {
             return view('pages.seller.report.index');

@@ -28,4 +28,7 @@ class Order extends Model
     public function delivery(){
         return $this->hasOne(Delivery::class);
     }
+    public function transaction(){
+        return $this->belongsTo(Transaction::class);
+    }
 }

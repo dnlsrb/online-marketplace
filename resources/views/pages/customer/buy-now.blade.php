@@ -52,6 +52,7 @@
 
                         <input type="hidden" name="productId" value="{{$product->id}}">
                         <input type="hidden" :value="item.amount.value" name="total">
+                        <input type="hidden" x-model="JSON.stringify(orderData)" name="orderData">
                     </div>
                 </form>
 

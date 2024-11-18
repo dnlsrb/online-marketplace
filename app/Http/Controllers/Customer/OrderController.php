@@ -6,8 +6,11 @@ use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\ProductReview;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\OrderTransaction;
+
 
 class OrderController extends Controller
 {
@@ -34,8 +37,9 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-
+    {   
+ 
+        $paymentData = json_decode($request->orderData);
 
         $order = Order::create([
             'order_number' => 'ORDR-' . uniqid(),
@@ -45,7 +49,20 @@ class OrderController extends Controller
             'total' => $request->total,
             'status' => OrderStatus::ORDERED->value
         ]);
+ 
+        $transaction = Transaction::create([
+            'transaction_reference' => 'TRNSCTN-' . uniqid(),
+            'transaction_type' => 'order',
+            'payment_type' => 'online payment',
+            'payment_reference' => $paymentData->id,
+            'amount' => $paymentData->purchase_units[0]->amount->value,
+            'currency' => $paymentData->purchase_units[0]->amount->currency_code
+        ]);
 
+        OrderTransaction::create([
+            'order_id' =>  $order->id,
+            'transaction_id' => $transaction->id
+        ]);
 
         return back()->with(['message_success' => 'Order Success']);
     }

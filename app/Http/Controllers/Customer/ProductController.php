@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Transaction;
+use App\Models\OrderTransaction;
 
 class ProductController extends Controller
 {
@@ -42,8 +44,9 @@ class ProductController extends Controller
     public function checkOut(Request $request){
         $cartProducts = json_decode($request->cartProducts);
         $products = $cartProducts->selectProducts;
-
-
+     
+          $paymentData = json_decode($request->orderData);
+ 
         collect($products)->map(function($product){
             $cartProduct = CartProduct::find($product->id);
 
@@ -57,10 +60,31 @@ class ProductController extends Controller
                 'status' => OrderStatus::ORDERED->value
             ]);
 
+   
+
+      
+  
+
+
+        // 
             $cartProduct->delete();
         });
 
+ 
+ 
+        $transaction = Transaction::create([
+            'transaction_reference' => 'TRNSCTN-' . uniqid(),
+            'transaction_type' => 'order',
+            'payment_type' => 'online payment',
+            'payment_reference' =>  $paymentData->id,
+            'amount' =>  $paymentData->purchase_units[0]->amount->value,
+            'currency' =>  $paymentData->purchase_units[0]->amount->currency_code
+        ]);
 
+        OrderTransaction::create([
+            'order_id' =>  $order->id,
+            'transaction_id' => $transaction->id
+        ]);
 
         return back()->with(['message_success' => 'Checkout Success']);
     }

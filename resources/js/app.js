@@ -273,7 +273,6 @@ Alpine.data("checkOutProducts", () => ({
                         document.getElementById("FormPaypal").submit();
                         return actions.order.capture().then((orderData) => {
                             this.orderData = orderData;
-
                             console.log(orderData);
                         });
                     },

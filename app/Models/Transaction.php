@@ -24,4 +24,8 @@ class Transaction extends Model
     public function subscriptionTransaction(){
         return $this->hasOne(SubscriptionTransaction::class);
     }
+        
+    public function orderTransaction(){
+        return $this->hasOne(OrderTransaction::class);
+    }
 }

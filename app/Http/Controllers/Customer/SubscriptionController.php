@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
         $transaction = Transaction::create([
             'transaction_reference' => 'TRNSCTN-' . uniqid(),
             'transaction_type' => 'subscription',
-            'payment_type' => 'paypal',
+            'payment_type' => 'online_payment',
             'payment_reference' => $paymentData->id,
             'amount' => $paymentData->purchase_units[0]->amount->value,
             'currency' => $paymentData->purchase_units[0]->amount->currency_code
