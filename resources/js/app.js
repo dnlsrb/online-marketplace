@@ -2,6 +2,7 @@ import "./bootstrap";
 import "flowbite";
 
 import Alpine from "alpinejs";
+import axios from "axios";
 
 window.Alpine = Alpine;
 
@@ -168,6 +169,7 @@ Alpine.data("checkOutProducts", () => ({
     checkoutData: {
         selectProducts: [],
         total: 0,
+        paymentDetails: null,
     },
     count: 0,
     openPayment: false,
@@ -270,54 +272,74 @@ Alpine.data("checkOutProducts", () => ({
                         });
                     },
                     onApprove: (data, actions) => {
-                        document.getElementById("FormPaypal").submit();
+                        // document.getElementById("FormPaypal").submit()
                         return actions.order.capture().then((orderData) => {
-                            this.orderData = orderData;
-                            console.log(orderData);
+                            this.checkoutData = {
+                                ...this.checkoutData,
+                                paymentDetails: orderData,
+                            };
+
+                            this.submitCheckoutData();
                         });
+
+
                     },
                 })
                 .render(buttonsContainer);
         }
     },
     closeCheckoutPayment() {
-        // this.openPayment = false;
+        this.openPayment = false;
         location.reload();
     },
+    async submitCheckoutData() {
+        try {
+
+            const data = {
+                orderData : this.checkoutData
+            }
+
+            const response = axios.post('/customer/products/checkout',data)
+
+            this.openPayment = false;
+            location.reload();
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }));
 
 Alpine.data("chat", () => ({
     conversations: [],
     selectedConversation: null,
     authId: null,
-    message : {
-        content : null,
-        conversationId : null,
+    message: {
+        content: null,
+        conversationId: null,
     },
-    ringtone: new Audio('/1.mp3'),
-    init(){
-        this.$watch('selectedConversation', () => {
+    ringtone: new Audio("/1.mp3"),
+    init() {
+        this.$watch("selectedConversation", () => {
             this.message = {
                 ...this.message,
-                conversationId : this.selectedConversation.id
-            }
+                conversationId: this.selectedConversation.id,
+            };
         });
 
+        this.$watch("authId", () => {
+            window.Echo.private(`chat.${this.authId}`).listen(
+                "GotMessage",
+                (event) => {
+                    console.log(this.$refs.playRingtone.click());
+                    this.playRingtone();
+                    this.selectedConversation.messages = [
+                        event.message,
+                        ...this.selectedConversation.messages,
+                    ];
 
-
-
-        this.$watch('authId', () => {
-            window.Echo.private(`chat.${this.authId}`)
-            .listen('GotMessage', (event) =>{
-                console.log(this.$refs.playRingtone.click())
-                this.playRingtone()
-                this.selectedConversation.messages = [
-                    event.message,
-                    ...this.selectedConversation.messages
-                ]
-
-                this.scrollToBottom();
-            })
+                    this.scrollToBottom();
+                }
+            );
         });
     },
     initConversation(data, authId) {
@@ -329,26 +351,22 @@ Alpine.data("chat", () => ({
         if (!conversation) return;
         console.log(conversation, "selected conversation");
         this.selectedConversation = {
-            ...conversation
+            ...conversation,
         };
     },
     async sendMessage() {
         try {
-
-            console.log(this.message)
-            const {data} = await axios.post('/customer/chat', this.message)
+            console.log(this.message);
+            const { data } = await axios.post("/customer/chat", this.message);
             this.selectedConversation = {
                 ...this.selectedConversation,
-                messages : [
-                    data.message,
-                    ...this.selectedConversation.messages,
-                ]
-            }
+                messages: [data.message, ...this.selectedConversation.messages],
+            };
 
-            this.message.content = null
+            this.message.content = null;
             this.scrollToBottom();
         } catch (error) {
-            console.timeLog(error)
+            console.timeLog(error);
         }
     },
     playRingtone() {
@@ -359,13 +377,11 @@ Alpine.data("chat", () => ({
     scrollToBottom() {
         this.$nextTick(() => {
             if (this.$refs.chatContainer) {
-                this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight;
+                this.$refs.chatContainer.scrollTop =
+                    this.$refs.chatContainer.scrollHeight;
             }
         });
     },
 }));
 
 Alpine.start();
-
-
- 

@@ -136,14 +136,14 @@
                  </div>
 
 
- 
+
                  <form id="FormPaypal" action="{{ route('customer.products.checkout') }}" method="post">
                      @csrf
                      <input type="hidden" x-model="JSON.stringify(orderData)" name="orderData">
                      <input type="hidden" name="cartProducts" id="" :value="JSON.stringify(checkoutData)">
                  </form>
              </div>
-         
+
          </div>
      </div>
 
@@ -152,11 +152,11 @@
 <div class="mt-20">
     <p class="text-2xl my-10 ">Recommendation</p>
     <div class="grid   gap-1   grid-cols-2 sm:grid-cols-5  ">
-  
-  
-  
+
+
+
       @forelse ($products as $product)
-  
+
       <x-shared.product-card
       link="{{ route('products.show', ['product' => $product->id]) }}"
          {{-- ^ add link here  --}}
@@ -164,15 +164,15 @@
          imagesrc="{{$product->image}}"
          productname="{{ $product->name}}"
          productprice="{{ $product->price}}" />
-  
-  
+
+
          @empty
-  
+
          <x-shared.empty/>
            @endforelse
-  
-  
-  
+
+
+
     </div>
 
  </x-layouts.customer-show>

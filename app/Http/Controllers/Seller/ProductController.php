@@ -42,6 +42,7 @@ class ProductController extends Controller
         ]);
 
 
+
         $user = Auth::user();
 
 
@@ -58,7 +59,7 @@ class ProductController extends Controller
             'user_id' => $user->id
         ]);
 
-        
+
 
         return back()->with(['success' => 'Product Added Success']);
     }
@@ -87,6 +88,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $request->validate([
             'image' => 'required',
             'name' => 'required',
@@ -96,6 +98,10 @@ class ProductController extends Controller
         ]);
 
 
+
+
+        $product = Product::find($id);
+
         $user = Auth::user();
 
 
@@ -103,7 +109,7 @@ class ProductController extends Controller
         $dir = $request->image->storeAs('/product', $imageName, 'public');
 
 
-        Product::update([
+        $product->update([
             'name' => $request->name,
             'image' => asset('/storage/' . $dir),
             'description' => $request->description,
@@ -113,7 +119,7 @@ class ProductController extends Controller
         ]);
 
         return back()->with(['update_success' => 'Product Updated Success']);
- 
+
     }
 
     /**
@@ -126,10 +132,10 @@ class ProductController extends Controller
         $product->delete();
 
 
- 
+
 
 
         return redirect()->route('seller.products.index')->with(['alert' => 'Product Deleted']);
- 
+
     }
 }

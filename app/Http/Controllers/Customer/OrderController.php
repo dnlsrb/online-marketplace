@@ -37,9 +37,12 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   
- 
+    {
+
         $paymentData = json_decode($request->orderData);
+
+
+
 
         $order = Order::create([
             'order_number' => 'ORDR-' . uniqid(),
@@ -49,7 +52,7 @@ class OrderController extends Controller
             'total' => $request->total,
             'status' => OrderStatus::ORDERED->value
         ]);
- 
+
         $transaction = Transaction::create([
             'transaction_reference' => 'TRNSCTN-' . uniqid(),
             'transaction_type' => 'order',

@@ -1,7 +1,7 @@
 <div class="bg-white p-5">
     <div class="flex items-center justify-between">
         <h1 class="font-bold">Basic information</h1>
-  
+
     </div>
 
 
@@ -9,6 +9,10 @@
     <form action="{{ route('seller.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
+
+
+
+
         <div class="mt-10">
 
             <div class="mb-4" x-data="{
@@ -33,7 +37,7 @@
                     </label>
                 <input type="number"  maxlength="120" id="product-name" name="price"  value="{{$product->price}}"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      
+
                     placeholder="₱ {{$product->price}}">
 
 
@@ -159,7 +163,7 @@
                 <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
                 <select id="type" name="type"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">{{$product->type}}</option>
+                    <option value="{{$product->type}}" selected>{{$product->type}}</option>
                     <option value="physical">Physical</option>
                     <option value="digital">Digital</option>
                     <option value="service">Service</option>
@@ -178,12 +182,12 @@
                     class="flex items-center text-center mt-auto text-white  bg-amber-500 hover:bg-amber-700  border-0 py-2  px-4  focus:outline-none  rounded">
                     Update
                 </button>
-               
+
             </form>
             <form action="{{route('seller.products.destroy', ['product' => $product->id])}}" method="post">
                 @csrf
                 @method('DELETE')
-    
+
                 <button
                 class="mx-5 flex items-center text-center mt-auto
                 text-white  bg-red-500 hover:bg-red-700  border-0 py-2   px-4  focus:outline-none  rounded">
