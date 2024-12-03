@@ -18,7 +18,7 @@
 
  
     <div class="relative overflow-x-auto   bg-white p-2">
-        <x-shared.table-body :columns="['name', 'price', 'description', 'months duration', 'Action']">
+        <x-shared.table-body :columns="['name', 'price', 'description', 'months duration' ]">
             @foreach ($subscriptions as $subscription)
                 <tr class="odd:bg-white  even:bg-gray-50  border-b ">
                 
@@ -34,9 +34,7 @@
                     <td>
                         {{ $subscription->total_months }}
                     </td>
-                    <td>
-                        
-                    </td>
+                  
                 </tr>
             @endforeach
         </x-shared.table-body>
