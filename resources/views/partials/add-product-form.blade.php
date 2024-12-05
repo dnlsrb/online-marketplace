@@ -82,6 +82,7 @@
                         <input id="dropzone-file" name="image" type="file" accept="image/*" class="hidden"
                         @change="handleImageChange($event)" />
                     </label>
+                    <span class="text-gray-400"  >Max size: 5 mb</span>
                     <span class="text-green-500" id="notBlurry"></span>
                     <span class="text-red-500" id="isBlurry"></span>
 
