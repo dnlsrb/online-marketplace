@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', Auth::user()->id)->latest()->paginate(10);
-
+        $products = Product::where('user_id', Auth::user()->id)->withAvg('reviews', 'rate')->latest()->paginate(10);
+ 
         return view('pages.seller.product.index', compact(['products']));
     }
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|size:5000',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
@@ -88,7 +88,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|size:5000',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
