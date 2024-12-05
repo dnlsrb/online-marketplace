@@ -21,9 +21,15 @@
 
                 {{-- end footer --}}
                 <!-- search compt -->
-                <div class="border-b-2 py-4 px-2 ">
-                    @include('partials.chat.search-user')
-                </div>
+                {{-- <div class="border-b-2 py-4 px-2 ">
+                    
+                        <input
+                        type="text"
+                        placeholder="Search Chat"
+                        class="py-2 px-2 border-2 border-gray-200 rounded w-full"/>
+                        
+                   
+                </div> --}}
                 <!-- end search compt -->
                 <!-- user list -->
 
