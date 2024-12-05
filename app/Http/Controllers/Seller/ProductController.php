@@ -34,14 +34,18 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'image' => 'required|size:5000',
+            'image' => ['required',   'file',
+            function ($attribute, $value, $fail) {
+                if ($value->getSize() > 5242880) { // 5 MB in bytes
+                    $fail("The $attribute must be at least 5 MB.");
+                }
+            },
+        ],
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'type' => 'required'
         ]);
-
-
         $user = Auth::user();
 
 
@@ -88,7 +92,13 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'image' => 'required|size:5000',
+            'image' => ['required',   'file',
+            function ($attribute, $value, $fail) {
+                if ($value->getSize() > 5242880) { // 5 MB in bytes
+                    $fail("The $attribute must be at least 5 MB.");
+                }
+            },
+        ],
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
