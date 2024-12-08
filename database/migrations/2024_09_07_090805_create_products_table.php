@@ -19,6 +19,8 @@ return new class extends Migration
             $table->longText('description');
             $table->float('price');
             $table->string('type');
+            $table->json('colors')->nullable();
+            $table->json('sizes')->nullable();
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });

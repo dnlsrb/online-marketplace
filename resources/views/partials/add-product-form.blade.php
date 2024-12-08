@@ -21,7 +21,7 @@
                     placeholder="Enter product name">
                 <label class="text-gray-400"> <span x-text="remaining"></span>/120</label>
 
-       
+
             </div>
 
             <div class="    mb-4"  >
@@ -30,8 +30,8 @@
                 <input type="number" x-model="name" maxlength="120" id="product-name" name="price"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter price amount">
-        
-              
+
+
             </div>
 
 
@@ -48,7 +48,7 @@
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="3" placeholder="Enter product description"></textarea>
                 <label class="text-gray-400"> <span x-text="remaining"></span>/2000</label>
-                 
+
             </div>
 
             <div class="mb-4">
@@ -64,10 +64,10 @@
                         class="flex flex-col items-center justify-center  min-w-56 min-h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  0">
 
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                      
+
                                 <img   id="image-source"class="w-60 " alt>
-                       
-                     
+
+
                                 <div class="text-center p-5" id="hide">
                                     <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
                                     <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span
@@ -77,7 +77,7 @@
                                         800x400px)</p>
 
                                 </div>
-                       
+
                         </div>
                         <input id="dropzone-file" name="image" type="file" accept="image/*" class="hidden"
                         @change="handleImageChange($event)" />
@@ -85,13 +85,13 @@
                     <span class="text-green-500" id="notBlurry"></span>
                     <span class="text-red-500" id="isBlurry"></span>
 
-                                            
+
 
 <script>
     function handleImageChange(event) {
         const file = event.target.files[0];
         if (!file) return;
-    
+
         // Create an object URL for the image
         const src = URL.createObjectURL(file);
         // Load the image into an <img> element
@@ -104,11 +104,11 @@
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
-    
+
             // Perform blur detection (Laplacian variance method)
             const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const isBlurry = detectBlur(pixels);
-      
+
 
             if (isBlurry) {
                 document.getElementById('notBlurry').innerHTML="";
@@ -122,19 +122,19 @@
                 document.getElementById('hide').style.display = 'none';
                 document.getElementById('image-source').src= src;
             }
-    
+
             // Clean up object URL
             URL.revokeObjectURL(src);
         };
     }
-    
+
     // Simple Laplacian variance blur detection
     function detectBlur(imageData) {
         const gray = new Uint8ClampedArray(imageData.data.length / 4);
         for (let i = 0; i < imageData.data.length; i += 4) {
             gray[i / 4] = 0.299 * imageData.data[i] + 0.587 * imageData.data[i + 1] + 0.114 * imageData.data[i + 2];
         }
-    
+
         // Calculate the Laplacian variance
         let sum = 0, sumSq = 0;
         for (let i = 1; i < gray.length - 1; i++) {
@@ -143,7 +143,7 @@
             sumSq += diff * diff;
         }
         const variance = (sumSq - (sum * sum) / gray.length) / gray.length;
-    
+
         // Define a threshold for blur detection (tweak as necessary)
         return variance < 100; // Threshold; lower values indicate higher blur
     }
@@ -153,6 +153,50 @@
 
             </div>
 
+
+            <div class="mb-4">
+
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Colors</label>
+                <select id="type" multiple name="type"
+                    class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select a color</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                    <option value="purple">Purple</option>
+                    <option value="pink">Pink</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="gray">Gray</option>
+                    <option value="brown">Brown</option>
+                </select>
+
+
+            </div>
+
+            <div class="mb-4">
+
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Size</label>
+                <select id="type" multiple name="type"
+                    class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select a size</option>
+                    <option value="xs">Extra Small (XS)</option>
+                    <option value="s">Small (S)</option>
+                    <option value="m">Medium (M)</option>
+                    <option value="l">Large (L)</option>
+                    <option value="xl">Extra Large (XL)</option>
+                    <option value="xxl">Double Extra Large (XXL)</option>
+                    <option value="xxxl">Triple Extra Large (XXXL)</option>
+                    <option value="kids">Kids</option>
+                    <option value="teens">Teens</option>
+                    <option value="adults">Adults</option>
+                </select>
+
+
+
+            </div>
 
             <div class="mb-4">
 
@@ -171,7 +215,7 @@
                     <option value="bag">bag</option>
                     <option value="shoes">shoes</option>
                 </select>
- 
+
 
 
             </div>
