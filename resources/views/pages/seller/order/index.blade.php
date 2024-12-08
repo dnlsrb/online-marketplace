@@ -16,7 +16,7 @@
 
     @if (session('success'))
     <x-shared.alert alert="success" >{{session('success')}}. <a href="{{route("seller.deliveries.index")}}" class="underline text-blue-700">Check your delivery.</a></x-shared.alert>
-       
+
     @endif
     <section class=" bg ">
         <div class="hidden sm:block">
@@ -32,9 +32,9 @@
                         <a href="{{ route('customer.chat.index') }}">
                             <p class="mx-1">{{ $order->user->name }} <i class="fa-solid fa-comment-dots ms-2"></i></p>
                         </a>
-                    
 
-                       
+
+
                     </div>
                     <p class="text-gray-400">
                        address: {{$order->user->profile->address ?? 'No Address'}}
@@ -56,10 +56,16 @@
                                             <span class="  text-amber-700 font-bold text-center  w-10">
                                                Quantity: {{ $order->quantity }}x
                                             </span>
+                                            <span class="  text-amber-700 font-bold text-center  w-10">
+                                                Color: {{ $order->color }}
+                                             </span>
+                                             <span class="  text-amber-700 font-bold text-center  w-10">
+                                                Size: {{ $order->size }}
+                                             </span>
                                         </div>
                                     </div>
                                 </th>
-                           
+
                                 <td class="font-bold text-center px-6 py-3 w-2/4">
                                     ₱{{ $order->total }}
                                 </td>
@@ -72,9 +78,9 @@
                             </tr>
                         </x-shared.table-body>
                     </div>
-               
+
                     <div class="col-span-1 flex items-center w-56">
-                        @if($order->status == "ordered")  
+                        @if($order->status == "ordered")
                         <div>
 
                             <x-shared.primary-button x-data=""
@@ -124,9 +130,9 @@
                         @else
                         <p>Shipped</p>
                         @endif
-                       
-                        
-                       
+
+
+
                     </div>
 
 

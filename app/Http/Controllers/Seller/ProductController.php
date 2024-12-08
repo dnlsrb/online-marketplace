@@ -33,6 +33,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
+
+
         $request->validate([
             'image' => ['required',   'file',
             function ($attribute, $value, $fail) {
@@ -59,6 +61,8 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'type' => $request->type,
+            'sizes' => json_encode($request->sizes),
+            'colors' => json_encode($request->colors),
             'user_id' => $user->id
         ]);
 

@@ -14,7 +14,10 @@
                     return this.limit - this.name.length
                 }
             }" data-limit="120">
-                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Product Name  @if ($errors->has('name')) <span class="text-xs text-error">({{ $errors->first('name') }})</span> @endif</label>
+                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Product Name @if ($errors->has('name'))
+                        <span class="text-xs text-error">({{ $errors->first('name') }})</span>
+                    @endif
+                </label>
                 </label>
                 <input type="text" x-model="name" maxlength="120" id="product-name" name="name"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -24,9 +27,11 @@
 
             </div>
 
-            <div class="    mb-4"  >
-                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Price @if ($errors->has('price')) <span class="text-xs text-error">({{ $errors->first('price') }})</span> @endif
-                    </label>
+            <div class="    mb-4">
+                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Price @if ($errors->has('price'))
+                        <span class="text-xs text-error">({{ $errors->first('price') }})</span>
+                    @endif
+                </label>
                 <input type="number" x-model="name" maxlength="120" id="product-name" name="price"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter price amount">
@@ -43,7 +48,10 @@
                 }
             }" data-limit="2000">
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Product
-                    Description @if ($errors->has('description')) <span class="text-xs text-error">({{ $errors->first('description') }})</span>@endif</label>
+                    Description @if ($errors->has('description'))
+                        <span class="text-xs text-error">({{ $errors->first('description') }})</span>
+                    @endif
+                </label>
                 <textarea id="description" x-model="description" maxlength="2000" name="description"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="3" placeholder="Enter product description"></textarea>
@@ -53,10 +61,14 @@
 
             <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Product Image
-                    @if ($errors->has('image')) <span class="text-xs text-error">({{ $errors->first('image') }})</span>@endif
-                    @if ($errors->any() && !$errors->has('image')) <span class="text-xs text-error">(Please upload again)</span>@endif
+                    @if ($errors->has('image'))
+                        <span class="text-xs text-error">({{ $errors->first('image') }})</span>
+                    @endif
+                    @if ($errors->any() && !$errors->has('image'))
+                        <span class="text-xs text-error">(Please upload again)</span>
+                    @endif
                 </label>
-                <div   class="flex flex-col  items-start">
+                <div class="flex flex-col  items-start">
 
 
 
@@ -65,90 +77,92 @@
 
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
 
-                                <img   id="image-source"class="w-60 " alt>
+                            <img id="image-source"class="w-60 " alt>
 
 
-                                <div class="text-center p-5" id="hide">
-                                    <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
-                                    <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span
-                                            class="font-semibold">Click to
-                                            upload</span> </p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
-                                        800x400px)</p>
+                            <div class="text-center p-5" id="hide">
+                                <i class="fa-solid fa-upload text-3xl text-gray-500 my-5"></i>
+                                <p class="my-2 text-sm sm:text-lg text-gray-500 dark:text-gray-400"><span
+                                        class="font-semibold">Click to
+                                        upload</span> </p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+                                    800x400px)</p>
 
-                                </div>
+                            </div>
 
                         </div>
                         <input id="dropzone-file" name="image" type="file" accept="image/*" class="hidden"
-                        @change="handleImageChange($event)" />
+                            @change="handleImageChange($event)" />
                     </label>
-                    <span class="text-gray-400"  >Max size: 5 mb</span>
+                    <span class="text-gray-400">Max size: 5 mb</span>
                     <span class="text-green-500" id="notBlurry"></span>
                     <span class="text-red-500" id="isBlurry"></span>
 
 
 
-<script>
-    function handleImageChange(event) {
-        const file = event.target.files[0];
-        if (!file) return;
+                    <script>
+                        function handleImageChange(event) {
+                            const file = event.target.files[0];
+                            if (!file) return;
 
-        // Create an object URL for the image
-        const src = URL.createObjectURL(file);
-        // Load the image into an <img> element
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-            // Create a canvas to draw the image
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
+                            // Create an object URL for the image
+                            const src = URL.createObjectURL(file);
+                            // Load the image into an <img> element
+                            const img = new Image();
+                            img.src = src;
+                            img.onload = () => {
+                                // Create a canvas to draw the image
+                                const canvas = document.createElement("canvas");
+                                const ctx = canvas.getContext("2d");
+                                canvas.width = img.width;
+                                canvas.height = img.height;
+                                ctx.drawImage(img, 0, 0);
 
-            // Perform blur detection (Laplacian variance method)
-            const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const isBlurry = detectBlur(pixels);
+                                // Perform blur detection (Laplacian variance method)
+                                const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                                const isBlurry = detectBlur(pixels);
 
 
-            if (isBlurry) {
-                document.getElementById('notBlurry').innerHTML="";
-                document.getElementById('isBlurry').innerHTML="Image appears to be blurry. Please upload a clearer image.";
-                document.getElementById('image-source').src= "";
-                document.getElementById('hide').style.display =  'block';
-                document.getElementById('dropzone-file').value="";
-            } else {
-                document.getElementById('isBlurry').innerHTML="";
-                document.getElementById('notBlurry').innerHTML="Image is clear";
-                document.getElementById('hide').style.display = 'none';
-                document.getElementById('image-source').src= src;
-            }
+                                if (isBlurry) {
+                                    document.getElementById('notBlurry').innerHTML = "";
+                                    document.getElementById('isBlurry').innerHTML =
+                                        "Image appears to be blurry. Please upload a clearer image.";
+                                    document.getElementById('image-source').src = "";
+                                    document.getElementById('hide').style.display = 'block';
+                                    document.getElementById('dropzone-file').value = "";
+                                } else {
+                                    document.getElementById('isBlurry').innerHTML = "";
+                                    document.getElementById('notBlurry').innerHTML = "Image is clear";
+                                    document.getElementById('hide').style.display = 'none';
+                                    document.getElementById('image-source').src = src;
+                                }
 
-            // Clean up object URL
-            URL.revokeObjectURL(src);
-        };
-    }
+                                // Clean up object URL
+                                URL.revokeObjectURL(src);
+                            };
+                        }
 
-    // Simple Laplacian variance blur detection
-    function detectBlur(imageData) {
-        const gray = new Uint8ClampedArray(imageData.data.length / 4);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            gray[i / 4] = 0.299 * imageData.data[i] + 0.587 * imageData.data[i + 1] + 0.114 * imageData.data[i + 2];
-        }
+                        // Simple Laplacian variance blur detection
+                        function detectBlur(imageData) {
+                            const gray = new Uint8ClampedArray(imageData.data.length / 4);
+                            for (let i = 0; i < imageData.data.length; i += 4) {
+                                gray[i / 4] = 0.299 * imageData.data[i] + 0.587 * imageData.data[i + 1] + 0.114 * imageData.data[i + 2];
+                            }
 
-        // Calculate the Laplacian variance
-        let sum = 0, sumSq = 0;
-        for (let i = 1; i < gray.length - 1; i++) {
-            const diff = gray[i] - gray[i - 1];
-            sum += diff;
-            sumSq += diff * diff;
-        }
-        const variance = (sumSq - (sum * sum) / gray.length) / gray.length;
+                            // Calculate the Laplacian variance
+                            let sum = 0,
+                                sumSq = 0;
+                            for (let i = 1; i < gray.length - 1; i++) {
+                                const diff = gray[i] - gray[i - 1];
+                                sum += diff;
+                                sumSq += diff * diff;
+                            }
+                            const variance = (sumSq - (sum * sum) / gray.length) / gray.length;
 
-        // Define a threshold for blur detection (tweak as necessary)
-        return variance < 100; // Threshold; lower values indicate higher blur
-    }
-    </script>
+                            // Define a threshold for blur detection (tweak as necessary)
+                            return variance < 100; // Threshold; lower values indicate higher blur
+                        }
+                    </script>
 
                 </div>
 
@@ -158,7 +172,7 @@
             <div class="mb-4">
 
                 <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Colors</label>
-                <select id="type" multiple name="type"
+                <select id="type" multiple name="colors[]"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select a color</option>
                     <option value="red">Red</option>
@@ -180,7 +194,7 @@
             <div class="mb-4">
 
                 <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Size</label>
-                <select id="type" multiple name="type"
+                <select id="type" multiple name="sizes[]"
                     class="w-full border border-gray-300 rounded-sm  p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select a size</option>
                     <option value="xs">Extra Small (XS)</option>

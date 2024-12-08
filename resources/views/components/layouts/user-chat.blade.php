@@ -21,21 +21,22 @@
 
                 {{-- end footer --}}
                 <!-- search compt -->
-                {{-- <div class="border-b-2 py-4 px-2 ">
-                    
+               <div class="border-b-2 py-4 px-2 ">
+
                         <input
                         type="text"
+                        x-model.debounce="search"
                         placeholder="Search Chat"
                         class="py-2 px-2 border-2 border-gray-200 rounded w-full"/>
-                        
-                   
-                </div> --}}
+
+
+                </div>
                 <!-- end search compt -->
                 <!-- user list -->
 
                 <template x-if="conversations.length !== 0">
                     <template x-for="conversation in conversations" :key="conversation?.id">
-                        <a href="#" @click="selectConversation(conversation); open = false"  
+                        <a href="#" @click="selectConversation(conversation); open = false"
                             class="flex flex-row py-4 px-2 justify-center items-center border-b-2  hover:bg-gray-100">
 
                             <div class="w-1/4">

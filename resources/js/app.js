@@ -281,8 +281,6 @@ Alpine.data("checkOutProducts", () => ({
 
                             this.submitCheckoutData();
                         });
-
-
                     },
                 })
                 .render(buttonsContainer);
@@ -294,25 +292,25 @@ Alpine.data("checkOutProducts", () => ({
     },
     async submitCheckoutData() {
         try {
-
             const data = {
-                orderData : this.checkoutData
-            }
+                orderData: this.checkoutData,
+            };
 
-            const response = axios.post('/customer/products/checkout',data)
+            const response = axios.post("/customer/products/checkout", data);
 
             this.openPayment = false;
             location.reload();
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    },
 }));
 
 Alpine.data("chat", () => ({
     conversations: [],
     selectedConversation: null,
     authId: null,
+    search: null,
     message: {
         content: null,
         conversationId: null,
@@ -340,6 +338,10 @@ Alpine.data("chat", () => ({
                     this.scrollToBottom();
                 }
             );
+        });
+
+        this.$watch("search", () => {
+            this.searchConversation();
         });
     },
     initConversation(data, authId) {
@@ -381,6 +383,17 @@ Alpine.data("chat", () => ({
                     this.$refs.chatContainer.scrollHeight;
             }
         });
+    },
+    searchConversation() {
+        this.conversations = [
+            ...this.conversations.filter((convo) =>
+                convo.participant.name
+                    .toLowerCase()
+                    .includes(this.search.toLowerCase())
+            ),
+        ];
+
+
     },
 }));
 

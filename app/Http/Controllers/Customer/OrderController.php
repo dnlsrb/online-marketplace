@@ -43,12 +43,13 @@ class OrderController extends Controller
 
 
 
-
         $order = Order::create([
             'order_number' => 'ORDR-' . uniqid(),
             'product_id' => $request->productId,
             'user_id' => Auth::user()->id,
             'quantity' => $request->quantity,
+            'size' => $request->sizes,
+            'color' => $request->color,
             'total' => $request->total,
             'status' => OrderStatus::ORDERED->value
         ]);

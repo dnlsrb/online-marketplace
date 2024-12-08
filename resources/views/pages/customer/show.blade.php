@@ -38,7 +38,27 @@
                 <div class="my-5">
                     <h4 class="mt-5">Product Description</h4>
                     <hr class="my-3">
-                    <h4>{{ $product->description }} </h4>
+                    <h4>{{ $product->description }}  </h4>
+                    Colors :
+                    <p >
+                    @php
+                        $colors = json_decode($product->colors)
+                    @endphp
+
+                    @foreach ($colors as $color)
+                        {{$color}},
+                    @endforeach
+                    </p>
+                    Size  :
+                    <p >
+                    @php
+                        $colors = json_decode($product->sizes)
+                    @endphp
+
+                    @foreach ($colors as $color)
+                        {{$color}},
+                    @endforeach
+                    </p>
                 </div>
                 <h4 class="text-amber-500 text-3xl font-bold">₱{{ $product->price }}</h4>
 
