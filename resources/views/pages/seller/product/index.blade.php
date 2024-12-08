@@ -85,7 +85,7 @@ $cur = "Product Listing";
             </td>
             <td>
 
-                <x-shared.ratings ratings="4"/>
+                <x-shared.ratings ratings="{{ $product->reviews_avg_rate}}"/>
             </td>
             <td>
             {{$product->price}}

@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', Auth::user()->id)->latest()->paginate(10);
+        $products = Product::where('user_id', Auth::user()->id)->withAvg('reviews', 'rate')->latest()->paginate(10);
 
         return view('pages.seller.product.index', compact(['products']));
     }
@@ -34,15 +34,18 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'image' => 'required',
+            'image' => ['required',   'file',
+            function ($attribute, $value, $fail) {
+                if ($value->getSize() > 5242880) { // 5 MB in bytes
+                    $fail("The $attribute must be at least 5 MB.");
+                }
+            },
+        ],
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'type' => 'required'
         ]);
-
-
-
         $user = Auth::user();
 
 
@@ -90,7 +93,13 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'image' => 'required',
+            'image' => ['required',   'file',
+            function ($attribute, $value, $fail) {
+                if ($value->getSize() > 5242880) { // 5 MB in bytes
+                    $fail("The $attribute must be at least 5 MB.");
+                }
+            },
+        ],
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
